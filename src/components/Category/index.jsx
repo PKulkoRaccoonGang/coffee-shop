@@ -1,22 +1,22 @@
 const callouts = [
     {
-        name: 'Desk and Office',
-        description: 'Work from home accessories',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg',
+        name: 'Coffee beans',
+        description: 'Coffee beans',
+        imageSrc: 'https://images.photowall.com/products/53211/more-coffee-beans.jpg?h=699&q=85',
         imageAlt: 'Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.',
         href: '#',
     },
     {
-        name: 'Self-Improvement',
-        description: 'Journals and note-taking',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg',
+        name: 'Instant coffee',
+        description: 'Instant coffee',
+        imageSrc: 'https://www.eatthis.com/wp-content/uploads/sites/4/2022/10/making-instant-coffee.jpg?quality=82&strip=all',
         imageAlt: 'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
         href: '#',
     },
     {
-        name: 'Travel',
-        description: 'Daily commute essentials',
-        imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg',
+        name: 'Organic coffee',
+        description: 'Organic coffee',
+        imageSrc: 'https://res.cloudinary.com/jerrick/image/upload/fl_progressive,q_auto,w_1024/ozryzxisypyx8u2miaix.jpg',
         imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
         href: '#',
     },
@@ -56,3 +56,5 @@ const Category = () => {
 };
 
 export default Category;
+
+

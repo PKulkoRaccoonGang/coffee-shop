@@ -1,107 +1,204 @@
-const posts = [
-    {
-        id: 1,
-        title: 'Boost your conversion rate',
-        href: '#',
-        description:
-            'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        date: 'Mar 16, 2020',
-        datetime: '2020-03-16',
-        category: { title: 'Marketing', href: '#' },
-        author: {
-            name: 'Michael Foster',
-            role: 'Co-Founder / CTO',
-            href: '#',
-            imageUrl:
-                'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-    },
-    {
-        id: 2,
-        title: 'Boost your conversion rate',
-        href: '#',
-        description:
-            'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        date: 'Mar 16, 2020',
-        datetime: '2020-03-16',
-        category: { title: 'Marketing', href: '#' },
-        author: {
-            name: 'Michael Foster',
-            role: 'Co-Founder / CTO',
-            href: '#',
-            imageUrl:
-                'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-    },
-    {
-        id: 3,
-        title: 'Boost your conversion rate',
-        href: '#',
-        description:
-            'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        date: 'Mar 16, 2020',
-        datetime: '2020-03-16',
-        category: { title: 'Marketing', href: '#' },
-        author: {
-            name: 'Michael Foster',
-            role: 'Co-Founder / CTO',
-            href: '#',
-            imageUrl:
-                'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-    },
-];
+// const posts = [
+//     {
+//         id: 1,
+//         title: 'Boost your conversion rate',
+//         href: '#',
+//         description:
+//             'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
+//         date: 'Mar 16, 2020',
+//         datetime: '2020-03-16',
+//         category: { title: 'Marketing', href: '#' },
+//         author: {
+//             name: 'Michael Foster',
+//             role: 'Co-Founder / CTO',
+//             href: '#',
+//             imageUrl:
+//                 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+//         },
+//     },
+//     {
+//         id: 2,
+//         title: 'Boost your conversion rate',
+//         href: '#',
+//         description:
+//             'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
+//         date: 'Mar 16, 2020',
+//         datetime: '2020-03-16',
+//         category: { title: 'Marketing', href: '#' },
+//         author: {
+//             name: 'Michael Foster',
+//             role: 'Co-Founder / CTO',
+//             href: '#',
+//             imageUrl:
+//                 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+//         },
+//     },
+//     {
+//         id: 3,
+//         title: 'Boost your conversion rate',
+//         href: '#',
+//         description:
+//             'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
+//         date: 'Mar 16, 2020',
+//         datetime: '2020-03-16',
+//         category: { title: 'Marketing', href: '#' },
+//         author: {
+//             name: 'Michael Foster',
+//             role: 'Co-Founder / CTO',
+//             href: '#',
+//             imageUrl:
+//                 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+//         },
+//     },
+// ];
 
 const Testimonials = () => {
   return (
-      <div className="bg-white py-24 sm:py-32">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-              <div className="mx-auto max-w-2xl lg:mx-0">
-                  <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the blog</h2>
-                  <p className="mt-2 text-lg leading-8 text-gray-600">
-                      Learn how to grow your business with our expert advice.
-                  </p>
-              </div>
-              <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-y-16 gap-x-8 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                  {posts.map((post) => (
-                      <article key={post.id} className="flex max-w-xl flex-col items-start justify-between">
-                          <div className="flex items-center gap-x-4 text-xs">
-                              <time dateTime={post.datetime} className="text-gray-500">
-                                  {post.date}
-                              </time>
-                              <a
-                                  href={post.category.href}
-                                  className="relative z-10 rounded-full bg-gray-50 py-1.5 px-3 font-medium text-gray-600 hover:bg-gray-100"
-                              >
-                                  {post.category.title}
-                              </a>
+      <section>
+          <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+              <div
+                  className="[column-fill:_balance] sm:columns-2 sm:gap-6 lg:columns-3 lg:gap-8"
+              >
+                  <div className="mb-8 sm:break-inside-avoid">
+                      <blockquote className="rounded-xl bg-gray-50 p-6 shadow">
+                          <p className="leading-relaxed text-gray-700">
+                              Aside from the beautiful building, the cool shirts and mugs and the awesome owners....
+                              the COFFEE is killer! Great job, y'all!
+                          </p>
+                      </blockquote>
+
+                      <div className="mt-4 flex items-center gap-4">
+                          <img
+                              alt="Woman"
+                              src="https://media1.popsugar-assets.com/files/thumbor/4J1Ae4-0TCdHqesVNiAwKZKDczs/747x57:2332x1642/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2020/02/11/845/n/1922398/72b43cc95e42fddddb7c75.82501526_/i/Keanu-Reeves.jpg"
+                              className="h-12 w-12 rounded-full object-cover"
+                          />
+
+                          <div className="text-sm">
+                              <p className="font-medium">Keanu Reeves</p>
+                              <p className="mt-1">Actor</p>
                           </div>
-                          <div className="group relative">
-                              <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                                  <a href={post.href}>
-                                      <span className="absolute inset-0" />
-                                      {post.title}
-                                  </a>
-                              </h3>
-                              <p className="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">{post.description}</p>
+                      </div>
+                  </div>
+
+                  <div className="mb-8 sm:break-inside-avoid">
+                      <blockquote className="rounded-xl bg-gray-50 p-6 shadow">
+                          <p className="leading-relaxed text-gray-700">
+                              Excellent coffee and service! Had a double espresso as well as a pourover.
+                              I was glad to see a La Mazocco espresso machine in use, which produces top-notch shots.
+                              They brew Counter Culture coffee, which is great. The staff seemed very knowledgeable and skilled at their craft.
+                              The artwork around the café was beautiful. Also, the décor was very delightful.
+                              Overall, a great experience!
+                          </p>
+                      </blockquote>
+
+                      <div className="mt-4 flex items-center gap-4">
+                          <img
+                              alt="Woman"
+                              src="https://img.a.transfermarkt.technology/portrait/big/28003-1671435885.jpg?lm=1"
+                              className="h-12 w-12 rounded-full object-cover"
+                          />
+
+                          <div className="text-sm">
+                              <p className="font-medium">Lionel Messi</p>
+                              <p className="mt-1">Footballer</p>
                           </div>
-                          <div className="relative mt-8 flex items-center gap-x-4">
-                              <img src={post.author.imageUrl} alt="" className="h-10 w-10 rounded-full bg-gray-50" />
-                              <div className="text-sm leading-6">
-                                  <p className="font-semibold text-gray-900">
-                                      <a href={post.author.href}>
-                                          <span className="absolute inset-0" />
-                                          {post.author.name}
-                                      </a>
-                                  </p>
-                                  <p className="text-gray-600">{post.author.role}</p>
-                              </div>
+                      </div>
+                  </div>
+
+                  <div className="mb-8 sm:break-inside-avoid">
+                      <blockquote className="rounded-xl bg-gray-50 p-6 shadow">
+                          <p className="leading-relaxed text-gray-700">
+                              His recommendation, The Liquid Gold, is AMAZING.
+                              The coffee is excellent and organic and all of their syrups are made in house!
+                              We also loved the atmosphere and great mix of people there- lots of families with young children,
+                              newlyweds, artists, church groups, young students, couples on date night, etc.
+                              This place is exactly what Macon needed!
+                          </p>
+                      </blockquote>
+
+                      <div className="mt-4 flex items-center gap-4">
+                          <img
+                              alt="Woman"
+                              src="https://hips.hearstapps.com/hmg-prod/images/Mark-Zuckerberg_GettyImages-512304736.jpg?resize=1200:*"
+                              className="h-12 w-12 rounded-full object-cover"
+                          />
+
+                          <div className="text-sm">
+                              <p className="font-medium">Mark Zuckerberg</p>
+                              <p className="mt-1">CEO Facebook</p>
                           </div>
-                      </article>
-                  ))}
+                      </div>
+                  </div>
+
+                  <div className="mb-8 sm:break-inside-avoid">
+                      <blockquote className="rounded-xl bg-gray-50 p-6 shadow">
+                          <p className="leading-relaxed text-gray-700">
+                              Prices are comparable to what I'd expect in a Starbucks, and the quality is SOOOO
+                              much better (seriously guys) That Iced vanilla honey chai was unbelievable.
+                          </p>
+                      </blockquote>
+
+                      <div className="mt-4 flex items-center gap-4">
+                          <img
+                              alt="Woman"
+                              src="https://i.iheart.com/v3/catalog/artist/39335?ops=fit(720%2C720)"
+                              className="h-12 w-12 rounded-full object-cover"
+                          />
+
+                          <div className="text-sm">
+                              <p className="font-medium">Lady Gaga</p>
+                              <p className="mt-1">Singer, actress</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div className="mb-8 sm:break-inside-avoid">
+                      <blockquote className="rounded-xl bg-gray-50 p-6 shadow">
+                          <p className="leading-relaxed text-gray-700">
+                              Came in today and loved the place and the coffee. So nice to talk to you. We WILL be back.
+                          </p>
+                      </blockquote>
+
+                      <div className="mt-4 flex items-center gap-4">
+                          <img
+                              alt="Woman"
+                              src="https://s.abcnews.com/images/International/biden-michigan-ap-rc-200909_hpMain_1x1_992.jpg"
+                              className="h-12 w-12 rounded-full object-cover"
+                          />
+
+                          <div className="text-sm">
+                              <p className="font-medium">Joe Biden</p>
+                              <p className="mt-1">46th U.S. President
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div className="mb-8 sm:break-inside-avoid">
+                      <blockquote className="rounded-xl bg-gray-50 p-6 shadow">
+                          <p className="leading-relaxed text-gray-700">
+                              Great friends, great atmosphere, and Liquid Gold....oh my....good stuff!
+                          </p>
+                      </blockquote>
+
+                      <div className="mt-4 flex items-center gap-4">
+                          <img
+                              alt="Woman"
+                              src="https://static01.nyt.com/images/2015/03/31/business/31jayz-web2/31jayz-web2-mediumSquareAt3X-v3.jpg"
+                              className="h-12 w-12 rounded-full object-cover"
+                          />
+
+                          <div className="text-sm">
+                              <p className="font-medium">Jay Z</p>
+                              <p className="mt-1">Musician</p>
+                          </div>
+                      </div>
+                  </div>
               </div>
           </div>
-      </div>
+      </section>
+
   );
 };
 
