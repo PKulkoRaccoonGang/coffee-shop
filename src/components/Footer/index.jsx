@@ -1,50 +1,36 @@
-const Footer = () => {
-    return (
-        <div className="bg-white py-24 sm:py-32">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <h2 className="text-center text-lg font-semibold leading-8 text-gray-900">
-                    Trusted by the world’s most innovative teams
-                </h2>
-                <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-                    <img
-                        className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                        src="https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg"
-                        alt="Transistor"
-                        width={158}
-                        height={48}
-                    />
-                    <img
-                        className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                        src="https://tailwindui.com/img/logos/158x48/reform-logo-gray-900.svg"
-                        alt="Reform"
-                        width={158}
-                        height={48}
-                    />
-                    <img
-                        className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                        src="https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg"
-                        alt="Tuple"
-                        width={158}
-                        height={48}
-                    />
-                    <img
-                        className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
-                        src="https://tailwindui.com/img/logos/158x48/savvycal-logo-gray-900.svg"
-                        alt="SavvyCal"
-                        width={158}
-                        height={48}
-                    />
-                    <img
-                        className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
-                        src="https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg"
-                        alt="Statamic"
-                        width={158}
-                        height={48}
-                    />
-                </div>
+import Logo from '../Logo';
+import SocialNetwork from '../SocialNetwork';
+import Blockquote from '../Blockquote';
+import Link from '../Link';
+
+const socialNetworks = [
+    {id: 1, href: '/', name: 'Instagram'},
+    {id: 2, href: '/', name: 'Twitter'},
+    {id: 3, href: '/', name: 'Facebook'},
+]
+
+const Footer = () => (
+    <footer aria-label="Site Footer" className="bg-gray-100">
+        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+            <div className="flex justify-center">
+                <Logo/>
             </div>
+            <Blockquote
+                className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500"
+                text="As long as there was coffee in the world, how bad could things be?"
+            />
+            <nav aria-label="Footer Nav" className="mt-12">
+                <ul className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
+                    {['About', 'Careers', 'History', 'Services', 'Projects', 'Blog'].map(link => <Link href={link} name={link} />)}
+                </ul>
+            </nav>
+            <ul className="mt-12 flex justify-center gap-6 md:gap-8">
+                {socialNetworks.map(({id, name, href}) => (
+                    <SocialNetwork id={id} name={name} href={href}/>
+                ))}
+            </ul>
         </div>
-    );
-};
+    </footer>
+);
 
 export default Footer;
