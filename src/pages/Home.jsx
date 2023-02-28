@@ -4,14 +4,16 @@ import Category from '../components/Category';
 import Products from '../components/Products';
 import Testimonials from '../components/Testimonials';
 
-const Home = () => (
+function Home() {
+  return (
     <div>
-        <Main/>
-        <Stats/>
-        <Category/>
-        <Products/>
-        <Testimonials/>
+      <Main />
+      <Stats />
+      <Category />
+      <Products />
+      <Testimonials />
     </div>
-);
+  );
+}
 
 export default Home;
