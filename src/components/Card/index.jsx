@@ -5,7 +5,7 @@ function Card({
 }) {
   return (
     <li key={id}>
-      <a href={href} className="group block overflow-hidden">
+      <a href={href} className="group block overflow-hidden cursor-pointer">
         <img
           className="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
           src={imageSrc}
@@ -27,12 +27,14 @@ function Card({
 Card.propTypes = {
   id: PropTypes.number.isRequired,
   imageSrc: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/require-default-props
-  name: PropTypes.string,
-  // eslint-disable-next-line react/require-default-props
-  price: PropTypes.number,
-  // eslint-disable-next-line react/require-default-props
+  name: PropTypes.string.isRequired,
+  price: PropTypes.string,
   href: PropTypes.string,
+};
+
+Card.defaultProps = {
+  price: null,
+  href: null,
 };
 
 export default Card;

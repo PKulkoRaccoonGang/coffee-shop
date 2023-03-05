@@ -3,9 +3,15 @@
   "description": "Baker 75 Street personal project",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "stylelint": "stylelint \"**/*.css\" --fix",
+    "lint": "npm run stylelint && eslint --ext .js --ext .jsx ."
+  },
   "dependencies": {
-    "@headlessui/react": "^1.7.12",
-    "@heroicons/react": "^2.0.16",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.2",
@@ -18,13 +24,6 @@
     "react-icons": "^4.7.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "stylelint \"**/*.css\" --fix"
   },
   "browserslist": {
     "production": [

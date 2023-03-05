@@ -1,19 +1,28 @@
-import { BsFacebook } from 'react-icons/bs';
-import Logo from '../Logo';
+import { BsFacebook, BsTwitter, BsTelegram } from 'react-icons/bs';
 import SocialNetwork from '../SocialNetwork';
 import Blockquote from '../Blockquote';
 import Link from '../Link';
+import Logo from '../Logo';
 
 const socialNetworks = [
   {
-    id: 1, href: '/', name: 'Instagram', icon: <BsFacebook />,
+    id: 1, href: 'https://desktop.telegram.org/', name: 'Telegram', icon: <BsTelegram size="30" />,
   },
   {
-    id: 2, href: '/', name: 'Twitter', icon: <BsFacebook />,
+    id: 2, href: 'https://twitter.com/', name: 'Twitter', icon: <BsTwitter size="30" />,
   },
   {
-    id: 3, href: '/', name: 'Facebook', icon: <BsFacebook />,
+    id: 3, href: 'https://www.facebook.com/', name: 'Facebook', icon: <BsFacebook size="30" />,
   },
+];
+
+export const navigationItems = [
+  { id: 1, name: 'About', href: '/about' },
+  { id: 2, name: 'History', href: '/history' },
+  { id: 3, name: 'Careers', href: '/careers' },
+  { id: 4, name: 'Services', href: '/services' },
+  { id: 5, name: 'Projects', href: '/projects' },
+  { id: 6, name: 'Blog', href: '/blog' },
 ];
 
 function Footer() {
@@ -29,9 +38,9 @@ function Footer() {
         />
         <nav aria-label="Footer Nav" className="mt-12">
           <ul className="flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
-            {['About', 'Careers', 'History', 'Services', 'Projects', 'Blog'].map(
-              (link) => (
-                <Link href={link} name={link} />
+            {navigationItems.map(
+              ({ id, href, name }) => (
+                <Link id={id} href={href} name={name} />
               ),
             )}
           </ul>

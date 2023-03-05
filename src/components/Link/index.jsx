@@ -11,11 +11,9 @@ function Link({ id, href, name }) {
 }
 
 Link.propTypes = {
-  // eslint-disable-next-line react/require-default-props
-  id: PropTypes.number,
+  id: PropTypes.number.isRequired,
   href: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/require-default-props
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
 };
 
 export default Link;

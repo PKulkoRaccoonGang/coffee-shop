@@ -1,5 +1,7 @@
-import Logo from '../Logo';
+import { BsList } from 'react-icons/bs';
 import Link from '../Link';
+import Logo from '../Logo';
+import { navigationItems } from '../Footer';
 
 function Header() {
   return (
@@ -9,15 +11,8 @@ function Header() {
         <div className="flex flex-1 items-center justify-end md:justify-between">
           <nav aria-label="Site Nav" className="hidden md:block">
             <ul className="flex items-center gap-6 text-sm">
-              {[
-                'About',
-                'Careers',
-                'History',
-                'Services',
-                'Projects',
-                'Blog',
-              ].map((link) => (
-                <Link href={link} name={link} />
+              {navigationItems.map(({ id, href, name }) => (
+                <Link id={id} href={href} name={name} />
               ))}
             </ul>
           </nav>
@@ -39,20 +34,7 @@ function Header() {
             </div>
             <button type="submit" className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden">
               <span className="sr-only">Toggle menu</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
+              <BsList />
             </button>
           </div>
         </div>

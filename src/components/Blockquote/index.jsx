@@ -5,8 +5,7 @@ function Blockquote({ className, text }) {
 }
 
 Blockquote.propTypes = {
-  // eslint-disable-next-line react/require-default-props
-  className: PropTypes.string,
+  className: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
 };
 

@@ -21,10 +21,8 @@ function SocialNetwork({
 SocialNetwork.propTypes = {
   id: PropTypes.number.isRequired,
   href: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/require-default-props
-  name: PropTypes.string,
-  // eslint-disable-next-line react/require-default-props
-  icon: PropTypes.node,
+  name: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
 };
 
 export default SocialNetwork;
