@@ -5,7 +5,7 @@ const products = [
   {
     id: 1,
     name: 'Lavazza Qualita Oro',
-    href: '/',
+    href: '/product',
     price: '$48',
     imageSrc:
       'https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/4/2442055-1_3.jpg',
@@ -15,7 +15,7 @@ const products = [
   {
     id: 2,
     name: 'Movenpick Caffe Crema',
-    href: '/',
+    href: '/product',
     price: '$35',
     imageSrc:
       'https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/4/2458465_2.jpg',
@@ -25,7 +25,7 @@ const products = [
   {
     id: 3,
     name: 'Merrild Dansk Guld',
-    href: '/',
+    href: '/product',
     price: '$89',
     imageSrc:
       'https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/0/1006117-1.jpg',
@@ -34,7 +34,7 @@ const products = [
   {
     id: 4,
     name: 'Fineberry Original Blend',
-    href: '/',
+    href: '/product',
     price: '$35',
     imageSrc:
       'https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/8/5/857753.jpg',
@@ -44,7 +44,7 @@ const products = [
   {
     id: 5,
     name: 'ISLA GOLD BLEND',
-    href: '/',
+    href: '/product',
     price: '$35',
     imageSrc:
       'https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/7/6/7698109-2_1.jpg',
@@ -53,7 +53,7 @@ const products = [
   {
     id: 6,
     name: 'Lavazza Crema e Aroma',
-    href: '/',
+    href: '/product',
     price: '$35',
     imageSrc:
       'https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/4/2442021-1_2.jpg',
@@ -63,7 +63,7 @@ const products = [
   {
     id: 7,
     name: 'MELITTA BellaCrema LaCrema',
-    href: '/',
+    href: '/product',
     price: '$89',
     imageSrc:
       'https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/5/2558805.jpg',
@@ -73,7 +73,7 @@ const products = [
   {
     id: 8,
     name: 'Lucaffe Mr.Exclusive - 100% Arabica',
-    href: '/',
+    href: '/product',
     price: '$35',
     imageSrc:
       'https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/4/2462922_9.jpg',
@@ -106,9 +106,9 @@ export default function Products() {
         </div>
         <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {products.map(({
-            id, imageSrc, name, price,
+            id, imageSrc, name, price, href,
           }) => (
-            <Card id={id} imageSrc={imageSrc} name={name} price={price} />
+            <Card id={id} imageSrc={imageSrc} name={name} price={price} href={href} />
           ))}
         </ul>
         <Pagination />

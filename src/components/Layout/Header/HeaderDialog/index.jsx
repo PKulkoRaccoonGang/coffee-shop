@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Dialog } from '@headlessui/react';
 import { BsFillXSquareFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import Button from '../../../Button';
+import { ButtonLink } from '../../../Button';
 import HeaderDisclosure from './HeaderDisclosure';
 
 import Logo from '../../../Logo';
@@ -32,7 +32,7 @@ export default function HeaderDialog({
         <div className="mt-6 flow-root">
           <div className="-my-6 divide-y divide-gray-500/10">
             <div className="py-6">
-              <Button href="/login" text="Login" />
+              <ButtonLink href="/login" text="Login" />
             </div>
             <div className="space-y-2 py-6">
               <HeaderDisclosure products={categories} callsToAction={actionLinks} />

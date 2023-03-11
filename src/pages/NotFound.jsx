@@ -1,4 +1,4 @@
-import Button from '../components/Button';
+import { ButtonLink } from '../components/Button';
 
 export default function NotFound() {
   return (
@@ -15,8 +15,8 @@ export default function NotFound() {
           </p>
 
           <div className="flex flex-col items-center mt-6 gap-x-3 md:flex-row">
-            <Button href="/" text="Go back" styles="mb-4 md:m-0" />
-            <Button href="/" text="Take me home" />
+            <ButtonLink href="/" text="Go back" styles="mb-4 md:m-0" />
+            <ButtonLink href="/" text="Take me home" />
           </div>
         </div>
       </div>

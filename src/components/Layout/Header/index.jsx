@@ -7,7 +7,7 @@ import {
 } from 'react-icons/bs';
 import HeaderDialog from './HeaderDialog';
 import HeaderPopover from './HeaderPopover';
-import Button from '../../Button';
+import { ButtonLink } from '../../Button';
 
 import Logo from '../../Logo';
 
@@ -68,7 +68,7 @@ export default function Example() {
           headerLinks={headerLinks}
         />
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Button href="/login" text="Login" />
+          <ButtonLink href="/login" text="Login" />
         </div>
       </nav>
       <HeaderDialog
