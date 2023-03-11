@@ -1,6 +1,6 @@
 import LogoImg from './logo.png';
 
-function Logo() {
+export default function Logo() {
   return (
     <a className="block text-teal-600" href="/">
       <span className="sr-only">Home</span>
@@ -8,5 +8,3 @@ function Logo() {
     </a>
   );
 }
-
-export default Logo;

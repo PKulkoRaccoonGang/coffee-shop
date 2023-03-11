@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function PaginationItem({ id, href, count }) {
+export default function PaginationItem({ id, href, count }) {
   return (
     <li key={id}>
       <a
@@ -15,8 +15,6 @@ function PaginationItem({ id, href, count }) {
 
 PaginationItem.propTypes = {
   id: PropTypes.number.isRequired,
-  href: PropTypes.number.isRequired,
+  href: PropTypes.string.isRequired,
   count: PropTypes.number.isRequired,
 };
-
-export default PaginationItem;

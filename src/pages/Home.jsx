@@ -4,7 +4,7 @@ import Category from '../components/Category';
 import Products from '../components/Products';
 import Testimonials from '../components/Testimonials';
 
-function Home() {
+export default function Home() {
   return (
     <div>
       <Main />
@@ -15,5 +15,3 @@ function Home() {
     </div>
   );
 }
-
-export default Home;

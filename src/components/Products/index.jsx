@@ -82,7 +82,7 @@ const products = [
   },
 ];
 
-function Products() {
+export default function Products() {
   return (
     <section>
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
@@ -99,7 +99,7 @@ function Products() {
           <p className="text-right text-sm text-gray-500">
             Showing
             {' '}
-            <span> 4 </span>
+            <span>4</span>
             {' '}
             of 40
           </p>
@@ -116,5 +116,3 @@ function Products() {
     </section>
   );
 }
-
-export default Products;

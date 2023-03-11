@@ -1,9 +1,10 @@
+import { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Popover, Transition } from '@headlessui/react';
 import { BsChevronDown } from 'react-icons/bs';
-import { Fragment } from 'react';
+import HeaderPopoverItem from './HeaderPopoverItem';
 
-// eslint-disable-next-line react/prop-types
-export default function HeaderPopover({ products, callsToAction, links }) {
+export default function HeaderPopover({ categories, actionLinks, headerLinks }) {
   return (
     <Popover.Group className="hidden lg:flex lg:gap-x-12">
       <Popover className="relative">
@@ -24,30 +25,12 @@ export default function HeaderPopover({ products, callsToAction, links }) {
             className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5"
           >
             <div className="p-4">
-              {/* eslint-disable-next-line react/prop-types */}
-              {products.map((item) => (
-                <div
-                  key={item.name}
-                  className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
-                >
-                  <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                    <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
-                  </div>
-                  <div className="flex-auto">
-                    <a href={item.href} className="block font-semibold text-gray-900">
-                      {item.name}
-                      <span className="absolute inset-0" />
-                    </a>
-                    <p className="mt-1 text-gray-600">{item.description}</p>
-                  </div>
-                </div>
-              ))}
+              {categories.map((product) => (<HeaderPopoverItem product={product} />))}
             </div>
             <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-              {/* eslint-disable-next-line react/prop-types */}
-              {callsToAction.map((item) => (
+              {actionLinks.map((item) => (
                 <a
-                  key={item.name}
+                  key={item.href}
                   href={item.href}
                   className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
                 >
@@ -60,8 +43,7 @@ export default function HeaderPopover({ products, callsToAction, links }) {
         </Transition>
       </Popover>
 
-      {/* eslint-disable-next-line react/prop-types */}
-      {links.map(({ href, name }) => (
+      {headerLinks.map(({ href, name }) => (
         <a key={name} href={href} className="text-sm font-semibold leading-6 text-gray-900">
           {name}
         </a>
@@ -70,3 +52,9 @@ export default function HeaderPopover({ products, callsToAction, links }) {
     </Popover.Group>
   );
 }
+
+HeaderPopover.propTypes = {
+  categories: PropTypes.array.isRequired,
+  actionLinks: PropTypes.array.isRequired,
+  headerLinks: PropTypes.array.isRequired,
+};

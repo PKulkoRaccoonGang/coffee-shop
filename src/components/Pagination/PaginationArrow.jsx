@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
 
-function PaginationArrow({ href, direction }) {
+export default function PaginationArrow({ href, direction }) {
   return (
     <li>
       <a
@@ -23,5 +23,3 @@ PaginationArrow.propTypes = {
   href: PropTypes.string.isRequired,
   direction: PropTypes.string.isRequired,
 };
-
-export default PaginationArrow;

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function SocialNetwork({
+export default function SocialNetwork({
   id, href, name, icon,
 }) {
   return (
@@ -19,10 +19,8 @@ function SocialNetwork({
 }
 
 SocialNetwork.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   icon: PropTypes.node.isRequired,
 };
-
-export default SocialNetwork;

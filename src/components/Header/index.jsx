@@ -1,36 +1,46 @@
 import { useState } from 'react';
-import { BsFillPatchQuestionFill, BsJustify } from 'react-icons/bs';
-import Logo from '../Logo';
+import {
+  BsPeopleFill,
+  BsFillPatchCheckFill,
+  BsJustify,
+  BsFillTelephoneFill,
+} from 'react-icons/bs';
 import HeaderDialog from './HeaderDialog';
 import HeaderPopover from './HeaderPopover';
+import Button from '../Button';
 
-const products = [
+import Logo from '../Logo';
+
+const categories = [
   {
-    name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: BsFillPatchQuestionFill,
+    name: 'Coffee beans',
+    description: 'A coffee bean is a seed of the Coffee plant and the source of coffee.',
+    href: '/beans',
+    icon: BsFillPatchCheckFill,
   },
   {
-    name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: BsFillPatchQuestionFill,
+    name: 'Instant coffee',
+    description: 'Instant coffee is made from real coffee beans.',
+    href: '/instant',
+    icon: BsFillPatchCheckFill,
   },
   {
-    name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: BsFillPatchQuestionFill,
-  },
-  {
-    name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: BsFillPatchQuestionFill,
-  },
-  {
-    name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: BsFillPatchQuestionFill,
+    name: 'Organic coffee',
+    description: 'The coffee is grown with only organic fertilizers',
+    href: '/organic',
+    icon: BsFillPatchCheckFill,
   },
 ];
 
-const links = [
-  { name: 'Features', href: '/' },
-  { name: 'Marketplace', href: '/' },
-  { name: 'Company', href: '/' },
+const headerLinks = [
+  { name: 'About', href: '/about' },
+  { name: 'Marketplace', href: '/marketplace' },
+  { name: 'Company', href: '/company' },
 ];
 
-const callsToAction = [
-  { name: 'Watch demo', href: '/', icon: BsFillPatchQuestionFill },
-  { name: 'Contact sales', href: '/', icon: BsFillPatchQuestionFill },
+const actionLinks = [
+  { name: 'Suggest cooperation', href: 'tel:+380933786928', icon: BsPeopleFill },
+  { name: 'Hotline', href: 'tel:+380933786928', icon: BsFillTelephoneFill },
 ];
 
 export default function Example() {
@@ -52,29 +62,21 @@ export default function Example() {
             <BsJustify className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-        <HeaderPopover products={products} callsToAction={callsToAction} links={links} />
-
+        <HeaderPopover
+          categories={categories}
+          actionLinks={actionLinks}
+          headerLinks={headerLinks}
+        />
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a
-            className="block rounded-md bg-orange-900 px-5 py-2.5 mr-2 text-sm font-medium text-white transition hover:bg-orange-800"
-            href="/"
-          >
-            Login
-          </a>
-          <a
-            className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-orange-800 transition hover:text-orange-900/75 sm:block"
-            href="/"
-          >
-            Register
-          </a>
+          <Button href="/login" text="Login" />
         </div>
       </nav>
       <HeaderDialog
-        products={products}
+        categories={categories}
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
-        callsToAction={callsToAction}
-        links={links}
+        actionLinks={actionLinks}
+        headerLinks={headerLinks}
       />
     </header>
   );

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function Card({
+export default function Card({
   id, imageSrc, name, price, href,
 }) {
   return (
@@ -25,7 +25,7 @@ function Card({
 }
 
 Card.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   imageSrc: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.string,
@@ -33,8 +33,6 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  price: null,
-  href: null,
+  price: undefined,
+  href: undefined,
 };
-
-export default Card;

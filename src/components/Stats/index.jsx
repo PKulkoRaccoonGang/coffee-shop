@@ -4,7 +4,7 @@ const stats = [
   { id: 3, name: 'Made orders', value: '46,000' },
 ];
 
-function Stats() {
+export default function Stats() {
   return (
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -22,5 +22,3 @@ function Stats() {
     </div>
   );
 }
-
-export default Stats;
