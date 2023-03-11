@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default function Card({
   id, imageSrc, name, price, href,
 }) {
   return (
     <li key={id}>
-      <a href={href} className="group block overflow-hidden cursor-pointer">
+      <Link to={href} className="group block overflow-hidden cursor-pointer">
         <img
           className="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
           src={imageSrc}
@@ -19,7 +20,7 @@ export default function Card({
             <span className="tracking-wider text-gray-900">{price}</span>
           </p>
         </div>
-      </a>
+      </Link>
     </li>
   );
 }
