@@ -1,9 +1,11 @@
+import PropTypes from 'prop-types';
 import { Dialog } from '@headlessui/react';
 import { BsFillXSquareFill } from 'react-icons/bs';
-import PropTypes from 'prop-types';
-import Logo from '../../Logo';
-import Button from '../../Button';
+import { Link } from 'react-router-dom';
+import Button from '../../../Button';
 import HeaderDisclosure from './HeaderDisclosure';
+
+import Logo from '../../../Logo';
 
 export default function HeaderDialog({
   categories,
@@ -36,13 +38,13 @@ export default function HeaderDialog({
               <HeaderDisclosure products={categories} callsToAction={actionLinks} />
 
               {headerLinks.map(({ href, name }) => (
-                <a
+                <Link
                   key={name}
-                  href={href}
+                  to={href}
                   className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   {name}
-                </a>
+                </Link>
               ))}
 
             </div>

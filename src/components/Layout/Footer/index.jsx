@@ -1,8 +1,8 @@
 import { BsFacebook, BsTwitter, BsTelegram } from 'react-icons/bs';
-import SocialNetwork from '../SocialNetwork';
-import Blockquote from '../Blockquote';
+import SocialNetwork from '../../SocialNetwork';
+import Blockquote from '../../Blockquote';
 
-import Logo from '../Logo';
+import Logo from '../../Logo';
 
 const socialNetworks = [
   {

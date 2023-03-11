@@ -7,9 +7,9 @@ import {
 } from 'react-icons/bs';
 import HeaderDialog from './HeaderDialog';
 import HeaderPopover from './HeaderPopover';
-import Button from '../Button';
+import Button from '../../Button';
 
-import Logo from '../Logo';
+import Logo from '../../Logo';
 
 const categories = [
   {
