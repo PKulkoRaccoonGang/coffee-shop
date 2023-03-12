@@ -1,6 +1,5 @@
 import { BsFacebook, BsTwitter, BsTelegram } from 'react-icons/bs';
 import SocialNetwork from '../../SocialNetwork';
-import Blockquote from '../../Blockquote';
 
 import Logo from '../../Logo';
 
@@ -23,10 +22,9 @@ export default function Footer() {
         <div className="flex justify-center">
           <Logo />
         </div>
-        <Blockquote
-          className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500"
-          text="As long as there was coffee in the world, how bad could things be?"
-        />
+        <blockquote className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">
+          As long as there was coffee in the world, how bad could things be?
+        </blockquote>
         <ul className="mt-12 flex justify-center gap-6 md:gap-8">
           {socialNetworks.map(({
             name, href, icon,
