@@ -1,4 +1,3 @@
-import Blockquote from '../Blockquote';
 import { ButtonLink } from '../Button';
 
 export default function Main() {
@@ -12,10 +11,10 @@ export default function Main() {
               Baker 75 Street.
             </strong>
           </h1>
-          <Blockquote
-            className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed"
-            text="You will taken by the power that savoring a simple cup of coffee can have to connect people and create community..."
-          />
+          <blockquote className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed">
+            You will taken by the power that savoring a simple
+            cup of coffee can have to connect people and create community...
+          </blockquote>
           <div className="mt-8 flex flex-wrap gap-4 text-center">
             <ButtonLink href="/buy" text="Buy coffee" />
             <ButtonLink href="/about" text="About us" />

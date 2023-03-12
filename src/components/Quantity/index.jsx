@@ -11,6 +11,7 @@ export default function Quantity() {
           -
         </button>
         <span>
+          <label htmlFor="quantity" className="sr-only">Quality</label>
           <input
             type="number"
             id="quantity"

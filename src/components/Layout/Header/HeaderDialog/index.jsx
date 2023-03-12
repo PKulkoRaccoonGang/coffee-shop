@@ -36,7 +36,6 @@ export default function HeaderDialog({
             </div>
             <div className="space-y-2 py-6">
               <HeaderDisclosure products={categories} callsToAction={actionLinks} />
-
               {headerLinks.map(({ href, name }) => (
                 <Link
                   key={name}
@@ -46,7 +45,6 @@ export default function HeaderDialog({
                   {name}
                 </Link>
               ))}
-
             </div>
           </div>
         </div>
