@@ -1,7 +1,7 @@
 import Pagination from '../Pagination';
 import Card from '../Card';
 
-const products = [
+export const products = [
   {
     id: 1,
     name: 'Lavazza Qualita Oro',
@@ -11,6 +11,7 @@ const products = [
       'https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/4/2442055-1_3.jpg',
     imageAlt:
       'Having prepared coffee from Lavazza Qualita Oro, you will feel the pleasant aroma of flowers and fruits.',
+    category: 'Coffee beans',
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ const products = [
       'https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/4/2458465_2.jpg',
     imageAlt:
       'Movenpick Caffe Crema is a blend that includes a ton of benefits.',
+    category: 'Coffee beans',
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ const products = [
     imageSrc:
       'https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/1/0/1006117-1.jpg',
     imageAlt: 'Dansk Guld are 100% medium roast Arabica beans.',
+    category: 'Coffee beans',
   },
   {
     id: 4,
@@ -40,6 +43,7 @@ const products = [
       'https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/8/5/857753.jpg',
     imageAlt:
       'Selected Arabica beans from Nicaragua, Honduras and El Salvador make the taste of this drink unique.',
+    category: 'Coffee beans',
   },
   {
     id: 5,
@@ -49,6 +53,7 @@ const products = [
     imageSrc:
       'https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/7/6/7698109-2_1.jpg',
     imageAlt: '100% Arabica from Brazil and Central America.',
+    category: 'Coffee beans',
   },
   {
     id: 6,
@@ -59,6 +64,7 @@ const products = [
       'https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/4/2442021-1_2.jpg',
     imageAlt:
       'Lavazza Crema e Aroma combines these three qualities and will definitely please every coffee connoisseur.',
+    category: 'Coffee beans',
   },
   {
     id: 7,
@@ -69,6 +75,7 @@ const products = [
       'https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/5/2558805.jpg',
     imageAlt:
       'Melitta is a brand created in Germany, owned by a company that produces equipment and accessories for making coffee, tea, and other food.',
+    category: 'Coffee beans',
   },
   {
     id: 8,
@@ -79,6 +86,7 @@ const products = [
       'https://coffeeok.com.ua/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/4/2462922_9.jpg',
     imageAlt:
       'Melitta is a brand created in Germany, owned by a company that produces equipment and accessories for making coffee, tea, and other food.',
+    category: 'Coffee beans',
   },
 ];
 
