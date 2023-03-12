@@ -4,6 +4,8 @@ import NotFound from './pages/NotFound';
 import Layout from './components/Layout';
 import Product from './pages/Product';
 import About from './pages/About';
+import Login from './pages/Login';
+import Registration from './pages/Registration';
 
 export default function App() {
   return (
@@ -14,6 +16,8 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="product" element={<Product />} />
           <Route path="about" element={<About />} />
+          <Route path="login" element={<Login />} />
+          <Route path="registration" element={<Registration />} />
         </Route>
       </Routes>
     </div>
