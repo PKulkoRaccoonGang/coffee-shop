@@ -1,5 +1,5 @@
 import Blockquote from '../Blockquote';
-import Button from '../Button';
+import { ButtonLink } from '../Button';
 
 export default function Main() {
   return (
@@ -17,8 +17,8 @@ export default function Main() {
             text="You will taken by the power that savoring a simple cup of coffee can have to connect people and create community..."
           />
           <div className="mt-8 flex flex-wrap gap-4 text-center">
-            <Button href="/buy" text="Buy coffee" />
-            <Button href="/about" text="About us" />
+            <ButtonLink href="/buy" text="Buy coffee" />
+            <ButtonLink href="/about" text="About us" />
           </div>
         </div>
       </div>
