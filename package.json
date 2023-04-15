@@ -9,7 +9,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "stylelint": "stylelint \"**/*.css\" --fix",
-    "lint": "npm run stylelint && eslint ./src --ext .js --ext .jsx ."
+    "lint": "npm run stylelint && eslint ./src --ext .js --ext .jsx .",
+    "lint:eslint": "eslint . --ext .ts,.js,.tsx,.jsx",
+    "lint:eslint:fix": "eslint . --ext .ts,.js,.tsx,.jsx --fix",
+    "prettify": "prettier --write **/*.{ts,tsx,js,jsx,json}"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.13",
@@ -53,15 +56,22 @@
     "stylelint-config-standard": "^30.0.1",
     "tailwindcss": "^3.2.7"
   },
+  "lint": {
+    "lint-staged": "lint-staged"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "*": [
-      "npm run lint",
-      "git add"
+    "*.{ts,tsx,js,jsx}": [
+      "npm run lint:eslint:fix",
+      "git add --force"
+    ],
+    "*.{ts,tsx,js,jsx,json}": [
+      "npm run prettify",
+      "git add --force"
     ]
   }
 }
