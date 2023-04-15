@@ -9,8 +9,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "stylelint": "stylelint \"**/*.css\" --fix",
-    "lint": "npm run stylelint && eslint ./src --ext .ts,.js,.tsx,.jsx",
-    "prettify": "prettier --write **/*.{ts,tsx,js,jsx,json}"
+    "lint": "npm run stylelint && eslint ./src --ext .js,.jsx"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.13",
@@ -63,12 +62,8 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": [
+    "*.{js,jsx}": [
       "npm run lint",
-      "git add --force"
-    ],
-    "*.{ts,tsx,js,jsx,json}": [
-      "npm run prettify",
       "git add --force"
     ]
   }
