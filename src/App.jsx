@@ -9,15 +9,6 @@ import Registration from './pages/Registration';
 import Profile from './pages/Profile';
 
 export default function App() {
-
-
-
-
-
-
-
-
-
   return (
     <div className="isolate bg-white">
       <Routes>

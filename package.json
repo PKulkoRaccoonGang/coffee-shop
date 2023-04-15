@@ -9,9 +9,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "stylelint": "stylelint \"**/*.css\" --fix",
-    "lint": "npm run stylelint && eslint ./src --ext .js --ext .jsx .",
-    "lint:eslint": "eslint . --ext .ts,.js,.tsx,.jsx",
-    "lint:eslint:fix": "eslint . --ext .ts,.js,.tsx,.jsx --fix",
+    "lint": "npm run stylelint && eslint ./src --ext .ts,.js,.tsx,.jsx",
     "prettify": "prettier --write **/*.{ts,tsx,js,jsx,json}"
   },
   "dependencies": {
@@ -66,7 +64,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
-      "npm run lint:eslint:fix",
+      "npm run lint",
       "git add --force"
     ],
     "*.{ts,tsx,js,jsx,json}": [
