@@ -1,15 +1,14 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "jest": true
-    },
     "extends": [
         "plugin:react/recommended",
         "airbnb"
     ],
-    "overrides": [
-    ],
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "jest": true,
+        "node": true
+    },
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
@@ -21,7 +20,7 @@
         "import/no-extraneous-dependencies": "off",
         "react/forbid-prop-types": "off",
         "react/react-in-jsx-scope": "off",
-        "global-require": 0,
+        "global-require": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "jsx-a11y/label-has-associated-control": ["error", {
             "required": {
