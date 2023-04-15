@@ -8,8 +8,10 @@ import {
 import HeaderDialog from './HeaderDialog';
 import HeaderPopover from './HeaderPopover';
 import { ButtonLink } from '../../Button';
+import Basket from '../../Basket';
 
 import Logo from '../../Logo';
+import Dropdown from '../../Dropdown';
 
 const categories = [
   {
@@ -33,9 +35,8 @@ const categories = [
 ];
 
 const headerLinks = [
-  { name: 'About', href: '/about' },
   { name: 'Marketplace', href: '/marketplace' },
-  { name: 'Company', href: '/company' },
+  { name: 'About', href: '/about' },
 ];
 
 const actionLinks = [
@@ -43,8 +44,14 @@ const actionLinks = [
   { name: 'Hotline', href: 'tel:+380933786928', icon: BsFillTelephoneFill },
 ];
 
-export default function Example() {
+export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hasOpen, setHasOpen] = useState(false);
+  const hasAuth = true;
+
+  const handleToggle = () => {
+    setHasOpen(!hasOpen);
+  };
 
   return (
     <header className="bg-white">
@@ -68,7 +75,17 @@ export default function Example() {
           headerLinks={headerLinks}
         />
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <ButtonLink href="/login" text="Login" />
+          {!hasAuth ? (
+            <ButtonLink href="/login" text="Login" />
+          ) : (
+            <>
+              <Dropdown
+                handleToggle={handleToggle}
+                hasOpen={hasOpen}
+              />
+              <Basket />
+            </>
+          )}
         </div>
       </nav>
       <HeaderDialog

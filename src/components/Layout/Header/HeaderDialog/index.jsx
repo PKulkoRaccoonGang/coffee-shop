@@ -14,6 +14,7 @@ export default function HeaderDialog({
   actionLinks,
   headerLinks,
 }) {
+  const hasAuth = true;
   return (
     <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
       <div className="fixed inset-0 z-10" />
@@ -32,7 +33,15 @@ export default function HeaderDialog({
         <div className="mt-6 flow-root">
           <div className="-my-6 divide-y divide-gray-500/10">
             <div className="py-6">
-              <ButtonLink href="/login" text="Login" />
+              {!hasAuth ? (
+                <ButtonLink href="/login" text="Login" />
+              ) : (
+                <>
+                  <ButtonLink href="/profile" text="Profile" styles="mb-2" />
+                  <ButtonLink href="/login" text="Sign Out" styles="mb-2" />
+                  <ButtonLink href="/basket" text="Basket" />
+                </>
+              )}
             </div>
             <div className="space-y-2 py-6">
               <HeaderDisclosure products={categories} callsToAction={actionLinks} />
