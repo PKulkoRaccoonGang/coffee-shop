@@ -18,9 +18,6 @@ export default function App() {
 
 
 
-
-
-
   return (
     <div className="isolate bg-white">
       <Routes>
