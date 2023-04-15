@@ -1,17 +1,15 @@
 import PropTypes from 'prop-types';
 import { Disclosure } from '@headlessui/react';
 import { BsChevronDown } from 'react-icons/bs';
+import classNames from 'classnames';
 
 export default function HeaderDisclosure({ products, callsToAction }) {
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(' ');
-  }
   return (
     <Disclosure as="div" className="-mx-3">
       {({ open }) => (
         <>
           <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50">
-            Product
+            Collections
             <BsChevronDown
               className={classNames(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
               aria-hidden="true"

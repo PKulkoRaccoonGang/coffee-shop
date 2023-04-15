@@ -29,7 +29,7 @@ export default function Footer() {
           {socialNetworks.map(({
             name, href, icon,
           }) => (
-            <SocialNetwork id={name} name={name} href={href} icon={icon} />
+            <SocialNetwork key={name} name={name} href={href} icon={icon} />
           ))}
         </ul>
       </div>

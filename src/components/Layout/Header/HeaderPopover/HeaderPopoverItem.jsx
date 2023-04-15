@@ -6,7 +6,6 @@ export default function HeaderPopoverItem({ product }) {
 
   return (
     <div
-      key={description}
       className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
     >
       <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">

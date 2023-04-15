@@ -15,7 +15,7 @@ export default function Quantity() {
           <input
             type="number"
             id="quantity"
-            value="1"
+            defaultValue="1"
             className="h-10 w-16 border-y-0 border-gray-200 text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
           />
         </span>

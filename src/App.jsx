@@ -7,6 +7,7 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
 import Profile from './pages/Profile';
+import MarketPlace from './pages/MarketPlace';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="login" element={<Login />} />
           <Route path="registration" element={<Registration />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="marketplace" element={<MarketPlace />} />
         </Route>
       </Routes>
     </div>

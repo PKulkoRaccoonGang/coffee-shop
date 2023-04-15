@@ -10,7 +10,7 @@ export default function HeaderPopover({ categories, actionLinks, headerLinks }) 
     <Popover.Group className="hidden lg:flex lg:gap-x-12">
       <Popover className="relative">
         <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-          Product
+          Collections
           <BsChevronDown className="h-3 w-4" aria-hidden="true" />
         </Popover.Button>
         <Transition
@@ -26,12 +26,13 @@ export default function HeaderPopover({ categories, actionLinks, headerLinks }) 
             className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5"
           >
             <div className="p-4">
-              {categories.map((product) => (<HeaderPopoverItem product={product} />))}
+              {categories.map((product) => (
+                <HeaderPopoverItem key={product.name} product={product} />))}
             </div>
             <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
               {actionLinks.map((item) => (
                 <Link
-                  key={item.href}
+                  key={item.name}
                   to={item.href}
                   className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
                 >

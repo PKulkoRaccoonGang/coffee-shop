@@ -3,7 +3,6 @@ import Card from '../Card';
 
 export const products = [
   {
-    id: 1,
     name: 'Lavazza Qualita Oro',
     href: '/product',
     price: '$48',
@@ -14,7 +13,6 @@ export const products = [
     category: 'Coffee beans',
   },
   {
-    id: 2,
     name: 'Movenpick Caffe Crema',
     href: '/product',
     price: '$35',
@@ -25,7 +23,6 @@ export const products = [
     category: 'Coffee beans',
   },
   {
-    id: 3,
     name: 'Merrild Dansk Guld',
     href: '/product',
     price: '$89',
@@ -35,7 +32,6 @@ export const products = [
     category: 'Coffee beans',
   },
   {
-    id: 4,
     name: 'Fineberry Original Blend',
     href: '/product',
     price: '$35',
@@ -46,7 +42,6 @@ export const products = [
     category: 'Coffee beans',
   },
   {
-    id: 5,
     name: 'ISLA GOLD BLEND',
     href: '/product',
     price: '$35',
@@ -56,7 +51,6 @@ export const products = [
     category: 'Coffee beans',
   },
   {
-    id: 6,
     name: 'Lavazza Crema e Aroma',
     href: '/product',
     price: '$35',
@@ -67,7 +61,6 @@ export const products = [
     category: 'Coffee beans',
   },
   {
-    id: 7,
     name: 'MELITTA BellaCrema LaCrema',
     href: '/product',
     price: '$89',
@@ -78,7 +71,6 @@ export const products = [
     category: 'Coffee beans',
   },
   {
-    id: 8,
     name: 'Lucaffe Mr.Exclusive - 100% Arabica',
     href: '/product',
     price: '$35',
@@ -114,9 +106,9 @@ export default function Products() {
         </div>
         <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {products.map(({
-            id, imageSrc, name, price, href,
+            imageSrc, name, price, href,
           }) => (
-            <Card id={id} imageSrc={imageSrc} name={name} price={price} href={href} />
+            <Card key={name} imageSrc={imageSrc} name={name} price={price} href={href} />
           ))}
         </ul>
         <Pagination />

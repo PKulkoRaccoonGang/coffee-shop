@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
 export default function SocialNetwork({
-  id, href, name, icon,
+  href, name, icon,
 }) {
   return (
-    <li key={id}>
+    <li>
       <a
         href={href}
         rel="noreferrer"
@@ -19,7 +19,6 @@ export default function SocialNetwork({
 }
 
 SocialNetwork.propTypes = {
-  id: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   icon: PropTypes.node.isRequired,

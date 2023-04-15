@@ -1,12 +1,9 @@
 import PropTypes from 'prop-types';
 import { BsChevronDown, BsFillPersonXFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
 export default function Dropdown({ handleToggle, hasOpen }) {
-  function switchClassName(...classes) {
-    return classes.filter(Boolean).join(' ');
-  }
-
   return (
     <div className="relative inline-block">
       <button
@@ -16,9 +13,7 @@ export default function Dropdown({ handleToggle, hasOpen }) {
       >
         <span className="mx-1">Peter Kulko</span>
         <BsChevronDown
-          eslint-disable-next-line
-          max-len
-          className={switchClassName(hasOpen ? 'rotate-180' : 'h-3 w-3', 'h-3 w-3 flex-none')}
+          className={classNames(hasOpen ? 'rotate-180' : 'h-3 w-3', 'h-3 w-3 flex-none')}
           aria-hidden="true"
         />
       </button>

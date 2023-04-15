@@ -13,8 +13,8 @@ export default function Pagination() {
   return (
     <ol className="mt-8 flex justify-center gap-1 text-xs font-medium">
       <PaginationArrow href="/" direction="Prev" />
-      {paginationItems.map(({ id, href, count }) => (
-        <PaginationItem id={id} href={href} count={count} />
+      {paginationItems.map(({ href, count }) => (
+        <PaginationItem key={count} href={href} count={count} />
       ))}
       <PaginationArrow href="/" direction="Next" />
     </ol>
