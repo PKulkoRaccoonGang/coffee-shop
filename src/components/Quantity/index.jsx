@@ -1,32 +1,36 @@
-import { ButtonLink } from '../Button';
+import { useState } from 'react';
+import { Button, ButtonLink } from '../Button';
 
 export default function Quantity() {
+  const [productsNumber, setProductsNumber] = useState(0);
+  const addProducts = () => {
+    setProductsNumber(productsNumber + 1);
+  };
+
+  const removeProducts = () => {
+    setProductsNumber(productsNumber - 1);
+  };
+
   return (
     <div className="mt-8 flex gap-4">
-      <div className="flex items-center rounded border border-gray-200">
-        <button
-          type="button"
-          className="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75"
-        >
+      <div className="flex items-center rounded-lg border border-gray-200">
+        <Button onClick={removeProducts} disabled={productsNumber === 0}>
           -
-        </button>
+        </Button>
         <span>
           <label htmlFor="quantity" className="sr-only">Quality</label>
           <input
             type="number"
             id="quantity"
-            value="1"
+            min="0"
+            readOnly
+            value={productsNumber}
             className="h-10 w-16 border-y-0 border-gray-200 text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
           />
         </span>
-        <button
-          type="button"
-          className="h-10 w-10 leading-10 text-gray-600 transition hover:opacity-75"
-        >
-          +
-        </button>
+        <Button onClick={addProducts}>+</Button>
       </div>
-      <ButtonLink text="Add to Basket" href="/" />
+      <ButtonLink href="/">Add to Basket</ButtonLink>
     </div>
   );
 }

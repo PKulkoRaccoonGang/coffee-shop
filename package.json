@@ -3,10 +3,11 @@
   "description": "Baker 75 Street personal project",
   "version": "0.1.0",
   "private": true,
+  "autor": "Peter Kulko <petrokulko@gmail.com>",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "stylelint": "stylelint \"**/*.css\" --fix",
     "lint": "npm run stylelint && eslint ./src --ext .js,.jsx"
@@ -40,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "classnames": "^2.3.2",
     "eslint": "^8.35.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.27.5",
@@ -65,6 +67,7 @@
     "*.{js,jsx}": [
       "npm run lint",
       "git add --force"
-    ]
+    ],
+    "!coverage/**/*": "eslint --ignore-pattern coverage"
   }
 }

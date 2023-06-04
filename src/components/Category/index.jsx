@@ -31,7 +31,7 @@ export default function Category() {
             {categories.map(({
               name, imageSrc, href,
             }) => (
-              <Card id={name} name={name} imageSrc={imageSrc} href={href} />
+              <Card key={name} name={name} imageSrc={imageSrc} href={href} />
             ))}
           </ul>
         </div>

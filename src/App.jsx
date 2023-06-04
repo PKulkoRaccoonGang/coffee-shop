@@ -7,6 +7,8 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
 import Profile from './pages/Profile';
+import MarketPlace from './pages/MarketPlace';
+import Basket from './pages/Basket';
 
 export default function App() {
   return (
@@ -20,6 +22,8 @@ export default function App() {
           <Route path="login" element={<Login />} />
           <Route path="registration" element={<Registration />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="marketplace" element={<MarketPlace />} />
+          <Route path="basket" element={<Basket />} />
         </Route>
       </Routes>
     </div>

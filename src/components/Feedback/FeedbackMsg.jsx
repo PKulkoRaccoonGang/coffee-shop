@@ -34,7 +34,7 @@ export default function FeedbackMsg() {
                 />
               </div>
               <div className="mt-4">
-                <Button text="Send Feedback" />
+                <Button>Send Feedback</Button>
               </div>
             </form>
           </div>

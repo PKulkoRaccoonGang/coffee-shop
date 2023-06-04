@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 export default function Card({
-  id, imageSrc, name, price, href,
+  imageSrc, name, price, href,
 }) {
   return (
-    <li key={id}>
+    <li>
       <Link to={href} className="group block overflow-hidden cursor-pointer">
         <img
           className="h-[350px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[450px]"
@@ -26,7 +26,6 @@ export default function Card({
 }
 
 Card.propTypes = {
-  id: PropTypes.string.isRequired,
   imageSrc: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.string,
