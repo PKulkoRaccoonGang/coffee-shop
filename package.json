@@ -3,6 +3,7 @@
   "description": "Baker 75 Street personal project",
   "version": "0.1.0",
   "private": true,
+  "autor": "Peter Kulko <petrokulko@gmail.com>",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
