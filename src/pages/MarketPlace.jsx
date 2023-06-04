@@ -2,6 +2,7 @@ import Card from '../components/Card';
 import { products } from '../components/Products';
 import Select from '../components/Select';
 import Filter from '../components/Filter';
+import { Button } from '../components/Button';
 
 export default function MarketPlace() {
   return (
@@ -22,9 +23,7 @@ export default function MarketPlace() {
                   <div className="w-96 rounded border border-gray-200 bg-white">
                     <header className="flex items-center justify-between p-4">
                       <span className="text-sm text-gray-700">0 Selected</span>
-                      <button type="button" className="text-sm text-gray-900 underline underline-offset-4">
-                        Reset
-                      </button>
+                      <Button>Reset</Button>
                     </header>
                     <ul className="space-y-1 border-t border-gray-200 p-4">
                       <li>
@@ -74,9 +73,7 @@ export default function MarketPlace() {
                       <span className="text-sm text-gray-700">
                         The highest price is $600
                       </span>
-                      <button type="button" className="text-sm text-gray-900 underline underline-offset-4">
-                        Reset
-                      </button>
+                      <Button>Reset</Button>
                     </header>
                     <div className="border-t border-gray-200 p-4">
                       <div className="flex justify-between gap-4">

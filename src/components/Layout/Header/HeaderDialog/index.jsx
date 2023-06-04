@@ -34,12 +34,12 @@ export default function HeaderDialog({
           <div className="-my-6 divide-y divide-gray-500/10">
             <div className="py-6">
               {!hasAuth ? (
-                <ButtonLink href="/login" text="Login" />
+                <ButtonLink href="/login">Login</ButtonLink>
               ) : (
                 <>
-                  <ButtonLink href="/profile" text="Profile" styles="mb-2" />
-                  <ButtonLink href="/login" text="Sign Out" styles="mb-2" />
-                  <ButtonLink href="/basket" text="Basket" />
+                  <ButtonLink href="/profile" styles="mb-2">Profile</ButtonLink>
+                  <ButtonLink href="/login" styles="mb-2">Sign Out</ButtonLink>
+                  <ButtonLink href="/basket">Basket</ButtonLink>
                 </>
               )}
             </div>

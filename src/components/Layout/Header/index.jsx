@@ -76,7 +76,7 @@ export default function Header() {
         />
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           {!hasAuth ? (
-            <ButtonLink href="/login" text="Login" />
+            <ButtonLink href="/login">Login</ButtonLink>
           ) : (
             <>
               <Dropdown

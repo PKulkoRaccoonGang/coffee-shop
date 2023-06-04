@@ -53,7 +53,7 @@ export default function Registration() {
             <p className="text-sm text-gray-500">
               Register an account.
             </p>
-            <Button text="Sing up" />
+            <Button>Sing up</Button>
           </div>
         </form>
       </div>

@@ -16,8 +16,8 @@ export default function Main() {
             cup of coffee can have to connect people and create community...
           </blockquote>
           <div className="mt-8 flex flex-wrap gap-4 text-center">
-            <ButtonLink href="/buy" text="Buy coffee" />
-            <ButtonLink href="/about" text="About us" />
+            <ButtonLink href="/marketplace">Buy coffee</ButtonLink>
+            <ButtonLink href="/about">About us</ButtonLink>
           </div>
         </div>
       </div>
