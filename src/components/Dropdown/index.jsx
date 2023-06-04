@@ -7,7 +7,7 @@ export default function Dropdown({ handleToggle, hasOpen }) {
   return (
     <div className="relative inline-block">
       <button
-        onClick={() => handleToggle()}
+        onClick={handleToggle}
         type="button"
         className="relative z-10 flex items-center p-2 text-sm text-white bg-orange-900 border border-transparent rounded-md focus:border-orange-800 focus:ring-opacity-40 focus:ring-orange-800 focus:ring focus:outline-none"
       >
