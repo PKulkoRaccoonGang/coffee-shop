@@ -1,0 +1,14 @@
+.footer-social-link {
+  color: #512616;
+  background: transparent;
+  margin: 10px 10px;
+
+  &:hover {
+    color: lighten(#512616, 10%);
+  }
+
+  .css-i4bv87-MuiSvgIcon-root {
+    height: 2em;
+    width: 2em;
+  }
+}

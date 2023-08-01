@@ -1,0 +1,28 @@
+.basket {
+  padding: 50px 0;
+
+  .basket-title {
+    margin-bottom: 50px;
+  }
+
+  .basket-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 0;
+    grid-row-gap: 0;
+    margin-bottom: 50px;
+  }
+
+  .basket-information-title {
+    margin-bottom: 20px;
+  }
+
+  .basket-form {
+    display: flex;
+    width: 50%;
+
+    .basket-form-fiend {
+      margin-bottom: 10px;
+    }
+  }
+}

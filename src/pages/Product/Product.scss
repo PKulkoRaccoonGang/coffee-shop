@@ -1,0 +1,29 @@
+.product {
+  padding: 50px 0;
+
+  .product-wrapper {
+    display: flex;
+  }
+
+  .product-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-price {
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .product-text {
+    margin-bottom: 10px;
+  }
+
+  .product-btn {
+    width: 50%;
+    display: block;
+    border-radius: 0;
+    text-decoration: none;
+    text-align: center;
+  }
+}

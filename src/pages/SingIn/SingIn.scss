@@ -1,0 +1,21 @@
+.sign-in {
+  padding: 50px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .sign-in-title {
+    margin-bottom: 10px;
+  }
+
+  .sign-in-form {
+    width: 400px;
+    margin-bottom: 10px;
+
+    .sign-in-form-fiend {
+      margin-bottom: 10px;
+    }
+  }
+}

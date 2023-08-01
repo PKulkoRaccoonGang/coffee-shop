@@ -1,0 +1,21 @@
+.sing-up {
+  padding: 50px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .sing-up-title {
+    margin-bottom: 10px;
+  }
+
+  .sing-up-form {
+    width: 400px;
+    margin-bottom: 10px;
+
+    .sing-up-form-fiend {
+      margin-bottom: 10px;
+    }
+  }
+}

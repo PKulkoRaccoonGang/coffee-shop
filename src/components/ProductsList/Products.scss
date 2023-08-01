@@ -1,0 +1,21 @@
+.products {
+  padding: 50px 0;
+
+  .products-header {
+    .products-header-title {
+      font-size: 32px;
+      line-height: 32px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    margin-bottom: 50px;
+  }
+
+  .products-header-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+  }
+}

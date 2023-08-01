@@ -8,7 +8,7 @@ const getAll = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: 'Products not founded',
+      message: 'ProductsList not founded',
     });
   }
 };
@@ -28,7 +28,7 @@ const getOne = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: 'Products not found',
+      message: 'ProductsList not found',
     });
   }
 };
