@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import {
-  Button, Container, FormControl, TextField,
+  Button, Container, FormControl, TextField, Typography,
 } from '@mui/material';
-import Typography from '@mui/material/Typography';
 import { Link, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';

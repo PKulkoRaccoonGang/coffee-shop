@@ -1,8 +1,6 @@
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-
-import { Button } from '@mui/material';
+import { Button, Container, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+
 import Products from '../../components/ProductsList';
 import mainBg from './main-bg.jpg';
 

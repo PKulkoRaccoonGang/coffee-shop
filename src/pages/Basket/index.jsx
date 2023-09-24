@@ -1,4 +1,6 @@
 /* eslint-disable no-underscore-dangle */
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Alert,
   Button,
@@ -11,14 +13,12 @@ import {
   TableRow,
   TextField,
   Typography,
+  Paper,
+  CardMedia,
 } from '@mui/material';
 import { Formik } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
-import Paper from '@mui/material/Paper';
-
 import { Link } from 'react-router-dom';
-import CardMedia from '@mui/material/CardMedia';
-import { useState } from 'react';
+
 import { fetchBasket, selectorBasket } from '../../redux/slices/basket';
 
 const priceFormatter = (price) => `$${price.toLocaleString('en-US', {

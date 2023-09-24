@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import {
-  Alert,
-  Button, ButtonGroup, Chip, IconButton, Snackbar,
+  Alert, Button, ButtonGroup, Chip, IconButton, Snackbar, Container, Typography,
 } from '@mui/material';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import { useDispatch } from 'react-redux';
-
 import CloseIcon from '@mui/icons-material/Close';
+
 import axios from '../../axios';
 import { addProduct } from '../../redux/slices/basket';
 
