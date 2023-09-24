@@ -1,7 +1,7 @@
-import { Alert, Button, Container } from '@mui/material';
-
+import {
+  Alert, Button, Container, Typography,
+} from '@mui/material';
 import { Link } from 'react-router-dom';
-import Typography from '@mui/material/Typography';
 
 export default function NotFound() {
   return (

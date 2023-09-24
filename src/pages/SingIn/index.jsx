@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 import { Formik } from 'formik';
 import {
-  Button, Container, FormControl, TextField,
+  Button, Container, FormControl, TextField, Typography,
 } from '@mui/material';
-import Typography from '@mui/material/Typography';
 
 import { fetchAuth, selectorIsAuth } from '../../redux/slices/auth';
 import AlertNotification from '../../components/AlertNotification';

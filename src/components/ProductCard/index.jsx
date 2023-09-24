@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
-import Card from '@mui/material/Card';
-import { Avatar, Chip } from '@mui/material';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
+import {
+  Avatar, Chip, Card, CardMedia, CardContent, Typography,
+} from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export default function ProductCard({

@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Container from '@mui/material/Container';
+import { Grid, Container } from '@mui/material';
 
-import { Grid } from '@mui/material';
 import { fetchProducts } from '../../redux/slices/products';
 import ProductCard from '../ProductCard';
 import SubHeader from '../SubHeader';

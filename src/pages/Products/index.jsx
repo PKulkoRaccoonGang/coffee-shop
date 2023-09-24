@@ -1,20 +1,11 @@
 import { useEffect, useState } from 'react';
-import {
-  Alert,
-  AlertTitle,
-  Checkbox,
-  Container,
-  FormControlLabel,
-  Grid,
-  InputAdornment,
-  List,
-  ListItem,
-  TextField,
-} from '@mui/material';
-import Typography from '@mui/material/Typography';
 import { useDispatch, useSelector } from 'react-redux';
-
+import {
+  Alert, AlertTitle, Checkbox, Container, FormControlLabel,
+  Grid, InputAdornment, List, ListItem, TextField, Typography,
+} from '@mui/material';
 import AbcOutlinedIcon from '@mui/icons-material/AbcOutlined';
+
 import ProductCard from '../../components/ProductCard';
 import { fetchProducts } from '../../redux/slices/products';
 

@@ -2,9 +2,6 @@ const OrderModel = require('../models/Order');
 
 const sendBasketProducts = async (req, res) => {
   try {
-    console.log('req', req.body);
-    // console.log('res', res);
-
     const newOrder = new OrderModel({
       fullName: req.body[0].name,
       phone: req.body[0].phone,
@@ -16,7 +13,6 @@ const sendBasketProducts = async (req, res) => {
 
     res.json({ order });
   } catch (e) {
-    console.log(e);
     res.status(500).json({
       message: 'Failed to ordering',
     });

@@ -1,11 +1,20 @@
-import Container from '@mui/material/Container';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
+import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 import {
-  Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
+  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Container, Paper, Typography,
 } from '@mui/material';
 
+import { getUserData, selectorIsAuth } from '../../redux/slices/auth';
+import { convertDateFormat } from './utils';
+
 export default function Profile() {
+  const userData = useSelector(getUserData);
+  const isAuth = useSelector(selectorIsAuth);
+
+  if (!isAuth) {
+    return <Navigate to="/" />;
+  }
+
   function createData(
     name,
     calories,
@@ -30,9 +39,24 @@ export default function Profile() {
     <section className="profile">
       <Container>
         <header className="profile-header">
-          <Typography variant="h5" component="h3">Consumer profile</Typography>
-          <Typography>Email address: petrokulko@gmail.com</Typography>
-          <Typography>Full name: Peter Kulko</Typography>
+          <Typography variant="h5" component="h3">
+            Consumer profile
+          </Typography>
+          <Typography>
+            Email address:
+            {' '}
+            {userData?.email}
+          </Typography>
+          <Typography>
+            Full name:
+            {' '}
+            {userData?.fullName}
+          </Typography>
+          <Typography>
+            Registration date:
+            {' '}
+            {convertDateFormat(userData?.createdAt)}
+          </Typography>
         </header>
 
         <Typography variant="h5" component="h3">Purchase history</Typography>
