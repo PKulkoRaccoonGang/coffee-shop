@@ -1,8 +1,9 @@
-export { default as Basket } from './Basket';
-export { default as Products } from './Products';
-export { default as Profile } from './Profile';
-export { default as SingUp } from './SingUp';
-export { default as SingIn } from './SingIn';
-export { default as Product } from './Product';
-export { default as NotFound } from './NotFound';
-export { default as Home } from './Home';
+export { default as Basket } from './basket';
+export { default as Products } from './products';
+export { default as Profile } from './profile';
+export { default as SingUp } from './sing-up';
+export { default as SingIn } from './sing-in';
+export { default as Product } from './product';
+export { default as NotFound } from './not-found';
+export { default as CoffeeMaker } from './coffee-maker';
+export { default as Home } from './home';

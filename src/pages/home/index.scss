@@ -1,0 +1,29 @@
+.home {
+  .home-img-wrapper {
+    position: relative;
+
+    .home-img {
+      width: 100%;
+      max-height: 100vh;
+    }
+  }
+
+  .home-content {
+    position: absolute;
+    top: 300px;
+    max-width: 500px;
+
+    .home-content-title {
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .home-content-text {
+      margin-bottom: 20px;
+    }
+
+    .home-link-to-products {
+      padding: 0 140px;
+    }
+  }
+}

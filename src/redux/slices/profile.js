@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import axios from '../../axios';
 
-export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
-  const { data } = await axios.get('/products');
+export const fetchOrders = createAsyncThunk('products/fetchOrders', async () => {
+  const { data } = await axios.get('/orders');
   return data;
 });
 
@@ -14,23 +14,25 @@ const initialState = {
   },
 };
 
-const productsSlice = createSlice({
-  name: 'products',
+const profileSlice = createSlice({
+  name: 'profile',
   initialState,
   reducers: {},
   extraReducers: {
-    [fetchProducts.pending]: (state) => {
+    [fetchOrders.pending]: (state) => {
       state.products.status = 'loading';
     },
-    [fetchProducts.fulfilled]: (state, action) => {
+    [fetchOrders.fulfilled]: (state, action) => {
       state.products.items = action.payload;
       state.products.status = 'loaded';
     },
-    [fetchProducts.rejected]: (state) => {
+    [fetchOrders.rejected]: (state) => {
       state.products.items = [];
       state.products.status = 'error';
     },
   },
 });
 
-export const productsReducer = productsSlice.reducer;
+export const getPurchaseHistory = (state) => state.profile.products.items[0]?.products;
+
+export const profileReducer = profileSlice.reducer;

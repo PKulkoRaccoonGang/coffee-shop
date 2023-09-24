@@ -28,6 +28,8 @@ app.get('/products', ProductController.getAll);
 
 app.post('/basket', BasketController.sendBasketProducts);
 
+app.get('/orders', BasketController.getAllOrders);
+
 app.get('/products/:id', ProductController.getOne);
 
 app.listen(PORT, (err) => {
