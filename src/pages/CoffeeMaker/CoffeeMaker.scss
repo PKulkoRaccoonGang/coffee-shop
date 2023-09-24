@@ -1,0 +1,12 @@
+@import "CoffeeMug/CoffeeMug";
+@import "Ingredient/Ingredient";
+@import "ModalResult/ModalResult";
+
+.coffee-maker {
+  padding: 50px 0;
+  position: relative;
+}
+
+.current {
+  opacity: 0;
+}

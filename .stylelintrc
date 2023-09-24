@@ -1,12 +1,32 @@
 {
-  "extends": "stylelint-config-standard",
-  "ignoreFiles": ["coverage/**/*"],
+  "extends": ["@edx/stylelint-config-edx"],
   "rules": {
-    "at-rule-no-unknown": [
-        true,
-        {
-            "ignoreAtRules": ["tailwind"]
-        }
-    ]
+    "selector-pseudo-class-no-unknown": [true, {
+      "ignorePseudoClasses": ["export"]
+    }],
+    "unit-no-unknown": [true, {
+      "ignoreUnits": ["\\.5"]
+    }],
+    "property-no-vendor-prefix": [true, {
+      "ignoreProperties": ["animation", "filter"]
+    }],
+    "value-no-vendor-prefix": [true, {
+      "ignoreValues": ["fill-available"]
+    }],
+    "function-no-unknown": null,
+    "no-descending-specificity": null,
+    "scss/no-global-function-names": null,
+    "scss/dollar-variable-empty-line-before": null,
+    "scss/dollar-variable-colon-space-after": "at-least-one-space",
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "scss/at-import-partial-extension": null,
+    "scss/comment-no-empty": null,
+    "property-no-unknown": [true, {
+      "ignoreProperties": ["xs", "sm", "md", "lg", "xl", "xxl"]
+    }],
+    "alpha-value-notation": "number",
+    "color-function-notation": "legacy",
+    "import-notation": "string"
   }
 }

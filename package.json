@@ -9,23 +9,22 @@
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
     "eject": "react-scripts eject",
-    "stylelint": "stylelint \"**/*.css\" --fix",
+    "stylelint": "stylelint \"src/**/*.scss\"",
     "lint": "npm run stylelint && eslint ./src --ext .js,.jsx"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.13",
-    "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@tailwindcss/forms": "^0.5.3",
-    "@tailwindcss/line-clamp": "^0.4.2",
+    "@edx/stylelint-config-edx": "^2.3.2",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.7.1",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
+    "sass": "^1.63.6",
     "web-vitals": "^2.1.4"
   },
   "browserslist": {
@@ -41,6 +40,8 @@
     ]
   },
   "devDependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^1.4.0",
     "classnames": "^2.3.2",
     "eslint": "^8.35.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -48,12 +49,15 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "formik": "^2.4.3",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.1",
     "prettier": "^2.8.4",
-    "stylelint": "^15.2.0",
-    "stylelint-config-standard": "^30.0.1",
-    "tailwindcss": "^3.2.7"
+    "react-hook-form": "^7.44.3",
+    "react-redux": "^8.0.7",
+    "react-test-renderer": "^18.2.0",
+    "scss-reset": "^1.4.2",
+    "stylelint": "^15.2.0"
   },
   "lint": {
     "lint-staged": "lint-staged"

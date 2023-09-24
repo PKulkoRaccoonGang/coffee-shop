@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 export default function SocialNetwork({
-  href, name, icon,
+  href, icon,
 }) {
   return (
     <li>
@@ -9,9 +9,8 @@ export default function SocialNetwork({
         href={href}
         rel="noreferrer"
         target="_blank"
-        className="text-gray-700 transition hover:text-gray-700/75"
+        className="footer-social-link"
       >
-        <span className="sr-only">{name}</span>
         {icon}
       </a>
     </li>
@@ -20,6 +19,5 @@ export default function SocialNetwork({
 
 SocialNetwork.propTypes = {
   href: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   icon: PropTypes.node.isRequired,
 };

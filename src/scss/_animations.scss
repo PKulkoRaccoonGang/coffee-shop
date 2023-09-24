@@ -1,0 +1,11 @@
+@keyframes move-right-left {
+  100% {
+    transform: translate(50px, 0);
+  }
+}
+
+@keyframes scale-element {
+  100% {
+    transform: scale(.9);
+  }
+}

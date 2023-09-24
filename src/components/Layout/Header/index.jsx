@@ -1,100 +1,128 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
-  BsPeopleFill,
-  BsFillPatchCheckFill,
-  BsJustify,
-  BsFillTelephoneFill,
-} from 'react-icons/bs';
-import HeaderDialog from './HeaderDialog';
-import HeaderPopover from './HeaderPopover';
-import { ButtonLink } from '../../Button';
-import Basket from '../../Basket';
+  Alert,
+  Snackbar,
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Menu,
+  Container,
+  Avatar,
+  Button,
+  Tooltip,
+  MenuItem, Badge,
+} from '@mui/material';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { Link } from 'react-router-dom';
 
+import { logout, selectorIsAuth } from '../../../redux/slices/auth';
 import Logo from '../../Logo';
-import Dropdown from '../../Dropdown';
+import { selectorBasket } from '../../../redux/slices/basket';
 
-const categories = [
-  {
-    name: 'Coffee beans',
-    description: 'A coffee bean is a seed of the Coffee plant and the source of coffee.',
-    href: '/beans',
-    icon: BsFillPatchCheckFill,
-  },
-  {
-    name: 'Instant coffee',
-    description: 'Instant coffee is made from real coffee beans.',
-    href: '/instant',
-    icon: BsFillPatchCheckFill,
-  },
-  {
-    name: 'Organic coffee',
-    description: 'The coffee is grown with only organic fertilizers',
-    href: '/organic',
-    icon: BsFillPatchCheckFill,
-  },
-];
+function Header() {
+  const dispatch = useDispatch();
+  const isAuth = useSelector(selectorIsAuth);
+  const basketData = useSelector(selectorBasket);
+  const [showHeaderMenu, setShowHeaderMenu] = useState(null);
 
-const headerLinks = [
-  { name: 'Marketplace', href: '/marketplace' },
-  { name: 'About', href: '/about' },
-];
+  const handleOpenUserMenu = (event) => {
+    setShowHeaderMenu(event.currentTarget);
+  };
 
-const actionLinks = [
-  { name: 'Suggest cooperation', href: 'tel:+380933786928', icon: BsPeopleFill },
-  { name: 'Hotline', href: 'tel:+380933786928', icon: BsFillTelephoneFill },
-];
+  const handleCloseUserMenu = () => {
+    setShowHeaderMenu(null);
+  };
 
-export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [hasOpen, setHasOpen] = useState(false);
-  const hasAuth = true;
-
-  const handleToggle = () => {
-    setHasOpen(!hasOpen);
+  const onLogout = () => {
+    dispatch(logout());
+    handleCloseUserMenu();
+    window.localStorage.removeItem('token');
   };
 
   return (
-    <header className="bg-white">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-3 lg:px-8" aria-label="Global">
-        <div className="flex lg:flex-1">
+    <AppBar className="header" position="sticky" color="inherit">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
           <Logo />
-        </div>
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-            onClick={() => setMobileMenuOpen(true)}
-          >
-            <span className="sr-only">Open main menu</span>
-            <BsJustify className="h-6 w-6" aria-hidden="true" />
-          </button>
-        </div>
-        <HeaderPopover
-          categories={categories}
-          actionLinks={actionLinks}
-          headerLinks={headerLinks}
-        />
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          {!hasAuth ? (
-            <ButtonLink href="/login">Login</ButtonLink>
+          <Box className="header-links" sx={{ flexGrow: 1, display: 'flex' }}>
+            <Link className="header-link" to="/products">
+              All products
+            </Link>
+            <Link className="header-link" to="/coffee-maker">
+              Coffee maker
+            </Link>
+          </Box>
+          {isAuth ? (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open menu">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="user avatar" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: '45px' }}
+                anchorEl={showHeaderMenu}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(showHeaderMenu)}
+                onClose={handleCloseUserMenu}
+              >
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Link className="header-link" to="/profile">
+                    Profile
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={onLogout}>
+                  <Link className="header-link" to="/">
+                    Logout
+                  </Link>
+                </MenuItem>
+              </Menu>
+            </Box>
           ) : (
-            <>
-              <Dropdown
-                handleToggle={handleToggle}
-                hasOpen={hasOpen}
-              />
-              <Basket />
-            </>
+            <Box>
+              <Button
+                className="header-btn"
+                as={Link}
+                to="/sign-in"
+                variant="contained"
+                size="large"
+              >
+                Sign in
+              </Button>
+            </Box>
           )}
-        </div>
-      </nav>
-      <HeaderDialog
-        categories={categories}
-        mobileMenuOpen={mobileMenuOpen}
-        setMobileMenuOpen={setMobileMenuOpen}
-        actionLinks={actionLinks}
-        headerLinks={headerLinks}
-      />
-    </header>
+          <Box>
+            <Link className="header-btn-basket" to="/basket">
+              <Badge
+                variant={basketData.length ? 'standard' : 'dot'}
+                badgeContent={JSON.stringify(basketData.length)}
+                color="primary"
+              >
+                <AddShoppingCartIcon color="action" />
+              </Badge>
+            </Link>
+          </Box>
+        </Toolbar>
+      </Container>
+      <Snackbar
+        open={isAuth}
+        autoHideDuration={6000}
+      >
+        <Alert severity="success" sx={{ width: '100%' }}>
+          Congratulations! You have successfully logged in.
+        </Alert>
+      </Snackbar>
+    </AppBar>
   );
 }
+export default Header;

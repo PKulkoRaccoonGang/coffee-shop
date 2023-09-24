@@ -6,9 +6,10 @@ const getAll = async (req, res) => {
 
     res.json(products);
   } catch (err) {
-    console.log(err);
+    // eslint-disable-next-line no-console
+    console.log('❌ Error: Products list not founded', err);
     res.status(500).json({
-      message: 'Products not founded',
+      message: 'Products list not founded',
     });
   }
 };
@@ -20,15 +21,17 @@ const getOne = async (req, res) => {
 
     if (!doc) {
       return res.status(404).json({
-        message: 'Product not found',
+        message: 'Product not founded',
       });
     }
 
     res.json(doc);
   } catch (err) {
-    console.log(err);
+    // eslint-disable-next-line no-console
+    console.log('❌ Product not founded', err);
+
     res.status(500).json({
-      message: 'Products not found',
+      message: 'Product not founded',
     });
   }
 };

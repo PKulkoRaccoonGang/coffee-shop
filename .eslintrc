@@ -20,7 +20,10 @@
         "import/no-extraneous-dependencies": "off",
         "react/forbid-prop-types": "off",
         "react/react-in-jsx-scope": "off",
+        "no-param-reassign": "off",
         "global-require": "off",
+        "no-unused-vars": "warn",
+        "react/prop-types": "warn",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "jsx-a11y/label-has-associated-control": ["error", {
             "required": {

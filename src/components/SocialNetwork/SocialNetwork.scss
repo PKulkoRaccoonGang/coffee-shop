@@ -1,0 +1,15 @@
+.footer-social-link {
+  color: $base-color;
+  background: transparent;
+  margin: 10px;
+
+  &:hover {
+    color: lighten($base-color, 10%);
+  }
+
+  /* stylelint-disable selector-class-pattern */
+  .css-i4bv87-MuiSvgIcon-root {
+    height: 2em;
+    width: 2em;
+  }
+}
