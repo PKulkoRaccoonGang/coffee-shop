@@ -6,10 +6,18 @@
   .header-links {
     margin-left: 20px;
   }
+
+  .header-btn-basket {
+    margin-left: 20px;
+
+    &:hover svg {
+      color: $base-color;
+    }
+  }
 }
 
 .header-link {
   text-decoration: none;
   margin-right: 10px;
-  color: #7c2d12;
+  color: $base-color;
 }

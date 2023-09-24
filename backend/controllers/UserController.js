@@ -1,6 +1,7 @@
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
 const UserModel = require('../models/User');
 
 const register = async (req, res) => {
@@ -32,13 +33,14 @@ const register = async (req, res) => {
 
     const { passwordHash, ...userData } = user._doc;
 
-    res.json({
+    return res.json({
       ...userData,
       token,
     });
   } catch (err) {
-    console.log(err);
-    res.status(500).json({
+    // eslint-disable-next-line no-console
+    console.log('❌ Error: Failed to registration', err);
+    return res.status(500).json({
       message: 'Failed to registration',
     });
   }
@@ -70,13 +72,13 @@ const login = async (req, res) => {
 
     const { passwordHash, ...userData } = user._doc;
 
-    res.json({
+    return res.json({
       ...userData,
       token,
     });
   } catch (err) {
-    console.log(err);
-    res.status(500).json({
+    console.log('❌ Error: Failed to authorization', err);
+    return res.status(500).json({
       message: 'Failed to authorization',
     });
   }
@@ -94,9 +96,9 @@ const getMe = async (req, res) => {
 
     const { passwordHash, ...userData } = user._doc;
 
-    res.json(userData);
+    return res.json(userData);
   } catch (err) {
-    res.status(500).json({
+    return res.status(500).json({
       message: 'No access',
     });
   }

@@ -1,9 +1,17 @@
-.css-1w1ooyc-MuiButton-root.product-card-btn {
-    display: block;
-    border-radius: 0;
+.product-card {
     text-decoration: none;
-}
 
+    .product-card-item {
+        box-shadow: 0 0 1px 0 $base-color;
+    }
+
+    &:hover .product-card-item {
+        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        transform: scale(1.05);
+        transition: 1s;
+    }
+}
+/* stylelint-disable selector-class-pattern */
 .css-o69gx8-MuiCardMedia-root.product-card-img {
     height: 275px;
 }

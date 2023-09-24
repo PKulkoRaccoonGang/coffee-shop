@@ -1,0 +1,68 @@
+@import "variables";
+
+.coffee-mug {
+  position: relative;
+  height: 300px;
+  width: 250px;
+  margin: auto;
+  padding-top: 100px;
+  background-color: $coffee-mug-base-color;
+  border-top-left-radius: 125px 50px;
+  border-top-right-radius: 125px 50px;
+  animation: move-right-left 2s 2s linear infinite alternate;
+
+  &.show {
+    background-color: darken($coffee-mug-base-color, 3%);
+
+    .handle {
+      background-color: darken($coffee-mug-base-color, 3%);
+    }
+
+    &::before {
+      background-color: darken($coffee-mug-base-color, 3%);
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100px;
+    width: 250px;
+    bottom: -50px;
+    border-radius: 50%;
+    background-color: $coffee-mug-base-color;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 70px;
+    width: 220px;
+    top: 10px;
+    left: 15px;
+    border-radius: 50%;
+    box-shadow: 0 0 15px lighten($coffee-mug-base-color, 20%);
+  }
+
+  .handle {
+    position: absolute;
+    height: 200px;
+    width: 120px;
+    top: 70px;
+    left: -120px;
+    border-radius: 50% 20px 75px 100px 50% 20px 75px 100px;
+    background-color: $coffee-mug-base-color;
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 140px;
+      width: 90px;
+      top: 30px;
+      right: 0;
+      border-radius: 45px 35px 45px 70px 45px 35px 45px 70px;
+      background: $white;
+      box-shadow: -5px 10px 20px lighten($coffee-mug-base-color, 20%);
+    }
+  }
+}

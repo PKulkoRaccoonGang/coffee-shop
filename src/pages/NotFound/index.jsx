@@ -1,6 +1,5 @@
 import { Alert, Button, Container } from '@mui/material';
 
-import './NotFound.scss';
 import { Link } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 

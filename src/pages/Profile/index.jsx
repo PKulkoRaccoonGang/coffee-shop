@@ -5,8 +5,6 @@ import {
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
 } from '@mui/material';
 
-import './Profile.scss';
-
 export default function Profile() {
   function createData(
     name,

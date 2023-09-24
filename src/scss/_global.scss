@@ -1,0 +1,17 @@
+@import "scss-reset/reset";
+@import "https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap";
+
+html, body {
+  height: 100%;
+  font: 14px Manrope, sans-serif;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  margin-top: auto;
+}

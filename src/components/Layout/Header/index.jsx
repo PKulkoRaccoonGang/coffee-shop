@@ -12,17 +12,19 @@ import {
   Avatar,
   Button,
   Tooltip,
-  MenuItem,
+  MenuItem, Badge,
 } from '@mui/material';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Link } from 'react-router-dom';
 
 import { logout, selectorIsAuth } from '../../../redux/slices/auth';
 import Logo from '../../Logo';
-import './Header.scss';
+import { selectorBasket } from '../../../redux/slices/basket';
 
 function Header() {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectorIsAuth);
+  const basketData = useSelector(selectorBasket);
   const [showHeaderMenu, setShowHeaderMenu] = useState(null);
 
   const handleOpenUserMenu = (event) => {
@@ -36,6 +38,7 @@ function Header() {
   const onLogout = () => {
     dispatch(logout());
     handleCloseUserMenu();
+    window.localStorage.removeItem('token');
   };
 
   return (
@@ -46,6 +49,9 @@ function Header() {
           <Box className="header-links" sx={{ flexGrow: 1, display: 'flex' }}>
             <Link className="header-link" to="/products">
               All products
+            </Link>
+            <Link className="header-link" to="/coffee-maker">
+              Coffee maker
             </Link>
           </Box>
           {isAuth ? (
@@ -71,11 +77,6 @@ function Header() {
                 onClose={handleCloseUserMenu}
               >
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <Link className="header-link" to="/">
-                    Home
-                  </Link>
-                </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>
                   <Link className="header-link" to="/profile">
                     Profile
                   </Link>
@@ -88,16 +89,29 @@ function Header() {
               </Menu>
             </Box>
           ) : (
-            <Button
-              className="header-btn"
-              as={Link}
-              to="/sign-in"
-              variant="contained"
-              size="large"
-            >
-              Sign in
-            </Button>
+            <Box>
+              <Button
+                className="header-btn"
+                as={Link}
+                to="/sign-in"
+                variant="contained"
+                size="large"
+              >
+                Sign in
+              </Button>
+            </Box>
           )}
+          <Box>
+            <Link className="header-btn-basket" to="/basket">
+              <Badge
+                variant={basketData.length ? 'standard' : 'dot'}
+                badgeContent={JSON.stringify(basketData.length)}
+                color="primary"
+              >
+                <AddShoppingCartIcon color="action" />
+              </Badge>
+            </Link>
+          </Box>
         </Toolbar>
       </Container>
       <Snackbar

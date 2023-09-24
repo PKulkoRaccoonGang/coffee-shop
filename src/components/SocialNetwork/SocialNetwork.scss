@@ -1,12 +1,13 @@
 .footer-social-link {
-  color: #512616;
+  color: $base-color;
   background: transparent;
-  margin: 10px 10px;
+  margin: 10px;
 
   &:hover {
-    color: lighten(#512616, 10%);
+    color: lighten($base-color, 10%);
   }
 
+  /* stylelint-disable selector-class-pattern */
   .css-i4bv87-MuiSvgIcon-root {
     height: 2em;
     width: 2em;

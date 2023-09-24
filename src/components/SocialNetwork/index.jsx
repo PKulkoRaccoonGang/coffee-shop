@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
 
-import './SocialNetwork.scss';
-
 export default function SocialNetwork({
   href, icon,
 }) {

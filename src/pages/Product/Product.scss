@@ -25,5 +25,9 @@
     border-radius: 0;
     text-decoration: none;
     text-align: center;
+
+    &.product-btn-add-to-basket {
+      margin-right: 10px;
+    }
   }
 }

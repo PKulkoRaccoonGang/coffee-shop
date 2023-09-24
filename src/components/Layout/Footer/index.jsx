@@ -3,7 +3,6 @@ import Container from '@mui/material/Container';
 
 import SocialNetwork from '../../SocialNetwork';
 import Logo from '../../Logo';
-import './Footer.scss';
 
 const socialNetworks = [
   {
