@@ -7,7 +7,7 @@ import {
 import AbcOutlinedIcon from '@mui/icons-material/AbcOutlined';
 
 import { ProductCard } from '../../components';
-import { fetchProducts } from '../../redux/slices/products';
+import { fetchProducts } from '../../redux/products/thunks';
 
 export default function Products() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -61,14 +61,15 @@ export default function Products() {
 
   return (
     <Container className="products" maxWidth="lg">
-      <Typography variant="h3" component="h3">
+      <Typography className="animate__animated animate__fadeInLeft" variant="h3" component="h3">
         Products
       </Typography>
       <Grid container>
         <Grid item xs={3}>
-          <List component="nav" aria-label="mailbox folders">
+          <List className="animate__animated animate__fadeInLeft" component="nav">
             <ListItem>
               <TextField
+                className="animate__animated animate__fadeInUp"
                 fullWidth
                 onChange={handleInputChange}
                 label="Search coffee"
@@ -83,12 +84,13 @@ export default function Products() {
               />
             </ListItem>
             <ListItem>
-              <Typography variant="h5" component="h5">
+              <Typography className="animate__animated animate__fadeInUp" variant="h5" component="h5">
                 Sort:
               </Typography>
             </ListItem>
             <ListItem button>
               <FormControlLabel
+                className="animate__animated animate__fadeInUp"
                 control={(
                   <Checkbox
                     onChange={() => setIsSortingAlphabetical(!isSortingAlphabetical)}
@@ -100,6 +102,7 @@ export default function Products() {
             </ListItem>
             <ListItem button>
               <FormControlLabel
+                className="animate__animated animate__fadeInUp"
                 control={(
                   <Checkbox
                     onChange={() => setIsSortingByPrice(!isSortingByPrice)}
@@ -111,7 +114,7 @@ export default function Products() {
             </ListItem>
           </List>
         </Grid>
-        <Grid item xs={9}>
+        <Grid className="animate__animated animate__fadeInUp" item xs={9}>
           <Grid container rowSpacing={1} columnSpacing={1}>
             {filteredItems.length ? filteredItems.map(({
               _id, imageUrl, title, price,
@@ -126,7 +129,7 @@ export default function Products() {
                 />
               </Grid>
             )) : (
-              <Alert severity="info">
+              <Alert className="animate__animated animate__jackInTheBox" severity="info">
                 <AlertTitle>Not found</AlertTitle>
                 Sorry, no products were found matching your request.
               </Alert>

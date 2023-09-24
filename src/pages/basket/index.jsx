@@ -6,9 +6,9 @@ import {
 } from '@mui/material';
 import { Formik } from 'formik';
 
-import { fetchBasket } from '../../redux/slices/basket';
 import { ProductTable } from '../../components';
 import EmptyBasket from './EmptyBasket';
+import { fetchBasket } from '../../redux/basket/thunks';
 
 function Basket() {
   const dispatch = useDispatch();
@@ -46,11 +46,19 @@ function Basket() {
   return (
     <section className="basket">
       <Container maxWidth="xl">
-        <Typography className="basket-title" variant="h3" component="h3">
+        <Typography
+          className="basket-title animate__animated animate__fadeInLeft"
+          variant="h3"
+          component="h3"
+        >
           Basket
         </Typography>
         <ProductTable data={basketData} removeHandler={handleRemoveProduct} />
-        <Typography className="basket-information-title" variant="h3" component="h3">
+        <Typography
+          className="basket-information-title animate__animated animate__fadeInLeft"
+          variant="h3"
+          component="h3"
+        >
           Recipient information
         </Typography>
         <Formik
@@ -81,7 +89,7 @@ function Basket() {
             <form onSubmit={handleSubmit}>
               <FormControl className="basket-form">
                 <TextField
-                  className="basket-form-fiend"
+                  className="basket-form-fiend animate__animated animate__fadeInLeft"
                   label="Name"
                   type="text"
                   name="name"
@@ -92,7 +100,7 @@ function Basket() {
                   helperText="Receiver name"
                 />
                 <TextField
-                  className="basket-form-fiend"
+                  className="basket-form-fiend animate__animated animate__fadeInRight"
                   label="Phone"
                   type="number"
                   name="phone"
@@ -103,7 +111,7 @@ function Basket() {
                   helperText="Receiver phone"
                 />
                 <TextField
-                  className="basket-form-fiend"
+                  className="basket-form-fiend animate__animated animate__fadeInLeft"
                   label="City"
                   type="text"
                   name="city"
@@ -115,7 +123,7 @@ function Basket() {
                 />
               </FormControl>
               <Button
-                className="core-button basket-btn"
+                className="core-button basket-btn animate__animated animate__fadeInRight"
                 type="submit"
                 disabled={Boolean(Object.keys(errors).length) || Boolean(!values.name)}
               >

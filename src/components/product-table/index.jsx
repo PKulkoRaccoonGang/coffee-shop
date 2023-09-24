@@ -10,7 +10,10 @@ export default function ProductTable({ data, removeHandler }) {
   const id = useId();
 
   return (
-    <TableContainer className="basket-products" component={Paper}>
+    <TableContainer
+      className="basket-products animate__animated animate__fadeInUp"
+      component={Paper}
+    >
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>

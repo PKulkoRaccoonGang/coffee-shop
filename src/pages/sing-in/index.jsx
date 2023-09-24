@@ -6,8 +6,9 @@ import {
   Button, Container, FormControl, TextField, Typography,
 } from '@mui/material';
 
-import { fetchAuth, selectorIsAuth } from '../../redux/slices/auth';
 import { AlertNotification } from '../../components';
+import { fetchAuth } from '../../redux/auth/thunks';
+import { selectorIsAuth } from '../../redux/auth/selectors';
 
 export default function SingIn() {
   const [authorizationError, setAuthorizationError] = useState(false);
@@ -36,7 +37,11 @@ export default function SingIn() {
     <Container maxWidth="lg" className="text-center">
       {authorizationError && <AlertNotification closeFn={setAuthorizationError} />}
       <div className="sign-in">
-        <Typography className="sign-in-title" variant="h3" component="h3">
+        <Typography
+          className="sign-in-title animate__animated animate__fadeInLeft"
+          variant="h3"
+          component="h3"
+        >
           Sign in
         </Typography>
         <Formik
@@ -66,7 +71,7 @@ export default function SingIn() {
             <form onSubmit={handleSubmit}>
               <FormControl className="sign-in-form">
                 <TextField
-                  className="sign-in-form-fiend"
+                  className="sign-in-form-fiend animate__animated animate__fadeInRight"
                   label="Email"
                   type="email"
                   name="email"
@@ -76,7 +81,7 @@ export default function SingIn() {
                   helperText={errors.email}
                 />
                 <TextField
-                  className="sign-in-form-fiend"
+                  className="sign-in-form-fiend animate__animated animate__fadeInLeft"
                   label="Password"
                   type="password"
                   name="password"
@@ -87,7 +92,7 @@ export default function SingIn() {
                   helperText={errors.password}
                 />
                 <Button
-                  className="core-button"
+                  className="core-button animate__animated animate__fadeInRight"
                   type="submit"
                   disabled={Boolean(Object.keys(errors).length) || Boolean(!values.email)}
                 >
@@ -97,7 +102,7 @@ export default function SingIn() {
             </form>
           )}
         </Formik>
-        <Link className="sign-in-form-link" to="/sign-up">
+        <Link className="sign-in-form-link animate__animated animate__fadeInLeft" to="/sign-up">
           Already have an account? Sign up
         </Link>
       </div>

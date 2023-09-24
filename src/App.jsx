@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 
+import { fetchAuthMe } from './redux/auth/thunks';
 import { Layout } from './components';
 import {
   Home, NotFound, Basket, Product, Products, SingIn, SingUp, Profile, CoffeeMaker,
 } from './pages';
-import { fetchAuthMe } from './redux/slices/auth';
 
 export default function App() {
   const dispatch = useDispatch();

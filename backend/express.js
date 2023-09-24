@@ -37,5 +37,5 @@ app.listen(PORT, (err) => {
     return console.error(`❌ Error: The server failed to start on port ${PORT}. Please check the configuration.`, err);
   }
 
-  return console.log(`✅ The server has been started on port ${PORT}`);
+  return console.log(`✅ Server listening on port ${PORT}!`);
 });

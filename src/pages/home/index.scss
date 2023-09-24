@@ -14,12 +14,15 @@
     max-width: 500px;
 
     .home-content-title {
+      color: $white;
       margin-bottom: 10px;
-      font-weight: 600;
+      font-weight: bold;
     }
 
     .home-content-text {
+      //font-size: 22px;
       margin-bottom: 20px;
+      color: $white;
     }
 
     .home-link-to-products {

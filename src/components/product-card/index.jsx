@@ -11,17 +11,17 @@ export default function ProductCard({
     <Link className="product-card" to={`/product/${id}`}>
       <Card className="product-card-item" sx={{ maxWidth: 345 }}>
         <CardMedia
-          className="product-card-img"
+          className="product-card-img animate__animated animate__fadeInUp"
           component="img"
           image={imageUrl}
           alt={title}
         />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h3">
+        <CardContent className="animate__animated animate__fadeInUp">
+          <Typography className="animate__animated animate__fadeInUp" gutterBottom variant="h5" component="h3">
             {title}
           </Typography>
           <Chip
-            className="product-card-chip"
+            className="product-card-chip animate__animated animate__fadeInUp"
             label={price}
             color="info"
             avatar={<Avatar>$</Avatar>}

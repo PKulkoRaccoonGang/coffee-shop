@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function NotFound() {
   return (
-    <Container className="not-found" maxWidth="lg">
+    <Container className="not-found animate__animated animate__fadeInUp" maxWidth="lg">
       <Alert className="not-found-alert" severity="warning">
         <Typography className="not-found-alert-title">
           Sorry... This page not found!

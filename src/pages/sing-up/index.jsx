@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 
 import { AlertNotification } from '../../components';
-import { fetchRegister, selectorIsAuth } from '../../redux/slices/auth';
+import { selectorIsAuth } from '../../redux/auth/selectors';
+import { fetchRegister } from '../../redux/auth/thunks';
 
 export default function SingUp() {
   const [singUpError, setSingUpError] = useState(false);
@@ -36,7 +37,11 @@ export default function SingUp() {
     <Container maxWidth="lg" className="text-center">
       {singUpError && <AlertNotification closeFn={setSingUpError} />}
       <div className="sing-up">
-        <Typography className="sing-up-title" variant="h3" component="h3">
+        <Typography
+          className="sing-up-title animate__animated animate__fadeInLeft"
+          variant="h3"
+          component="h3"
+        >
           Sign up
         </Typography>
         <Formik
@@ -68,7 +73,7 @@ export default function SingUp() {
             <form onSubmit={handleSubmit}>
               <FormControl className="sing-up-form">
                 <TextField
-                  className="sing-up-form-fiend"
+                  className="sing-up-form-fiend animate__animated animate__fadeInRight"
                   label="Email"
                   variant="outlined"
                   name="email"
@@ -78,7 +83,7 @@ export default function SingUp() {
                   value={values.email}
                 />
                 <TextField
-                  className="sing-up-form-fiend"
+                  className="sing-up-form-fiend animate__animated animate__fadeInLeft"
                   label="Full name"
                   name="fullName"
                   variant="outlined"
@@ -88,7 +93,7 @@ export default function SingUp() {
                   value={values.fullName}
                 />
                 <TextField
-                  className="sing-up-form-fiend"
+                  className="sing-up-form-fiend animate__animated animate__fadeInRight"
                   label="Password"
                   variant="outlined"
                   name="password"
@@ -98,7 +103,7 @@ export default function SingUp() {
                   value={values.password}
                 />
                 <Button
-                  className="core-button"
+                  className="core-button animate__animated animate__fadeInLeft"
                   type="submit"
                   disabled={Boolean(Object.keys(errors).length) || Boolean(!values.email)}
                 >
@@ -108,7 +113,7 @@ export default function SingUp() {
             </form>
           )}
         </Formik>
-        <Link className="sing-up-form-link" to="/sign-in">
+        <Link className="sing-up-form-link animate__animated animate__fadeInRight" to="/sign-in">
           Already have an account? Sign in
         </Link>
       </div>

@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Container } from '@mui/material';
 
-import { fetchProducts } from '../../redux/slices/products';
 import ProductCard from '../product-card';
 import SubHeader from '../sub-header';
+import { fetchProducts } from '../../redux/products/thunks';
 
 export default function ProductsList() {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export default function ProductsList() {
           title="Product Collection"
           description="Choose delicious, high-quality coffee, and we will make sure that it is fast and convenient."
         />
-        <Grid container rowSpacing={5} columnSpacing={1}>
+        <Grid className="animate__animated animate__fadeInUp" container rowSpacing={5} columnSpacing={1}>
           {products.items.map(({
             _id, imageUrl, title, price,
           }) => (

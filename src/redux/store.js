@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { productsReducer } from './slices/products';
-import { authReducer } from './slices/auth';
-import { basketReducer } from './slices/basket';
-import { profileReducer } from './slices/profile';
+import { authReducer } from './auth/slice';
+import { productsReducer } from './products/slice';
+import { profileReducer } from './profile/slice';
+import { basketReducer } from './basket/slice';
 
 const store = configureStore({
   reducer: {

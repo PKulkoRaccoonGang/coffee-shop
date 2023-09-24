@@ -6,9 +6,10 @@ import {
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Link } from 'react-router-dom';
 
-import { logout, selectorIsAuth } from '../../../redux/slices/auth';
+import { selectorIsAuth } from '../../../redux/auth/selectors';
+import { logout } from '../../../redux/auth/slice';
+import { selectorBasket } from '../../../redux/basket/selectors';
 import Logo from '../../logo';
-import { selectorBasket } from '../../../redux/slices/basket';
 
 function Header() {
   const dispatch = useDispatch();
@@ -16,7 +17,6 @@ function Header() {
   const fff = useSelector(selectorBasket);
   const [showHeaderMenu, setShowHeaderMenu] = useState(null);
   const [basketData, setBasketData] = useState(fff);
-  console.log('fff', fff);
 
   useEffect(() => {
     const storedArrayAsString = localStorage.getItem('basket');

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function EmptyBasket() {
   return (
-    <section className="basket">
+    <section className="basket animate__animated animate__fadeInUp">
       <Container maxWidth="xl">
         <Alert severity="warning">
           <Typography>

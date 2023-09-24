@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-import { addProduct } from '../../redux/slices/basket';
+import { addProduct } from '../../redux/basket/slice';
 import axios from '../../axios';
 
 export default function Product() {
@@ -67,26 +67,27 @@ export default function Product() {
       <Container>
         <div className="product-wrapper">
           <img
-            alt={productData?.title}
+            className="animate__animated animate__headShake"
             src={productData?.imageUrl}
+            alt={productData?.title}
           />
           <div className="product-content">
-            <Typography variant="h3" component="h3">
+            <Typography className="animate__animated animate__fadeInUp" variant="h3" component="h3">
               {productData?.title}
             </Typography>
             <div>
               <Chip
                 label={`${productData?.price}$`}
-                className="product-price"
+                className="product-price animate__animated animate__fadeInUp"
                 variant="outlined"
               />
             </div>
-            <p className="product-text">
+            <p className="product-text animate__animated animate__fadeInUp">
               {productData?.text}
             </p>
             <ButtonGroup>
               <Button
-                className="core-button product-btn-add-to-basket"
+                className="core-button product-btn-add-to-basket animate__animated animate__fadeInUp"
                 onClick={() => {
                   setProductItems([...productItems, productData]);
                   addProductToBasket(productData);
@@ -94,7 +95,7 @@ export default function Product() {
               >
                 Add to Basket
               </Button>
-              <Link className="core-button" to="/basket">
+              <Link className="core-button animate__animated animate__fadeInUp" to="/basket">
                 Show Basket
               </Link>
             </ButtonGroup>
