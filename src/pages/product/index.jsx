@@ -5,6 +5,7 @@ import {
   Alert, Button, ButtonGroup, Chip, IconButton, Snackbar, Container, Typography,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { NotFound } from '../../components';
 
 import { addToBasket } from '../../redux/basket/thunks';
 import axios from '../../axios';
@@ -38,6 +39,10 @@ export default function Product() {
     setOpen(false);
   };
 
+  if (!Object.keys(productData).length) {
+    return <NotFound message="An error occurred, such product does not exist" />;
+  }
+
   const action = (
     <>
       <Button color="secondary" size="small" onClick={handleClose}>
@@ -60,12 +65,12 @@ export default function Product() {
         <div className="product-wrapper">
           <img
             className="animate__animated animate__headShake"
-            src={productData?.imageUrl}
-            alt={productData?.title}
+            src={productData.imageUrl}
+            alt={productData.title}
           />
           <div className="product-content">
             <Typography className="animate__animated animate__fadeInUp" variant="h3" component="h3">
-              {productData?.title}
+              {productData.title}
             </Typography>
             <div>
               <Chip
@@ -75,7 +80,7 @@ export default function Product() {
               />
             </div>
             <p className="product-text animate__animated animate__fadeInUp">
-              {productData?.text}
+              {productData.text}
             </p>
             <ButtonGroup>
               <Button

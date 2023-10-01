@@ -93,15 +93,17 @@ function Header() {
             </Box>
           )}
           <Box>
-            <Link className="header-btn-basket" to="/basket">
-              <Badge
-                variant={basketProductsCount.length ? 'standard' : 'dot'}
-                badgeContent={JSON.stringify(basketProductsCount.length)}
-                color="primary"
-              >
-                <AddShoppingCartIcon color="action" />
-              </Badge>
-            </Link>
+            <Tooltip title="Basket">
+              <Link className="header-btn-basket" to="/basket">
+                <Badge
+                  variant={basketProductsCount.length ? 'standard' : 'dot'}
+                  badgeContent={JSON.stringify(basketProductsCount.length)}
+                  color="primary"
+                >
+                  <AddShoppingCartIcon color="action" />
+                </Badge>
+              </Link>
+            </Tooltip>
           </Box>
         </Toolbar>
       </Container>

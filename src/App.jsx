@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 
 import { fetchAuthMe } from './redux/auth/thunks';
-import { Layout } from './components';
+import { Layout, NotFound } from './components';
 import {
-  Home, NotFound, Basket, Product, Products, SingIn, SingUp, Profile, CoffeeMaker,
+  Home, Basket, Product, Products, SingIn, SingUp, Profile, CoffeeMaker,
 } from './pages';
 
 export default function App() {

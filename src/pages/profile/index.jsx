@@ -1,21 +1,12 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Container, Typography } from '@mui/material';
 
 import { ProductTable } from '../../components';
 import { getUserData } from '../../redux/auth/selectors';
-import { getPurchaseHistory } from '../../redux/profile/selectors';
-import { fetchOrders } from '../../redux/profile/thunks';
 import { convertDateFormat } from './utils';
 
 export default function Profile() {
   const userData = useSelector(getUserData);
-  const purchaseHistory = useSelector(getPurchaseHistory);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchOrders());
-  }, []);
 
   return (
     <section className="profile">
@@ -47,7 +38,7 @@ export default function Profile() {
         >
           Purchase history
         </Typography>
-        <ProductTable data={purchaseHistory || []} />
+        <ProductTable data={[]} />
       </Container>
     </section>
   );

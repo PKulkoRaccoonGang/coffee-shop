@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { authReducer } from './auth/slice';
 import { productsReducer } from './products/slice';
-import { profileReducer } from './profile/slice';
 import { basketReducer } from './basket/slice';
 
 const store = configureStore({
@@ -10,7 +9,6 @@ const store = configureStore({
     products: productsReducer,
     auth: authReducer,
     basket: basketReducer,
-    profile: profileReducer,
   },
 });
 

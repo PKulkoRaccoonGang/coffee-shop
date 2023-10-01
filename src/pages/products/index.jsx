@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import AbcOutlinedIcon from '@mui/icons-material/AbcOutlined';
 
-import { ProductCard } from '../../components';
+import { NotFound, ProductCard } from '../../components';
 import { fetchProducts } from '../../redux/products/thunks';
 
 export default function Products() {
@@ -28,6 +28,10 @@ export default function Products() {
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
   };
+
+  if (!productsItems.length) {
+    return <NotFound message="An error occurred, the product could not be loaded" />;
+  }
 
   const filteredItems = productsItems
     .filter((item) => item.title.toLowerCase().includes(searchQuery.toLowerCase()))

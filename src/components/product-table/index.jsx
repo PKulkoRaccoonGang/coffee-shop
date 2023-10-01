@@ -1,21 +1,12 @@
 import { useId } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button, CardMedia, Paper, Table, TableBody, TableCell,
-  TableContainer, TableHead, TableRow, Typography,
+  CardMedia, Paper, Table, TableBody, TableCell, Tooltip,
+  TableContainer, TableHead, TableRow, Typography, IconButton,
 } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-import { priceFormatter } from './utils';
-
-function computePrice(courses) {
-  // eslint-disable-next-line no-return-assign
-  return courses.reduce((total, course) => total += course.price * course.count, 0);
-}
-
-function computeCount(courses) {
-  // eslint-disable-next-line no-return-assign
-  return courses.reduce((total, course) => total += course.count, 0);
-}
+import { priceFormatter, computePrice, computeCount } from './utils';
 
 export default function ProductTable({ data, removeHandler }) {
   const id = useId();
@@ -29,15 +20,35 @@ export default function ProductTable({ data, removeHandler }) {
       <Table aria-label="Basket table">
         <TableHead>
           <TableRow>
-            <TableCell>Preview</TableCell>
-            <TableCell align="right">Name</TableCell>
-            <TableCell align="right">Count</TableCell>
-            <TableCell align="right">Price</TableCell>
-            <TableCell align="right">Actions</TableCell>
+            <TableCell>
+              <Typography variant="subtitle1">
+                Preview
+              </Typography>
+            </TableCell>
+            <TableCell align="right">
+              <Typography variant="subtitle1">
+                Name
+              </Typography>
+            </TableCell>
+            <TableCell align="right">
+              <Typography variant="subtitle1">
+                Count
+              </Typography>
+            </TableCell>
+            <TableCell align="right">
+              <Typography variant="subtitle1">
+                Price
+              </Typography>
+            </TableCell>
+            <TableCell align="right">
+              <Typography variant="subtitle1">
+                Actions
+              </Typography>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {data?.map((row) => (
+          {data.map((row) => (
             <TableRow
               key={id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -45,12 +56,12 @@ export default function ProductTable({ data, removeHandler }) {
               <TableCell component="th" scope="row">
                 <CardMedia
                   component="img"
-                  image={row?.imageUrl}
-                  alt={row?.title}
+                  image={row.imageUrl}
+                  alt={row.title}
                   style={{ width: 100 }}
                 />
               </TableCell>
-              <TableCell align="right">{row?.title}</TableCell>
+              <TableCell align="right">{row.title}</TableCell>
               <TableCell align="right">
                 {row.count}
               </TableCell>
@@ -58,13 +69,14 @@ export default function ProductTable({ data, removeHandler }) {
                 {priceFormatter(row.price)}
               </TableCell>
               <TableCell align="right">
-                <Button
-                  color="error"
-                    /* eslint-disable-next-line no-underscore-dangle */
-                  onClick={() => removeHandler(row._id)}
-                >
-                  Remove
-                </Button>
+                <Tooltip title="Delete">
+                  <IconButton
+                    // eslint-disable-next-line no-underscore-dangle
+                    onClick={() => removeHandler(row._id)}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                </Tooltip>
               </TableCell>
             </TableRow>
           ))}
@@ -74,19 +86,19 @@ export default function ProductTable({ data, removeHandler }) {
                 Total products
               </Typography>
             </TableCell>
-            <TableCell colSpan={2} align="right">
+            <TableCell colSpan={3} align="right">
               <Typography variant="subtitle1">
                 {computeCount(data)}
               </Typography>
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell colSpan={2}>
+            <TableCell colSpan={3}>
               <Typography variant="subtitle1">
                 Total price
               </Typography>
             </TableCell>
-            <TableCell colSpan={2} align="right">
+            <TableCell colSpan={3} align="right">
               <Typography variant="subtitle1">
                 {priceFormatter(totalPrice)}
               </Typography>
