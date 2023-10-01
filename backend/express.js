@@ -1,41 +1,37 @@
+// eslint-disable no-console
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-const { loginValidation, registerValidation } = require('./utils/validations');
-const checkAuth = require('./utils/checkAuth');
-const { UserController, ProductController, BasketController } = require('./controllers/index');
 const { MONGO_CLIENT, PORT } = require('./constants');
+const User = require('./models/User');
+const { productsRoutes, authRoutes, basketRoutes } = require('./routes');
 
 mongoose.connect(MONGO_CLIENT).then(() => {
-  console.log('✅ Mongo DB has been connected');
-}).catch((err) => {
-  console.log('❌ Mongo DB error', err);
-});
+  console.log('Mongo DB has been connected');
+}).catch((err) => console.log(err));
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use(async (req, res, next) => {
+  try {
+    req.user = await User.findById('65194ebf486b45dd20c64483');
+    next();
+  } catch (e) {
+    console.log(e);
+  }
+});
 
-app.post('/auth/sign-in', loginValidation, UserController.login);
-
-app.post('/auth/sign-up', registerValidation, UserController.register);
-
-app.get('/auth/me', checkAuth, UserController.getMe);
-
-app.get('/products', ProductController.getAll);
-
-app.post('/basket', BasketController.sendBasketProducts);
-
-app.get('/orders', BasketController.getAllOrders);
-
-app.get('/products/:id', ProductController.getOne);
+app.use(productsRoutes);
+app.use(authRoutes);
+app.use(basketRoutes);
 
 app.listen(PORT, (err) => {
   if (err) {
-    return console.error(`❌ Error: The server failed to start on port ${PORT}. Please check the configuration.`, err);
+    return console.error(err);
   }
 
-  return console.log(`✅ Server listening on port ${PORT}!`);
+  return console.log(`Server listening on port ${PORT}!`);
 });

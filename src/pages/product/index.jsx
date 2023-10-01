@@ -6,13 +6,12 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-import { addProduct } from '../../redux/basket/slice';
+import { addToBasket } from '../../redux/basket/thunks';
 import axios from '../../axios';
 
 export default function Product() {
   const [open, setOpen] = useState(false);
   const [productData, setProductData] = useState({});
-  const [productItems, setProductItems] = useState([]);
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -26,15 +25,8 @@ export default function Product() {
       });
   }, []);
 
-  useEffect(() => {
-    if (productItems.length) {
-      window.localStorage.setItem('basket', JSON.stringify(productItems));
-    }
-  }, [JSON.stringify(productItems)]);
-
   const addProductToBasket = (data) => {
-    dispatch(addProduct(data));
-
+    dispatch(addToBasket(data));
     setOpen(true);
   };
 
@@ -88,10 +80,7 @@ export default function Product() {
             <ButtonGroup>
               <Button
                 className="core-button product-btn-add-to-basket animate__animated animate__fadeInUp"
-                onClick={() => {
-                  setProductItems([...productItems, productData]);
-                  addProductToBasket(productData);
-                }}
+                onClick={() => addProductToBasket(productData)}
               >
                 Add to Basket
               </Button>

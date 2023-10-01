@@ -2,9 +2,16 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import axios from '../../axios';
 
-// eslint-disable-next-line import/prefer-default-export
-export const fetchBasket = createAsyncThunk('basket/fetchBasket', async (params) => {
-  const { data } = await axios.post('/basket', params);
-
+export const addToBasket = createAsyncThunk('basket/addToBasket', async (params) => {
+  const { data } = await axios.post('/add', params);
   return data.order.products;
+});
+
+export const fetchBasket = createAsyncThunk('basket/fetchBasket', async (params) => {
+  const { data } = await axios.get('/basket', params);
+  return data;
+});
+
+export const removeFromBasket = createAsyncThunk('basket/removeFromBasket', async (params) => {
+  await axios.delete(`/remove/${params}`);
 });

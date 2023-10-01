@@ -1,36 +1,35 @@
-const OrderModel = require('../models/Order');
+const ProductModel = require('../models/Product');
 
-const sendBasketProducts = async (req, res) => {
+function mapBasketItems(cart) {
+  return cart.items.map((c) => ({
+    ...c.courseId._doc, count: c.count,
+  }));
+}
+
+function computePrice(courses) {
+  // eslint-disable-next-line no-return-assign
+  return courses.reduce((total, course) => total += course.price * course.count, 0);
+}
+
+const getBasketData = async (req, res) => {
   try {
-    const newOrder = new OrderModel({
-      fullName: req.body[0].name,
-      phone: req.body[0].phone,
-      city: req.body[0].city,
-      products: req.body[1].products,
-    });
-    console.log('=========== newOrder ===========', newOrder);
-    const order = await newOrder.save();
-
-    res.json({ order });
-  } catch (e) {
-    res.status(500).json({
-      message: 'Failed to ordering',
-    });
+    const user = await req.user.populate('cart.items.courseId').execPopulate();
+    const courses = mapBasketItems(user.cart);
+    res.json(courses);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 };
 
-const getAllOrders = async (req, res) => {
-  try {
-    const orders = await OrderModel.find();
-    console.log('============= orders =====================', orders);
-    res.json(orders);
-  } catch (err) {
-    // eslint-disable-next-line no-console
-    console.log('❌ Error: Orders list not founded', err);
-    res.status(500).json({
-      message: 'Orders list not founded',
-    });
-  }
+const addProductToBasket = async (req) => {
+  const course = await ProductModel.findOne({ _id: req.body._id });
+  await req.user.addToCart(course);
 };
 
-module.exports = { sendBasketProducts, getAllOrders };
+const deleteProductFromBasket = async (req) => {
+  await req.user.removeFromCart(req.params.id);
+  await req.user.populate('cart.items.courseId').execPopulate();
+}
+
+module.exports = { getBasketData, addProductToBasket, deleteProductFromBasket };

@@ -6,7 +6,6 @@
   "autor": "Peter Kulko <petrokulko@gmail.com>",
   "scripts": {
     "start": "react-scripts start",
-    "start-backend": "npm start --workspace=backend",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
     "eject": "react-scripts eject",

@@ -1,2 +1,2 @@
-export const selectorIsOrder = (state) => Boolean(state.basket.products.items);
-export const selectorBasket = (state) => state.basket.products.items;
+// eslint-disable-next-line import/prefer-default-export
+export const getBasketProducts = (state) => state.basket.products.items;

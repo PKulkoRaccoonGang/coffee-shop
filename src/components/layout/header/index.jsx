@@ -8,24 +8,18 @@ import { Link } from 'react-router-dom';
 
 import { selectorIsAuth } from '../../../redux/auth/selectors';
 import { logout } from '../../../redux/auth/slice';
-import { selectorBasket } from '../../../redux/basket/selectors';
+import { getBasketProducts } from '../../../redux/basket/selectors';
+import { fetchBasket } from '../../../redux/basket/thunks';
 import Logo from '../../logo';
 
 function Header() {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectorIsAuth);
-  const fff = useSelector(selectorBasket);
+  const basketProductsCount = useSelector(getBasketProducts);
   const [showHeaderMenu, setShowHeaderMenu] = useState(null);
-  const [basketData, setBasketData] = useState(fff);
 
   useEffect(() => {
-    const storedArrayAsString = localStorage.getItem('basket');
-    if (storedArrayAsString) {
-      const storedArray = JSON.parse(storedArrayAsString);
-      if (storedArray.length) {
-        setBasketData(storedArray);
-      }
-    }
+    dispatch(fetchBasket());
   }, []);
 
   const handleOpenUserMenu = (event) => {
@@ -39,7 +33,6 @@ function Header() {
   const onLogout = () => {
     dispatch(logout());
     handleCloseUserMenu();
-    window.localStorage.removeItem('token');
   };
 
   return (
@@ -102,8 +95,8 @@ function Header() {
           <Box>
             <Link className="header-btn-basket" to="/basket">
               <Badge
-                variant={basketData.length ? 'standard' : 'dot'}
-                badgeContent={JSON.stringify(basketData.length)}
+                variant={basketProductsCount.length ? 'standard' : 'dot'}
+                badgeContent={JSON.stringify(basketProductsCount.length)}
                 color="primary"
               >
                 <AddShoppingCartIcon color="action" />

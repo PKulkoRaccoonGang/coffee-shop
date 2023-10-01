@@ -1,46 +1,35 @@
 /* eslint-disable no-underscore-dangle */
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Button, Container, FormControl, TextField, Typography,
 } from '@mui/material';
 import { Formik } from 'formik';
 
 import { ProductTable } from '../../components';
+import { addToBasket, fetchBasket, removeFromBasket } from '../../redux/basket/thunks';
+import { getBasketProducts } from '../../redux/basket/selectors';
 import EmptyBasket from './EmptyBasket';
-import { fetchBasket } from '../../redux/basket/thunks';
 
 function Basket() {
   const dispatch = useDispatch();
-  const [basketData, setBasketData] = useState([]);
+  const basketProducts = useSelector(getBasketProducts);
 
   useEffect(() => {
-    const storedArrayAsString = localStorage.getItem('basket');
-    if (storedArrayAsString) {
-      const storedArray = JSON.parse(storedArrayAsString);
-      setBasketData(storedArray);
-    }
+    dispatch(fetchBasket());
   }, []);
 
   const handleRemoveProduct = (productId) => {
-    const indexToDelete = basketData.findIndex((item) => item._id === productId);
-
-    if (indexToDelete !== -1) {
-      const updatedItems = [...basketData];
-      updatedItems.splice(indexToDelete, 1);
-      setBasketData(updatedItems);
-      window.localStorage.setItem('basket', JSON.stringify(basketData));
-    }
+    dispatch(removeFromBasket(productId));
   };
 
   const handleSubmitOrder = (values, productItems) => {
-    dispatch(fetchBasket([values, { products: productItems }]));
-    window.localStorage.removeItem('basket');
+    dispatch(addToBasket([values, { products: productItems }]));
     // eslint-disable-next-line no-alert
     alert('Congratulations! You have successfully completed your purchase!');
   };
 
-  if (!basketData.length) {
+  if (!basketProducts.length) {
     return <EmptyBasket />;
   }
   return (
@@ -53,7 +42,7 @@ function Basket() {
         >
           Basket
         </Typography>
-        <ProductTable data={basketData} removeHandler={handleRemoveProduct} />
+        <ProductTable data={basketProducts} removeHandler={handleRemoveProduct} />
         <Typography
           className="basket-information-title animate__animated animate__fadeInLeft"
           variant="h3"
@@ -80,7 +69,7 @@ function Basket() {
           }}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(false);
-            handleSubmitOrder(values, basketData);
+            handleSubmitOrder(values, basketProducts);
           }}
         >
           {({

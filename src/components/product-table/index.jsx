@@ -1,28 +1,39 @@
 import { useId } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button, CardMedia, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
+  Button, CardMedia, Paper, Table, TableBody, TableCell,
+  TableContainer, TableHead, TableRow, Typography,
 } from '@mui/material';
 
 import { priceFormatter } from './utils';
 
+function computePrice(courses) {
+  // eslint-disable-next-line no-return-assign
+  return courses.reduce((total, course) => total += course.price * course.count, 0);
+}
+
+function computeCount(courses) {
+  // eslint-disable-next-line no-return-assign
+  return courses.reduce((total, course) => total += course.count, 0);
+}
+
 export default function ProductTable({ data, removeHandler }) {
   const id = useId();
+  const totalPrice = computePrice(data).toString();
 
   return (
     <TableContainer
       className="basket-products animate__animated animate__fadeInUp"
       component={Paper}
     >
-      <Table aria-label="simple table">
+      <Table aria-label="Basket table">
         <TableHead>
           <TableRow>
             <TableCell>Preview</TableCell>
             <TableCell align="right">Name</TableCell>
+            <TableCell align="right">Count</TableCell>
             <TableCell align="right">Price</TableCell>
-            {removeHandler && (
-              <TableCell align="right">Actions</TableCell>
-            )}
+            <TableCell align="right">Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -41,21 +52,46 @@ export default function ProductTable({ data, removeHandler }) {
               </TableCell>
               <TableCell align="right">{row?.title}</TableCell>
               <TableCell align="right">
-                {priceFormatter(row?.price)}
+                {row.count}
               </TableCell>
-              {removeHandler && (
-                <TableCell align="right">
-                  <Button
-                    color="error"
+              <TableCell align="right">
+                {priceFormatter(row.price)}
+              </TableCell>
+              <TableCell align="right">
+                <Button
+                  color="error"
                     /* eslint-disable-next-line no-underscore-dangle */
-                    onClick={() => removeHandler(row._id)}
-                  >
-                    Remove
-                  </Button>
-                </TableCell>
-              )}
+                  onClick={() => removeHandler(row._id)}
+                >
+                  Remove
+                </Button>
+              </TableCell>
             </TableRow>
           ))}
+          <TableRow>
+            <TableCell colSpan={2}>
+              <Typography variant="subtitle1">
+                Total products
+              </Typography>
+            </TableCell>
+            <TableCell colSpan={2} align="right">
+              <Typography variant="subtitle1">
+                {computeCount(data)}
+              </Typography>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell colSpan={2}>
+              <Typography variant="subtitle1">
+                Total price
+              </Typography>
+            </TableCell>
+            <TableCell colSpan={2} align="right">
+              <Typography variant="subtitle1">
+                {priceFormatter(totalPrice)}
+              </Typography>
+            </TableCell>
+          </TableRow>
         </TableBody>
       </Table>
     </TableContainer>

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { fetchBasket } from './thunks';
+import { addToBasket, fetchBasket } from './thunks';
 
 const initialState = {
   products: {
@@ -19,14 +19,25 @@ const basketSlice = createSlice({
   },
   extraReducers: {
     [fetchBasket.pending]: (state) => {
+      state.products.status = 'loading';
+    },
+    [fetchBasket.fulfilled]: (state, action) => {
+      state.products.items = action.payload;
+      state.products.status = 'loaded';
+    },
+    [fetchBasket.rejected]: (state) => {
+      state.products.items = [];
+      state.products.status = 'error';
+    },
+    [addToBasket.pending]: (state) => {
       state.status = 'loading';
       state.items = null;
     },
-    [fetchBasket.fulfilled]: (state, action) => {
+    [addToBasket.fulfilled]: (state, action) => {
       state.status = 'loaded';
       state.products.items.push(action.payload);
     },
-    [fetchBasket.rejected]: (state) => {
+    [addToBasket.rejected]: (state) => {
       state.status = 'error';
       state.items = null;
     },
