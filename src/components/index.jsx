@@ -6,3 +6,4 @@ export { default as ProductTable } from './product-table';
 export { default as ProductsList } from './products-list';
 export { default as NotFound } from './not-found';
 export { default as SubHeader } from './sub-header';
+export { default as Head } from './head';

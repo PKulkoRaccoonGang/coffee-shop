@@ -6,7 +6,7 @@ import {
   Button, Container, FormControl, TextField, Typography,
 } from '@mui/material';
 
-import { AlertNotification } from '../../components';
+import { AlertNotification, Head } from '../../components';
 import { fetchAuth } from '../../redux/auth/thunks';
 import { selectorIsAuth } from '../../redux/auth/selectors';
 
@@ -34,78 +34,81 @@ export default function SingIn() {
   }
 
   return (
-    <Container maxWidth="lg" className="text-center">
-      {authorizationError && <AlertNotification closeFn={setAuthorizationError} />}
-      <div className="sign-in">
-        <Typography
-          className="sign-in-title animate__animated animate__fadeInLeft"
-          variant="h3"
-          component="h3"
-        >
-          Sign in
-        </Typography>
-        <Formik
-          initialValues={{
-            email: '',
-            password: '',
-          }}
-          validate={(values) => {
-            const errors = {};
-            if (!values.email) {
-              errors.email = 'This field is required';
-            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-              errors.email = 'Invalid email address';
-            } else if (!values.password) {
-              errors.password = 'This field is required';
-            }
-            return errors;
-          }}
-          onSubmit={(values, { setSubmitting }) => {
-            onSubmit(values);
-            setSubmitting(false);
-          }}
-        >
-          {({
-            values, errors, handleSubmit, handleChange,
-          }) => (
-            <form onSubmit={handleSubmit}>
-              <FormControl className="sign-in-form">
-                <TextField
-                  className="sign-in-form-fiend animate__animated animate__fadeInRight"
-                  label="Email"
-                  type="email"
-                  name="email"
-                  error={Boolean(errors.email)}
-                  value={values.email}
-                  onChange={handleChange}
-                  helperText={errors.email}
-                />
-                <TextField
-                  className="sign-in-form-fiend animate__animated animate__fadeInLeft"
-                  label="Password"
-                  type="password"
-                  name="password"
-                  error={Boolean(errors.password)}
-                  variant="outlined"
-                  value={values.password}
-                  onChange={handleChange}
-                  helperText={errors.password}
-                />
-                <Button
-                  className="core-button animate__animated animate__fadeInRight"
-                  type="submit"
-                  disabled={Boolean(Object.keys(errors).length) || Boolean(!values.email)}
-                >
-                  Submit
-                </Button>
-              </FormControl>
-            </form>
-          )}
-        </Formik>
-        <Link className="sign-in-form-link animate__animated animate__fadeInLeft" to="/sign-up">
-          Already have an account? Sign up
-        </Link>
-      </div>
-    </Container>
+    <>
+      <Head pageTitle="Sign in" />
+      <Container maxWidth="lg" className="text-center">
+        {authorizationError && <AlertNotification closeFn={setAuthorizationError} />}
+        <div className="sign-in">
+          <Typography
+            className="sign-in-title animate__animated animate__fadeInLeft"
+            variant="h3"
+            component="h3"
+          >
+            Sign in
+          </Typography>
+          <Formik
+            initialValues={{
+              email: '',
+              password: '',
+            }}
+            validate={(values) => {
+              const errors = {};
+              if (!values.email) {
+                errors.email = 'This field is required';
+              } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+                errors.email = 'Invalid email address';
+              } else if (!values.password) {
+                errors.password = 'This field is required';
+              }
+              return errors;
+            }}
+            onSubmit={(values, { setSubmitting }) => {
+              onSubmit(values);
+              setSubmitting(false);
+            }}
+          >
+            {({
+              values, errors, handleSubmit, handleChange,
+            }) => (
+              <form onSubmit={handleSubmit}>
+                <FormControl className="sign-in-form">
+                  <TextField
+                    className="sign-in-form-fiend animate__animated animate__fadeInRight"
+                    label="Email"
+                    type="email"
+                    name="email"
+                    error={Boolean(errors.email)}
+                    value={values.email}
+                    onChange={handleChange}
+                    helperText={errors.email}
+                  />
+                  <TextField
+                    className="sign-in-form-fiend animate__animated animate__fadeInLeft"
+                    label="Password"
+                    type="password"
+                    name="password"
+                    error={Boolean(errors.password)}
+                    variant="outlined"
+                    value={values.password}
+                    onChange={handleChange}
+                    helperText={errors.password}
+                  />
+                  <Button
+                    className="core-button animate__animated animate__fadeInRight"
+                    type="submit"
+                    disabled={Boolean(Object.keys(errors).length) || Boolean(!values.email)}
+                  >
+                    Submit
+                  </Button>
+                </FormControl>
+              </form>
+            )}
+          </Formik>
+          <Link className="sign-in-form-link animate__animated animate__fadeInLeft" to="/sign-up">
+            Already have an account? Sign up
+          </Link>
+        </div>
+      </Container>
+    </>
   );
 }

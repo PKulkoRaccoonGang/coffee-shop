@@ -6,7 +6,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 
-import { AlertNotification } from '../../components';
+import { AlertNotification, Head } from '../../components';
 import { selectorIsAuth } from '../../redux/auth/selectors';
 import { fetchRegister } from '../../redux/auth/thunks';
 
@@ -34,89 +34,92 @@ export default function SingUp() {
   }
 
   return (
-    <Container maxWidth="lg" className="text-center">
-      {singUpError && <AlertNotification closeFn={setSingUpError} />}
-      <div className="sing-up">
-        <Typography
-          className="sing-up-title animate__animated animate__fadeInLeft"
-          variant="h3"
-          component="h3"
-        >
-          Sign up
-        </Typography>
-        <Formik
-          initialValues={{
-            email: '',
-            fullName: '',
-            password: '',
-          }}
-          validate={(values) => {
-            const errors = {};
-            if (!values.email) {
-              errors.email = 'This field is required';
-            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-              errors.email = 'Invalid email address';
-            } else if (!values.fullName) {
-              errors.fullName = 'This field is required';
-            } else if (!values.password) {
-              errors.password = 'This field is required';
-            } else if (values.password.length < 5) {
-              errors.password = 'Minimum password length 5 characters';
-            }
-            return errors;
-          }}
-          onSubmit={(values) => onSubmit(values)}
-        >
-          {({
-            values, errors, handleChange, handleSubmit,
-          }) => (
-            <form onSubmit={handleSubmit}>
-              <FormControl className="sing-up-form">
-                <TextField
-                  className="sing-up-form-fiend animate__animated animate__fadeInRight"
-                  label="Email"
-                  variant="outlined"
-                  name="email"
-                  error={Boolean(errors.email)}
-                  onChange={handleChange}
-                  helperText={errors.email}
-                  value={values.email}
-                />
-                <TextField
-                  className="sing-up-form-fiend animate__animated animate__fadeInLeft"
-                  label="Full name"
-                  name="fullName"
-                  variant="outlined"
-                  error={Boolean(errors.fullName)}
-                  onChange={handleChange}
-                  helperText={errors.fullName}
-                  value={values.fullName}
-                />
-                <TextField
-                  className="sing-up-form-fiend animate__animated animate__fadeInRight"
-                  label="Password"
-                  variant="outlined"
-                  name="password"
-                  error={Boolean(errors.password)}
-                  onChange={handleChange}
-                  helperText={errors.password}
-                  value={values.password}
-                />
-                <Button
-                  className="core-button animate__animated animate__fadeInLeft"
-                  type="submit"
-                  disabled={Boolean(Object.keys(errors).length) || Boolean(!values.email)}
-                >
-                  Submit
-                </Button>
-              </FormControl>
-            </form>
-          )}
-        </Formik>
-        <Link className="sing-up-form-link animate__animated animate__fadeInRight" to="/sign-in">
-          Already have an account? Sign in
-        </Link>
-      </div>
-    </Container>
+    <>
+      <Head pageTitle="Sign up" />
+      <Container maxWidth="lg" className="text-center">
+        {singUpError && <AlertNotification closeFn={setSingUpError} />}
+        <div className="sing-up">
+          <Typography
+            className="sing-up-title animate__animated animate__fadeInLeft"
+            variant="h3"
+            component="h3"
+          >
+            Sign up
+          </Typography>
+          <Formik
+            initialValues={{
+              email: '',
+              fullName: '',
+              password: '',
+            }}
+            validate={(values) => {
+              const errors = {};
+              if (!values.email) {
+                errors.email = 'This field is required';
+              } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+                errors.email = 'Invalid email address';
+              } else if (!values.fullName) {
+                errors.fullName = 'This field is required';
+              } else if (!values.password) {
+                errors.password = 'This field is required';
+              } else if (values.password.length < 5) {
+                errors.password = 'Minimum password length 5 characters';
+              }
+              return errors;
+            }}
+            onSubmit={(values) => onSubmit(values)}
+          >
+            {({
+              values, errors, handleChange, handleSubmit,
+            }) => (
+              <form onSubmit={handleSubmit}>
+                <FormControl className="sing-up-form">
+                  <TextField
+                    className="sing-up-form-fiend animate__animated animate__fadeInRight"
+                    label="Email"
+                    variant="outlined"
+                    name="email"
+                    error={Boolean(errors.email)}
+                    onChange={handleChange}
+                    helperText={errors.email}
+                    value={values.email}
+                  />
+                  <TextField
+                    className="sing-up-form-fiend animate__animated animate__fadeInLeft"
+                    label="Full name"
+                    name="fullName"
+                    variant="outlined"
+                    error={Boolean(errors.fullName)}
+                    onChange={handleChange}
+                    helperText={errors.fullName}
+                    value={values.fullName}
+                  />
+                  <TextField
+                    className="sing-up-form-fiend animate__animated animate__fadeInRight"
+                    label="Password"
+                    variant="outlined"
+                    name="password"
+                    error={Boolean(errors.password)}
+                    onChange={handleChange}
+                    helperText={errors.password}
+                    value={values.password}
+                  />
+                  <Button
+                    className="core-button animate__animated animate__fadeInLeft"
+                    type="submit"
+                    disabled={Boolean(Object.keys(errors).length) || Boolean(!values.email)}
+                  >
+                    Submit
+                  </Button>
+                </FormControl>
+              </form>
+            )}
+          </Formik>
+          <Link className="sing-up-form-link animate__animated animate__fadeInRight" to="/sign-in">
+            Already have an account? Sign in
+          </Link>
+        </div>
+      </Container>
+    </>
   );
 }

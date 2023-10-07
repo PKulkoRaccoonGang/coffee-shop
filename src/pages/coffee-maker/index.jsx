@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { Container } from '@mui/material';
 
-import { SubHeader } from '../../components';
+import { Head, SubHeader } from '../../components';
 import ModalResult from './modal-result';
 import CoffeeIngredient from './ingredient';
 import CoffeeMug from './coffee-mug';
@@ -83,39 +83,42 @@ function CoffeeMaker() {
   };
 
   return (
-    <section className="coffee-maker">
-      <Container>
-        <SubHeader
-          title="Coffee maker game"
-          description="Below is a list of ingredients. You need to choose the 4 right ingredients to make delicious and aromatic coffee."
-        />
-      </Container>
-      <Container maxWidth="xl">
-        {ingredients.map((item) => (
-          <CoffeeIngredient
-            key={item.id}
-            title={item.title}
-            onDragStart={(e) => handleDragStart(e, item)}
-            onDrop={(e) => handleDrop(e, item)}
-            img={item.src}
-            className={dragging ? getStyles(item.id) : ''}
+    <>
+      <Head pageTitle="Coffee maker" />
+      <section className="coffee-maker">
+        <Container>
+          <SubHeader
+            title="Coffee maker game"
+            description="Below is a list of ingredients. You need to choose the 4 right ingredients to make delicious and aromatic coffee."
           />
-        ))}
-        <CoffeeMug
-          isOverMug={isOverMug}
-          onDrop={handleOnDrop}
-          onDragOver={handleMugDragOver}
-          onDragLeave={handleDragLeaveMug}
-        />
-        <ModalResult
-          isOpen={selectedIngredients.length === MAX_INGREDIENTS}
-          ingredients={selectedIngredients}
-          setIngredients={setSelectedIngredients}
-          data={initialState}
-          setIngredientsBoard={setIngredients}
-        />
-      </Container>
-    </section>
+        </Container>
+        <Container maxWidth="xl">
+          {ingredients.map((item) => (
+            <CoffeeIngredient
+              key={item.id}
+              title={item.title}
+              onDragStart={(e) => handleDragStart(e, item)}
+              onDrop={(e) => handleDrop(e, item)}
+              img={item.src}
+              className={dragging ? getStyles(item.id) : ''}
+            />
+          ))}
+          <CoffeeMug
+            isOverMug={isOverMug}
+            onDrop={handleOnDrop}
+            onDragOver={handleMugDragOver}
+            onDragLeave={handleDragLeaveMug}
+          />
+          <ModalResult
+            isOpen={selectedIngredients.length === MAX_INGREDIENTS}
+            ingredients={selectedIngredients}
+            setIngredients={setSelectedIngredients}
+            data={initialState}
+            setIngredientsBoard={setIngredients}
+          />
+        </Container>
+      </section>
+    </>
   );
 }
 

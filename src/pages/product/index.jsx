@@ -5,7 +5,7 @@ import {
   Alert, Button, ButtonGroup, Chip, IconButton, Snackbar, Container, Typography,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { NotFound } from '../../components';
+import { Head, NotFound } from '../../components';
 
 import { addToBasket } from '../../redux/basket/thunks';
 import axios from '../../axios';
@@ -60,52 +60,55 @@ export default function Product() {
   );
 
   return (
-    <section className="product">
-      <Container>
-        <div className="product-wrapper">
-          <img
-            className="animate__animated animate__headShake"
-            src={productData.imageUrl}
-            alt={productData.title}
-          />
-          <div className="product-content">
-            <Typography className="animate__animated animate__fadeInUp" variant="h3" component="h3">
-              {productData.title}
-            </Typography>
-            <div>
-              <Chip
-                label={`${productData?.price}$`}
-                className="product-price animate__animated animate__fadeInUp"
-                variant="outlined"
-              />
+    <>
+      <Head pageTitle={productData.title} />
+      <section className="product">
+        <Container>
+          <div className="product-wrapper">
+            <img
+              className="animate__animated animate__headShake"
+              src={productData.imageUrl}
+              alt={productData.title}
+            />
+            <div className="product-content">
+              <Typography className="animate__animated animate__fadeInUp" variant="h3" component="h3">
+                {productData.title}
+              </Typography>
+              <div>
+                <Chip
+                  label={`${productData?.price}$`}
+                  className="product-price animate__animated animate__fadeInUp"
+                  variant="outlined"
+                />
+              </div>
+              <p className="product-text animate__animated animate__fadeInUp">
+                {productData.text}
+              </p>
+              <ButtonGroup>
+                <Button
+                  className="core-button product-btn-add-to-basket animate__animated animate__fadeInUp"
+                  onClick={() => addProductToBasket(productData)}
+                >
+                  Add to Basket
+                </Button>
+                <Link className="core-button animate__animated animate__fadeInUp" to="/basket">
+                  Show Basket
+                </Link>
+              </ButtonGroup>
             </div>
-            <p className="product-text animate__animated animate__fadeInUp">
-              {productData.text}
-            </p>
-            <ButtonGroup>
-              <Button
-                className="core-button product-btn-add-to-basket animate__animated animate__fadeInUp"
-                onClick={() => addProductToBasket(productData)}
-              >
-                Add to Basket
-              </Button>
-              <Link className="core-button animate__animated animate__fadeInUp" to="/basket">
-                Show Basket
-              </Link>
-            </ButtonGroup>
           </div>
-        </div>
-      </Container>
-      <Snackbar
-        open={open}
-        autoHideDuration={2000}
-        onClose={handleClose}
-        action={action}
-      >
-        <Alert severity="success" variant="filled">
-          Coffee successfully added to cart!
-        </Alert>
-      </Snackbar>
-    </section>
+        </Container>
+        <Snackbar
+          open={open}
+          autoHideDuration={2000}
+          onClose={handleClose}
+          action={action}
+        >
+          <Alert severity="success" variant="filled">
+            Coffee successfully added to cart!
+          </Alert>
+        </Snackbar>
+      </section>
+    </>
   );
 }
