@@ -1,12 +1,25 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container, Typography } from '@mui/material';
 
-import { Head, ProductTable } from '../../components';
+import { useEffect, useState } from 'react';
+import { Head, OrderAccordion } from '../../components';
 import { getUserData } from '../../redux/auth/selectors';
 import { convertDateFormat } from './utils';
+import { getOrders } from '../../redux/profile/selectors';
+import { fetchOrders } from '../../redux/profile/thunks';
 
 export default function Profile() {
   const userData = useSelector(getUserData);
+  const dispatch = useDispatch();
+  const ordersHistory = useSelector(getOrders);
+  const [orders, setOrders] = useState([]);
+  // console.log('orders', orders);
+  useEffect(() => {
+    dispatch(fetchOrders());
+    if (ordersHistory) {
+      setOrders(ordersHistory);
+    }
+  }, [JSON.stringify(ordersHistory)]);
 
   return (
     <>
@@ -40,7 +53,13 @@ export default function Profile() {
           >
             Purchase history
           </Typography>
-          <ProductTable data={[]} />
+          {orders.map((order) => (
+            <OrderAccordion
+              title={convertDateFormat(order.date)}
+              price={order.price}
+              courses={order.courses}
+            />
+          ))}
         </Container>
       </section>
     </>

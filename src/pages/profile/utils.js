@@ -12,8 +12,5 @@ export const convertDateFormat = (date) => {
   const month = newDate.toLocaleString('default', { month: 'long' });
   const year = newDate.getFullYear();
 
-  const hours = newDate.getHours();
-  const minutes = newDate.getMinutes();
-
-  return `${day} ${month} ${year}, ${hours}:${minutes}`;
+  return `${day} ${month} ${year}`;
 };

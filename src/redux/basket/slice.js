@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { addToBasket, fetchBasket } from './thunks';
+import { addToBasket, fetchBasket, sendOrder } from './thunks';
 
 const initialState = {
   products: {
     items: [],
     status: 'loading',
   },
+  orders: [],
 };
 
 const basketSlice = createSlice({
@@ -38,6 +39,18 @@ const basketSlice = createSlice({
       state.products.items.push(action.payload);
     },
     [addToBasket.rejected]: (state) => {
+      state.status = 'error';
+      state.items = null;
+    },
+    [sendOrder.pending]: (state) => {
+      state.status = 'loading';
+      state.items = null;
+    },
+    [sendOrder.fulfilled]: (state, action) => {
+      state.status = 'loaded';
+      state.orders.items.push(action.payload);
+    },
+    [sendOrder.rejected]: (state) => {
       state.status = 'error';
       state.items = null;
     },

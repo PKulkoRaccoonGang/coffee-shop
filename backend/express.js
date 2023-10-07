@@ -5,7 +5,9 @@ const cors = require('cors');
 
 const { MONGO_CLIENT, PORT } = require('./constants');
 const User = require('./models/User');
-const { productsRoutes, authRoutes, basketRoutes } = require('./routes');
+const {
+  productsRoutes, authRoutes, basketRoutes, ordersRoutes,
+} = require('./routes');
 
 mongoose.connect(MONGO_CLIENT).then(() => {
   console.log('Mongo DB has been connected');
@@ -27,6 +29,7 @@ app.use(async (req, res, next) => {
 app.use(productsRoutes);
 app.use(authRoutes);
 app.use(basketRoutes);
+app.use(ordersRoutes);
 
 app.listen(PORT, (err) => {
   if (err) {
