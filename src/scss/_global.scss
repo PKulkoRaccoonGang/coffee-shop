@@ -3,7 +3,7 @@
 
 html, body {
   height: 100%;
-  font: 14px Manrope, sans-serif;
+  font: 16px Manrope, sans-serif;
 }
 
 .wrapper {
@@ -14,4 +14,41 @@ html, body {
 
 .footer {
   margin-top: auto;
+}
+
+body .core-button {
+  font: 600 18px/50px Manrope, sans-serif;
+  background-color: lighten($base-color, 75%);
+  border: 2px solid $base-color;
+  border-radius: 30px;
+  box-shadow: $base-color 4px 4px 0 0;
+  color: $base-color;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 18px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: capitalize;
+  user-select: none;
+  transition: all .2s;
+
+  &:hover {
+    background-color: $white;
+    border: 2px solid darken($base-color, 10%);
+  }
+
+  &:active {
+    box-shadow: darken($base-color, 10%) 2px 2px 0 0;
+    transform: translate(2px, 2px);
+  }
+
+  &:disabled {
+    opacity: .5;
+    box-shadow: none;
+    border-color: lighten($base-color, 65%);
+  }
+}
+
+body .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked {
+  color: $base-color;
 }

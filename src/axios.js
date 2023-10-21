@@ -1,5 +1,11 @@
 import axios from 'axios';
 
+/**
+ * Creates an Axios instance for making HTTP requests with specified parameters.
+ *
+ * @constant {Object} instance - The Axios instance.
+ * @property {string} instance.baseURL - The base URL for all requests made by the created instance.
+ */
 const instance = axios.create({
   baseURL: 'http://localhost:4444',
 });
