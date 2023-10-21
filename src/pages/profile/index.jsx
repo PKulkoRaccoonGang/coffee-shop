@@ -1,12 +1,12 @@
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, Typography } from '@mui/material';
 
-import { useEffect, useState } from 'react';
 import { Head, OrderAccordion } from '../../components';
 import { getUserData } from '../../redux/auth/selectors';
-import { convertDateFormat } from './utils';
 import { getOrders } from '../../redux/profile/selectors';
 import { fetchOrders } from '../../redux/profile/thunks';
+import { convertDateFormat } from './utils';
 
 export default function Profile() {
   const userData = useSelector(getUserData);
@@ -55,8 +55,9 @@ export default function Profile() {
           </Typography>
           {orders.map((order) => (
             <OrderAccordion
-              title={convertDateFormat(order.date)}
-              price={order.price}
+              /* eslint-disable-next-line no-underscore-dangle */
+              key={order._id}
+              date={convertDateFormat(order.date)}
               /* eslint-disable-next-line no-underscore-dangle */
               id={order._id}
               courses={order.courses}

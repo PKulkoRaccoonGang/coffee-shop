@@ -3,14 +3,9 @@ const { model, Schema } = require('mongoose');
 const OrderSchema = new Schema({
   courses: [
     {
-      course: {
-        type: Object,
-        required: true,
-      },
-      count: {
-        type: Number,
-        required: true,
-      },
+      count: Number,
+      type: Object,
+      required: true,
     },
   ],
   user: {

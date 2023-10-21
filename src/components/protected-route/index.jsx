@@ -7,7 +7,7 @@ import { selectorIsAuth } from '../../redux/auth/selectors';
 export default function ProtectedRoute({ children }) {
   const isAuth = useSelector(selectorIsAuth);
   const location = useLocation();
-  console.log('location', location);
+
   if (!isAuth) {
     return <Navigate to="/sign-in" state={{ from: location }} replace />;
   }

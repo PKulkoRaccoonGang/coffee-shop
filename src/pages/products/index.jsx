@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Alert, AlertTitle, Checkbox, Container, FormControlLabel,
+  Alert, AlertTitle, Checkbox, Container, debounce, FormControlLabel,
   Grid, InputAdornment, List, ListItem, TextField, Typography,
 } from '@mui/material';
 import AbcOutlinedIcon from '@mui/icons-material/AbcOutlined';
@@ -28,6 +28,8 @@ export default function Products() {
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
   };
+
+  const debouncedChangeHandler = useMemo(() => debounce(handleInputChange, 300), []);
 
   if (!productsItems.length) {
     return <NotFound message="An error occurred, the product could not be loaded" />;
@@ -77,7 +79,7 @@ export default function Products() {
                 <TextField
                   className="animate__animated animate__fadeInUp"
                   fullWidth
-                  onChange={handleInputChange}
+                  onChange={debouncedChangeHandler}
                   label="Search coffee"
                   variant="outlined"
                   InputProps={{

@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Grid, Container } from '@mui/material';
+import { Grid, Container, Alert } from '@mui/material';
 
+import { fetchProducts } from '../../redux/products/thunks';
 import ProductCard from '../product-card';
 import SubHeader from '../sub-header';
-import { fetchProducts } from '../../redux/products/thunks';
 
 export default function ProductsList() {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.products);
+  const { products: { items } } = useSelector((state) => state.products);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -21,8 +21,13 @@ export default function ProductsList() {
           title="Product Collection"
           description="Choose delicious, high-quality coffee, and we will make sure that it is fast and convenient."
         />
-        <Grid className="animate__animated animate__fadeInUp" container rowSpacing={5} columnSpacing={1}>
-          {products.items.map(({
+        <Grid
+          className="animate__animated animate__fadeInUp"
+          container
+          rowSpacing={5}
+          columnSpacing={1}
+        >
+          {items.length ? items.map(({
             _id, imageUrl, title, price,
           }) => (
             <Grid key={_id} item xs={4}>
@@ -34,7 +39,11 @@ export default function ProductsList() {
                 price={price}
               />
             </Grid>
-          ))}
+          )) : (
+            <Alert severity="warning" variant="outlined">
+              Unfortunately the products are out of stock...
+            </Alert>
+          )}
         </Grid>
       </Container>
     </section>

@@ -6,7 +6,6 @@ import { fetchAuthMe } from './redux/auth/thunks';
 import { Layout, NotFound, ProtectedRoute } from './components';
 import Home from './pages/home';
 import Profile from './pages/profile';
-import { divide } from './utils';
 
 const Basket = lazy(() => import(/* webpackChunkName: 'BasketPage' */'./pages/basket'));
 const SingUp = lazy(() => import(/* webpackChunkName: 'SingUpPage' */'./pages/sing-up'));
@@ -18,10 +17,6 @@ const Product = lazy(() => import(/* webpackChunkName: 'ProductPage' */'./pages/
 export default function App() {
   const dispatch = useDispatch();
 
-  // import('./utils').then((divide) => {
-  //   console.log(divide(2, 2));
-  // });
-  divide(1995, 5);
   useEffect(() => {
     dispatch(fetchAuthMe());
   }, []);

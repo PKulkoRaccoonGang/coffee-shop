@@ -10,7 +10,7 @@ router.get('/orders', async (req, res) => {
     res.json({
       orders: orders.map((o) => ({
         ...o._doc,
-        price: o.courses.reduce((total, c) => total += c.count * c.course.price, 0),
+        price: o.courses.reduce((total, c) => total += c.count * c.price, 0),
       })),
     });
   } catch (e) {
@@ -22,8 +22,7 @@ router.post('/order', async (req, res) => {
   try {
     const user = await req.user.populate('cart.items.courseId').execPopulate();
     const courses = user.cart.items.map((i) => ({
-      count: i.count,
-      course: { ...i.courseId._doc },
+      count: i.count, ...i.courseId._doc,
     }));
 
     const order = new Order({
