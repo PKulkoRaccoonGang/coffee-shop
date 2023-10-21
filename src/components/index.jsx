@@ -8,3 +8,4 @@ export { default as NotFound } from './not-found';
 export { default as SubHeader } from './sub-header';
 export { default as Head } from './head';
 export { default as OrderAccordion } from './order-accordion';
+export { default as ProtectedRoute } from './protected-route';

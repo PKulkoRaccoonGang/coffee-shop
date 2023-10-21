@@ -1,9 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  Button, Container, Typography,
-} from '@mui/material';
+import { Button, Container, Typography } from '@mui/material';
 
 import { Head, ProductTable } from '../../components';
 import { fetchBasket, removeFromBasket, sendOrder } from '../../redux/basket/thunks';
@@ -18,17 +16,14 @@ function Basket() {
     dispatch(fetchBasket());
   }, []);
 
-  const handleRemoveProduct = (productId) => {
-    dispatch(removeFromBasket(productId));
-  };
+  const handleRemoveProduct = (productId) => dispatch(removeFromBasket(productId));
 
-  const handleSubmitOrder = () => {
-    dispatch(sendOrder(['hello']));
-  };
+  const handleSubmitOrder = () => dispatch(sendOrder());
 
   if (!basketProducts.length) {
     return <EmptyBasket />;
   }
+
   return (
     <>
       <Head pageTitle="Basket" />

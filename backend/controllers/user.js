@@ -39,7 +39,7 @@ const register = async (req, res) => {
     });
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.log('❌ Error: Failed to registration', err);
+    console.log('Error: Failed to registration', err);
     return res.status(500).json({
       message: 'Failed to registration',
     });
@@ -77,7 +77,7 @@ const login = async (req, res) => {
       token,
     });
   } catch (err) {
-    console.log('❌ Error: Failed to authorization', err);
+    console.log('Error: Failed to authorization', err);
     return res.status(500).json({
       message: 'Failed to authorization',
     });
@@ -104,4 +104,6 @@ const getMe = async (req, res) => {
   }
 };
 
-module.exports = { register, login, getMe };
+module.exports = {
+  register, login, getMe,
+};

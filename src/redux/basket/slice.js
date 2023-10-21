@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { addToBasket, fetchBasket, sendOrder } from './thunks';
+import { RequestStatus } from '../../constants';
 
 const initialState = {
   products: {
@@ -20,38 +21,38 @@ const basketSlice = createSlice({
   },
   extraReducers: {
     [fetchBasket.pending]: (state) => {
-      state.products.status = 'loading';
+      state.products.status = RequestStatus.IN_PROGRESS;
     },
     [fetchBasket.fulfilled]: (state, action) => {
       state.products.items = action.payload;
-      state.products.status = 'loaded';
+      state.products.status = RequestStatus.SUCCESSFUL;
     },
     [fetchBasket.rejected]: (state) => {
       state.products.items = [];
-      state.products.status = 'error';
+      state.products.status = RequestStatus.FAILED;
     },
     [addToBasket.pending]: (state) => {
-      state.status = 'loading';
+      state.status = RequestStatus.IN_PROGRESS;
       state.items = null;
     },
     [addToBasket.fulfilled]: (state, action) => {
-      state.status = 'loaded';
+      state.status = RequestStatus.SUCCESSFUL;
       state.products.items.push(action.payload);
     },
     [addToBasket.rejected]: (state) => {
-      state.status = 'error';
+      state.status = RequestStatus.FAILED;
       state.items = null;
     },
     [sendOrder.pending]: (state) => {
-      state.status = 'loading';
+      state.status = RequestStatus.IN_PROGRESS;
       state.items = null;
     },
     [sendOrder.fulfilled]: (state, action) => {
-      state.status = 'loaded';
+      state.status = RequestStatus.SUCCESSFUL;
       state.orders.items.push(action.payload);
     },
     [sendOrder.rejected]: (state) => {
-      state.status = 'error';
+      state.status = RequestStatus.FAILED;
       state.items = null;
     },
   },

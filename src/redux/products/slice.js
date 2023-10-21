@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { fetchProducts } from './thunks';
+import { RequestStatus } from '../../constants';
 
 const initialState = {
   products: {
@@ -15,15 +16,15 @@ const productsSlice = createSlice({
   reducers: {},
   extraReducers: {
     [fetchProducts.pending]: (state) => {
-      state.products.status = 'loading';
+      state.products.status = RequestStatus.IN_PROGRESS;
     },
     [fetchProducts.fulfilled]: (state, action) => {
       state.products.items = action.payload;
-      state.products.status = 'loaded';
+      state.products.status = RequestStatus.SUCCESSFUL;
     },
     [fetchProducts.rejected]: (state) => {
       state.products.items = [];
-      state.products.status = 'error';
+      state.products.status = RequestStatus.FAILED;
     },
   },
 });

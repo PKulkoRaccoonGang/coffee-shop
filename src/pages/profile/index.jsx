@@ -13,7 +13,7 @@ export default function Profile() {
   const dispatch = useDispatch();
   const ordersHistory = useSelector(getOrders);
   const [orders, setOrders] = useState([]);
-  // console.log('orders', orders);
+
   useEffect(() => {
     dispatch(fetchOrders());
     if (ordersHistory) {
@@ -57,6 +57,8 @@ export default function Profile() {
             <OrderAccordion
               title={convertDateFormat(order.date)}
               price={order.price}
+              /* eslint-disable-next-line no-underscore-dangle */
+              id={order._id}
               courses={order.courses}
             />
           ))}

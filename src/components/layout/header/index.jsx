@@ -49,39 +49,54 @@ function Header() {
             </Link>
           </Box>
           {isAuth ? (
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open menu">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="user avatar" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: '45px' }}
-                anchorEl={showHeaderMenu}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(showHeaderMenu)}
-                onClose={handleCloseUserMenu}
-              >
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Link className="header-link" to="/profile">
-                    Profile
+            <>
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open menu">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt="user avatar" src="/static/images/avatar/2.jpg" />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  anchorEl={showHeaderMenu}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(showHeaderMenu)}
+                  onClose={handleCloseUserMenu}
+                >
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Link className="header-link" to="/profile">
+                      Profile
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={onLogout}>
+                    <Link className="header-link" to="/">
+                      Logout
+                    </Link>
+                  </MenuItem>
+                </Menu>
+              </Box>
+              <Box>
+                <Tooltip title="Basket">
+                  <Link className="header-btn-basket" to="/basket">
+                    <Badge
+                      variant={basketProductsCount.length ? 'standard' : 'dot'}
+                      badgeContent={JSON.stringify(basketProductsCount.length)}
+                      color="primary"
+                    >
+                      <AddShoppingCartIcon color="action" />
+                    </Badge>
                   </Link>
-                </MenuItem>
-                <MenuItem onClick={onLogout}>
-                  <Link className="header-link" to="/">
-                    Logout
-                  </Link>
-                </MenuItem>
-              </Menu>
-            </Box>
+                </Tooltip>
+              </Box>
+            </>
           ) : (
             <Box>
               <Link
@@ -92,19 +107,6 @@ function Header() {
               </Link>
             </Box>
           )}
-          <Box>
-            <Tooltip title="Basket">
-              <Link className="header-btn-basket" to="/basket">
-                <Badge
-                  variant={basketProductsCount.length ? 'standard' : 'dot'}
-                  badgeContent={JSON.stringify(basketProductsCount.length)}
-                  color="primary"
-                >
-                  <AddShoppingCartIcon color="action" />
-                </Badge>
-              </Link>
-            </Tooltip>
-          </Box>
         </Toolbar>
       </Container>
     </AppBar>

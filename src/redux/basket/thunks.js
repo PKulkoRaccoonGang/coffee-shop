@@ -16,7 +16,7 @@ export const removeFromBasket = createAsyncThunk('basket/removeFromBasket', asyn
   await axios.delete(`/remove/${params}`);
 });
 
-export const sendOrder = createAsyncThunk('basket/sendOrder', async (params) => {
-  const { data } = await axios.post('/order', params);
+export const sendOrder = createAsyncThunk('basket/sendOrder', async () => {
+  const { data } = await axios.post('/order');
   return data;
 });

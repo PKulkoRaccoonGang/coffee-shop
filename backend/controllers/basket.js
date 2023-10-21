@@ -6,11 +6,6 @@ function mapBasketItems(cart) {
   }));
 }
 
-function computePrice(courses) {
-  // eslint-disable-next-line no-return-assign
-  return courses.reduce((total, course) => total += course.price * course.count, 0);
-}
-
 const getBasketData = async (req, res) => {
   try {
     const user = await req.user.populate('cart.items.courseId').execPopulate();

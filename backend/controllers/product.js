@@ -7,7 +7,7 @@ const getAll = async (req, res) => {
     res.json(products);
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.log('❌ Error: Products list not founded', err);
+    console.log('Error: Products list not founded', err);
     res.status(500).json({
       message: 'Products list not founded',
     });
@@ -28,8 +28,7 @@ const getOne = async (req, res) => {
     res.json(doc);
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.log('❌ Product not founded', err);
-
+    console.log('Product not founded', err);
     res.status(500).json({
       message: 'Product not founded',
     });

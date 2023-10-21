@@ -12,6 +12,7 @@ export default function ProductTable({ data, removeHandler }) {
   const id = useId();
   const totalPrice = computePrice(data).toString();
 
+  console.log('data', data);
   return (
     <TableContainer
       className="basket-products animate__animated animate__fadeInUp"

@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { fetchAuth, fetchAuthMe, fetchRegister } from './thunks';
+import {
+  fetchAuth, fetchAuthMe, fetchRegister,
+} from './thunks';
+import { RequestStatus } from '../../constants';
 
 const initialState = {
   data: null,
@@ -17,39 +20,39 @@ const authSlice = createSlice({
   },
   extraReducers: {
     [fetchAuth.pending]: (state) => {
-      state.status = 'loading';
+      state.status = RequestStatus.IN_PROGRESS;
       state.data = null;
     },
     [fetchAuth.fulfilled]: (state, action) => {
-      state.status = 'loaded';
+      state.status = RequestStatus.SUCCESSFUL;
       state.data = action.payload;
     },
     [fetchAuth.rejected]: (state) => {
-      state.status = 'error';
+      state.status = RequestStatus.FAILED;
       state.data = null;
     },
     [fetchRegister.pending]: (state) => {
-      state.status = 'loading';
+      state.status = RequestStatus.IN_PROGRESS;
       state.data = null;
     },
     [fetchRegister.fulfilled]: (state, action) => {
-      state.status = 'loaded';
+      state.status = RequestStatus.SUCCESSFUL;
       state.data = action.payload;
     },
     [fetchRegister.rejected]: (state) => {
-      state.status = 'error';
+      state.status = RequestStatus.FAILED;
       state.data = null;
     },
     [fetchAuthMe.pending]: (state) => {
-      state.status = 'loading';
+      state.status = RequestStatus.IN_PROGRESS;
       state.data = null;
     },
     [fetchAuthMe.fulfilled]: (state, action) => {
-      state.status = 'loaded';
+      state.status = RequestStatus.SUCCESSFUL;
       state.data = action.payload;
     },
     [fetchAuthMe.rejected]: (state) => {
-      state.status = 'error';
+      state.status = RequestStatus.FAILED;
       state.data = null;
     },
   },

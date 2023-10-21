@@ -3,13 +3,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-const { MONGO_CLIENT, PORT } = require('./constants');
+const { MONGODB_URI, PORT, USER_ID } = require('./constants');
 const User = require('./models/User');
 const {
   productsRoutes, authRoutes, basketRoutes, ordersRoutes,
 } = require('./routes');
 
-mongoose.connect(MONGO_CLIENT).then(() => {
+mongoose.connect(MONGODB_URI).then(() => {
   console.log('Mongo DB has been connected');
 }).catch((err) => console.log(err));
 
@@ -17,9 +17,10 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+
 app.use(async (req, res, next) => {
   try {
-    req.user = await User.findById('65194ebf486b45dd20c64483');
+    req.user = await User.findById(USER_ID);
     next();
   } catch (e) {
     console.log(e);
