@@ -1,10 +1,9 @@
 /* eslint-disable no-console */
 const ProductModel = require('../models/Product');
 
-const getAll = async (req, res) => {
+const getAllProducts = async (req, res) => {
   try {
     const products = await ProductModel.find();
-
     res.json(products);
   } catch (error) {
     console.log('Error: Products list not founded', error);
@@ -14,7 +13,7 @@ const getAll = async (req, res) => {
   }
 };
 
-const getOne = async (req, res) => {
+const getOneProduct = async (req, res) => {
   try {
     const productId = req.params.id;
     const doc = await ProductModel.findOne({ _id: productId });
@@ -34,4 +33,4 @@ const getOne = async (req, res) => {
   }
 };
 
-module.exports = { getOne, getAll };
+module.exports = { getOneProduct, getAllProducts };

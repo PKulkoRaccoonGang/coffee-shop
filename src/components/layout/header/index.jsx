@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  AppBar, Box, Toolbar, IconButton, Menu, Container, Avatar, Tooltip, MenuItem, Badge,
+  AppBar, Box, Toolbar, Container, Tooltip, Badge,
 } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Link } from 'react-router-dom';
@@ -14,23 +14,13 @@ import Logo from '../../logo';
 function Header() {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectorIsAuth);
-  const [showHeaderMenu, setShowHeaderMenu] = useState(null);
 
   useEffect(() => {
     dispatch(fetchBasket());
   }, []);
 
-  const handleOpenUserMenu = (event) => {
-    setShowHeaderMenu(event.currentTarget);
-  };
-
-  const handleCloseUserMenu = () => {
-    setShowHeaderMenu(null);
-  };
-
   const onLogout = () => {
     dispatch(logout());
-    handleCloseUserMenu();
   };
 
   return (
@@ -49,39 +39,16 @@ function Header() {
           {isAuth ? (
             <>
               <Box sx={{ flexGrow: 0 }}>
-                <Tooltip title="Open menu">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="user avatar" src="/static/images/avatar/2.jpg" />
-                  </IconButton>
-                </Tooltip>
-                <Menu
-                  sx={{ mt: '45px' }}
-                  anchorEl={showHeaderMenu}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(showHeaderMenu)}
-                  onClose={handleCloseUserMenu}
-                >
-                  <MenuItem onClick={handleCloseUserMenu}>
-                    <Link className="header-link" to="/profile">
-                      Profile
-                    </Link>
-                  </MenuItem>
-                  <MenuItem onClick={onLogout}>
-                    <Link className="header-link" to="/">
-                      Logout
-                    </Link>
-                  </MenuItem>
-                </Menu>
+                <Link className="core-button header-btn profile-btn" to="/profile">
+                  Profile
+                </Link>
               </Box>
               <Box>
+                {isAuth && (
+                  <Link className="core-button header-btn" to="/" onClick={onLogout}>
+                    Logout
+                  </Link>
+                )}
                 <Tooltip title="Basket">
                   <Link className="header-btn-basket" to="/basket">
                     <Badge color="primary">

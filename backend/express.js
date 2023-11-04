@@ -3,6 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const chalk = require('chalk');
+const helmet = require('helmet');
+const compression = require('compression');
 
 const { MONGODB_URI, PORT, USER_ID } = require('./constants');
 const User = require('./models/User');
@@ -18,6 +20,8 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use(helmet());
+app.use(compression());
 
 app.use(async (req, res, next) => {
   try {

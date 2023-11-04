@@ -102,7 +102,7 @@ export default function Product() {
           action={action}
         >
           <Alert severity="success" variant="filled">
-            Coffee successfully added to cart!
+            Coffee successfully added to basket!
           </Alert>
         </Snackbar>
       </section>

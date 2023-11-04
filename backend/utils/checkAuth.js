@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console, no-underscore-dangle */
 const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
