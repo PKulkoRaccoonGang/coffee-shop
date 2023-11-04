@@ -1,4 +1,4 @@
-/* eslint-disable no-console, no-underscore-dangle */
+/* eslint-disable no-console */
 const { Router } = require('express');
 
 const Order = require('../models/Order');
@@ -6,7 +6,7 @@ const Order = require('../models/Order');
 const router = Router();
 
 const calculateTotalProductPrice = (order) => {
-  order.products.reduce((total, product) => total + product.count * product.price, 0);
+  order.courses.reduce((total, product) => total + product.count * product.price, 0);
 };
 
 router.get('/orders', async (req, res) => {
@@ -28,9 +28,9 @@ router.get('/orders', async (req, res) => {
 
 router.post('/order', async (req, res) => {
   try {
-    const user = await req.user.populate('basket.items.productId').execPopulate();
-    const products = user.basket.items.map((item) => ({
-      count: item.count, ...item.productId._doc,
+    const user = await req.user.populate('cart.items.courseId').execPopulate();
+    const courses = user.cart.items.map((item) => ({
+      count: item.count, ...item.courseId._doc,
     }));
 
     const order = new Order({
@@ -38,11 +38,11 @@ router.post('/order', async (req, res) => {
         name: req.user.fullName,
         userId: req.user,
       },
-      products,
+      courses,
     });
 
     await order.save();
-    await req.user.clearBasket();
+    await req.user.clearCart();
     res.json();
   } catch (error) {
     console.log(error);

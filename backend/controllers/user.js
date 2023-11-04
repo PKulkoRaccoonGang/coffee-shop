@@ -1,4 +1,4 @@
-/* eslint-disable no-console, no-underscore-dangle */
+/* eslint-disable no-console */
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -90,7 +90,7 @@ const login = async (req, res) => {
   }
 };
 
-const getUserData = async (req, res) => {
+const getMe = async (req, res) => {
   try {
     const user = await UserModel.findById(req.userId);
 
@@ -111,4 +111,4 @@ const getUserData = async (req, res) => {
   }
 };
 
-module.exports = { register, login, getUserData };
+module.exports = { register, login, getMe };
