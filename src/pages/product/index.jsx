@@ -5,8 +5,8 @@ import {
   Alert, Button, ButtonGroup, Chip, IconButton, Snackbar, Container, Typography,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { Head, NotFound } from '../../components';
 
+import { Head, NotFound } from '../../components';
 import { addToBasket } from '../../redux/basket/thunks';
 import axios from '../../axios';
 
@@ -17,13 +17,10 @@ export default function Product() {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`/products/${id}`).then((res) => {
-      setProductData(res.data);
-    })
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.warn(err);
-      });
+    axios.get(`/products/${id}`)
+      .then((res) => setProductData(res.data))
+      // eslint-disable-next-line no-console
+      .catch((err) => console.warn(err));
   }, []);
 
   const addProductToBasket = (data) => {

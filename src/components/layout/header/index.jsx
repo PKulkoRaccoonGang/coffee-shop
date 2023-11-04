@@ -8,14 +8,12 @@ import { Link } from 'react-router-dom';
 
 import { selectorIsAuth } from '../../../redux/auth/selectors';
 import { logout } from '../../../redux/auth/slice';
-import { getBasketProducts } from '../../../redux/basket/selectors';
 import { fetchBasket } from '../../../redux/basket/thunks';
 import Logo from '../../logo';
 
 function Header() {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectorIsAuth);
-  const basketProductsCount = useSelector(getBasketProducts);
   const [showHeaderMenu, setShowHeaderMenu] = useState(null);
 
   useEffect(() => {
@@ -86,11 +84,7 @@ function Header() {
               <Box>
                 <Tooltip title="Basket">
                   <Link className="header-btn-basket" to="/basket">
-                    <Badge
-                      variant={basketProductsCount.length ? 'standard' : 'dot'}
-                      badgeContent={JSON.stringify(basketProductsCount.length)}
-                      color="primary"
-                    >
+                    <Badge color="primary">
                       <AddShoppingCartIcon color="action" />
                     </Badge>
                   </Link>

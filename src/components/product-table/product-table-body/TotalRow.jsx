@@ -5,6 +5,7 @@ import { computeCount, computePrice, priceFormatter } from '../utils';
 
 export default function TotalRow({ title, data, format }) {
   const totalPrice = computePrice(data).toString();
+
   return (
     <TableRow>
       <TableCell colSpan={3}>

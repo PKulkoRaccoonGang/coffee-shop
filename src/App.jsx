@@ -38,7 +38,7 @@ export default function App() {
                 <ProtectedRoute>
                   <Profile />
                 </ProtectedRoute>
-            )}
+              )}
             />
             <Route
               path="basket"
@@ -46,7 +46,7 @@ export default function App() {
                 <ProtectedRoute>
                   <Basket />
                 </ProtectedRoute>
-            )}
+              )}
             />
             <Route path="coffee-maker" element={<CoffeeMaker />} />
           </Route>

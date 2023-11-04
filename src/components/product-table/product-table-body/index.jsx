@@ -4,10 +4,10 @@ import { TableBody } from '@mui/material';
 import ProductRow from './ProductsRows';
 import TotalRow from './TotalRow';
 
-export default function ProductTableBody({ data, removeHandler }) {
+export default function ProductTableBody({ data }) {
   return (
     <TableBody>
-      {data.map((row) => <ProductRow row={row} removeHandler={removeHandler} />)}
+      {data.map((row) => <ProductRow key={row.title} row={row} />)}
       <TotalRow title="Total products" data={data} format="counter" />
       <TotalRow title="Total price" data={data} format="price" />
     </TableBody>
@@ -16,5 +16,4 @@ export default function ProductTableBody({ data, removeHandler }) {
 
 ProductTableBody.propTypes = {
   data: PropTypes.array.isRequired,
-  removeHandler: PropTypes.func.isRequired,
 };

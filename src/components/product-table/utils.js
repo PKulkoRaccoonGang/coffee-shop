@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign  */
 /**
  * Formats a numeric price as a currency string in US Dollars (USD) format.
  *
@@ -9,12 +10,20 @@ export const priceFormatter = (price) => `$${price.toLocaleString('en-US', {
   currency: 'USD',
 })}`;
 
-export function computePrice(courses) {
-  // eslint-disable-next-line no-return-assign
-  return courses.reduce((total, course) => total += course.price * course.count, 0);
+/**
+ * Computes the total price based on the product provided.
+ * @param {Array} products - The array of products to compute the total price from.
+ * @returns {number} The total price computed from the products.
+ */
+export function computePrice(products) {
+  return products.reduce((total, product) => total += product.price * product.count, 0);
 }
 
-export function computeCount(courses) {
-  // eslint-disable-next-line no-return-assign
-  return courses.reduce((total, course) => total += course.count, 0);
+/**
+ * Computes the total count of products provided.
+ * @param {Array} products - The array of products to compute the total count from.
+ * @returns {number} The total count of products.
+ */
+export function computeCount(products) {
+  return products.reduce((total, product) => total += product.count, 0);
 }

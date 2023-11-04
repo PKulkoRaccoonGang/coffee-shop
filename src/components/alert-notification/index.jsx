@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
-import {
-  Alert, AlertTitle, IconButton,
-} from '@mui/material';
+import { Alert, AlertTitle, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
 export default function AlertNotification({

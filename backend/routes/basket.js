@@ -8,6 +8,4 @@ router.get('/basket', BasketController.getBasketData);
 
 router.post('/add', BasketController.addProductToBasket);
 
-router.delete('/remove/:id', BasketController.deleteProductFromBasket);
-
 module.exports = router;

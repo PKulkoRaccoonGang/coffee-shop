@@ -9,7 +9,7 @@ export default function ProductCard({
 }) {
   return (
     <Link className="product-card" to={`/product/${id}`}>
-      <Card className="product-card-item" sx={{ maxWidth: 345 }}>
+      <Card className="product-card-item">
         <CardMedia
           className="product-card-img animate__animated animate__fadeInUp"
           component="img"

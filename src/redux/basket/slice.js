@@ -6,9 +6,10 @@ import { RequestStatus } from '../../constants';
 const initialState = {
   products: {
     items: [],
-    status: 'loading',
+    status: RequestStatus.IN_PROGRESS,
   },
   orders: [],
+  status: RequestStatus.IN_PROGRESS,
 };
 
 const basketSlice = createSlice({
@@ -49,7 +50,7 @@ const basketSlice = createSlice({
     },
     [sendOrder.fulfilled]: (state, action) => {
       state.status = RequestStatus.SUCCESSFUL;
-      state.orders.items.push(action.payload);
+      state.orders.push(action.payload);
     },
     [sendOrder.rejected]: (state) => {
       state.status = RequestStatus.FAILED;

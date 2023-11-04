@@ -10,7 +10,6 @@ export default function Home() {
       <Head pageTitle="Home" />
       <section className="home">
         <div className="home-img-wrapper">
-          {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
           <video autoPlay muted loop poster="./home-bg-img.png">
             <source src={mainBg} type="video/mp4" />
             Your browser does not support the video tag.
