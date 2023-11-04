@@ -25,7 +25,7 @@ export default function OrderAccordion({
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <ProductTable data={courses} isRemoveAction={false} />
+        <ProductTable data={courses} />
       </AccordionDetails>
     </Accordion>
   );

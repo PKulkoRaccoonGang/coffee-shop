@@ -22,9 +22,4 @@ const addProductToBasket = async (req) => {
   await req.user.addToCart(course);
 };
 
-const deleteProductFromBasket = async (req) => {
-  await req.user.removeFromCart(req.params.id);
-  await req.user.populate('cart.items.courseId').execPopulate();
-};
-
-module.exports = { getBasketData, addProductToBasket, deleteProductFromBasket };
+module.exports = { getBasketData, addProductToBasket };

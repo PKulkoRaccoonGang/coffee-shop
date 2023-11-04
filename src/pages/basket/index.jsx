@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, Container, Typography } from '@mui/material';
 
 import { Head, ProductTable } from '../../components';
-import { fetchBasket, removeFromBasket, sendOrder } from '../../redux/basket/thunks';
+import { fetchBasket, sendOrder } from '../../redux/basket/thunks';
 import { getBasketProducts } from '../../redux/basket/selectors';
 import EmptyBasket from './EmptyBasket';
 
@@ -15,8 +15,6 @@ function Basket() {
   useEffect(() => {
     dispatch(fetchBasket());
   }, []);
-
-  const handleRemoveProduct = (productId) => dispatch(removeFromBasket(productId));
 
   const handleSubmitOrder = () => dispatch(sendOrder());
 
@@ -36,7 +34,7 @@ function Basket() {
           >
             Basket
           </Typography>
-          <ProductTable data={basketProducts} removeHandler={handleRemoveProduct} />
+          <ProductTable data={basketProducts} />
           <Button
             className="core-button basket-btn animate__animated animate__fadeInRight"
             type="submit"

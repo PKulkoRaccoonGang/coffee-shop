@@ -1,7 +1,13 @@
-import { Alert, Container, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
+import {
+  Alert, Button, Container, Typography,
+} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 export default function EmptyBasket() {
+  const navigate = useNavigate();
+
+  const goBack = () => navigate(-1);
+
   return (
     <section className="basket animate__animated animate__fadeInUp">
       <Container maxWidth="xl">
@@ -9,9 +15,9 @@ export default function EmptyBasket() {
           <Typography>
             Unfortunately, your basket is empty...
           </Typography>
-          <Link className="core-button" to="/">
+          <Button className="core-button" onClick={goBack}>
             Back to home
-          </Link>
+          </Button>
         </Alert>
       </Container>
     </section>

@@ -35,8 +35,7 @@ router.post('/order', async (req, res) => {
 
     await order.save();
     await req.user.clearCart();
-
-    res.redirect('/profile');
+    res.json();
   } catch (e) {
     console.log(e);
   }

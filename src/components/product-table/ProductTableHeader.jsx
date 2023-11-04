@@ -3,24 +3,17 @@ import {
   TableCell, TableHead, TableRow, Typography,
 } from '@mui/material';
 
-export default function ProductTableHeader({ tableColumns, removeHandler }) {
+export default function ProductTableHeader({ tableColumns }) {
   return (
     <TableHead>
       <TableRow>
         {tableColumns.map((columnName) => (
-          <TableCell>
+          <TableCell key={columnName}>
             <Typography variant="subtitle1">
               {columnName}
             </Typography>
           </TableCell>
         ))}
-        {removeHandler && (
-        <TableCell>
-          <Typography variant="subtitle1">
-            Actions
-          </Typography>
-        </TableCell>
-        )}
       </TableRow>
     </TableHead>
   );
@@ -28,9 +21,4 @@ export default function ProductTableHeader({ tableColumns, removeHandler }) {
 
 ProductTableHeader.propTypes = {
   tableColumns: PropTypes.array.isRequired,
-  removeHandler: PropTypes.func,
-};
-
-ProductTableHeader.defaultProps = {
-  removeHandler: undefined,
 };
