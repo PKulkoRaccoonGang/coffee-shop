@@ -7,10 +7,10 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ProductTable from '../product-table';
 
 export default function OrderAccordion({
-  id, date, courses,
+  id, date, products,
 }) {
   return (
-    <Accordion className="order-accordion">
+    <Accordion className="order-accordion animate__animated animate__fadeInLeft">
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="order-accordion"
@@ -25,7 +25,7 @@ export default function OrderAccordion({
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <ProductTable data={courses} />
+        <ProductTable data={products} />
       </AccordionDetails>
     </Accordion>
   );
@@ -34,5 +34,5 @@ export default function OrderAccordion({
 OrderAccordion.propTypes = {
   id: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  courses: PropTypes.array.isRequired,
+  products: PropTypes.array.isRequired,
 };

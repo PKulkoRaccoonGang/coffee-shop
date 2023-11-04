@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, Typography } from '@mui/material';
+import { Alert, Container, Typography } from '@mui/material';
 
 import { Head, OrderAccordion } from '../../components';
 import { getUserData } from '../../redux/auth/selectors';
@@ -53,16 +53,20 @@ export default function Profile() {
           >
             Purchase history
           </Typography>
-          {orders.map((order) => (
+          {orders.length ? orders.map((order) => (
             <OrderAccordion
               /* eslint-disable-next-line no-underscore-dangle */
               key={order._id}
               date={convertDateFormat(order.date)}
               /* eslint-disable-next-line no-underscore-dangle */
               id={order._id}
-              courses={order.courses}
+              products={order.products}
             />
-          ))}
+          )) : (
+            <Alert className="animate__animated animate__fadeInLeft" severity="info">
+              Your purchase history will be displayed here
+            </Alert>
+          )}
         </Container>
       </section>
     </>

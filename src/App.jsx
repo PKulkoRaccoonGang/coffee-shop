@@ -5,7 +5,6 @@ import { Routes, Route } from 'react-router-dom';
 import { fetchAuthMe } from './redux/auth/thunks';
 import { Layout, NotFound, ProtectedRoute } from './components';
 import Home from './pages/home';
-import Profile from './pages/profile';
 
 const Basket = lazy(() => import(/* webpackChunkName: 'BasketPage' */'./pages/basket'));
 const SingUp = lazy(() => import(/* webpackChunkName: 'SingUpPage' */'./pages/sing-up'));
@@ -13,6 +12,7 @@ const SingIn = lazy(() => import(/* webpackChunkName: 'SingInPage' */'./pages/si
 const CoffeeMaker = lazy(() => import(/* webpackChunkName: 'CoffeeMakerPage' */'./pages/coffee-maker'));
 const Products = lazy(() => import(/* webpackChunkName: 'ProductsPage' */'./pages/products'));
 const Product = lazy(() => import(/* webpackChunkName: 'ProductPage' */'./pages/product'));
+const Profile = lazy(() => import(/* webpackChunkName: 'ProfilePage' */'./pages/profile'));
 
 export default function App() {
   const dispatch = useDispatch();
