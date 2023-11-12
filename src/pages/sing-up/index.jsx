@@ -89,6 +89,7 @@ export default function SingUp() {
                     <TextField
                       className="sing-up-form-fiend animate__animated animate__fadeInRight"
                       label="Password"
+                      type="password"
                       variant="outlined"
                       name="password"
                       error={Boolean(errors.password)}

@@ -1,8 +1,8 @@
 import { useEffect, useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Alert, AlertTitle, Checkbox, Container, debounce, FormControlLabel,
-  Grid, InputAdornment, List, ListItem, TextField, Typography,
+  Alert, AlertTitle, Container, debounce, FormControlLabel,
+  Grid, InputAdornment, List, ListItem, TextField, Typography, Radio,
 } from '@mui/material';
 import AbcOutlinedIcon from '@mui/icons-material/AbcOutlined';
 
@@ -16,7 +16,7 @@ export default function Products() {
   const dispatch = useDispatch();
   const { products } = useSelector(getProducts);
   const [productsItems, setProductsItems] = useState([]);
-  const [isSortingAlphabetical, setIsSortingAlphabetical] = useState(false);
+  const [isSortingAlphabetical, setIsSortingAlphabetical] = useState(true);
   const [isSortingByPrice, setIsSortingByPrice] = useState(false);
 
   useEffect(() => {
@@ -86,11 +86,14 @@ export default function Products() {
                 <FormControlLabel
                   className="animate__animated animate__fadeInUp"
                   control={(
-                    <Checkbox
-                      onChange={() => setIsSortingAlphabetical(!isSortingAlphabetical)}
+                    <Radio
+                      onChange={() => {
+                        setIsSortingAlphabetical(!isSortingAlphabetical);
+                        setIsSortingByPrice(false);
+                      }}
                       checked={isSortingAlphabetical}
                     />
-                      )}
+                  )}
                   label="In alphabet order"
                 />
               </ListItem>
@@ -98,11 +101,14 @@ export default function Products() {
                 <FormControlLabel
                   className="animate__animated animate__fadeInUp"
                   control={(
-                    <Checkbox
-                      onChange={() => setIsSortingByPrice(!isSortingByPrice)}
+                    <Radio
+                      onChange={() => {
+                        setIsSortingByPrice(!isSortingByPrice);
+                        setIsSortingAlphabetical(false);
+                      }}
                       checked={isSortingByPrice}
                     />
-                      )}
+                  )}
                   label="By price (lowest to highest)"
                 />
               </ListItem>
