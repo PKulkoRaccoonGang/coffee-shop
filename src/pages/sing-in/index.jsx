@@ -102,7 +102,7 @@ export default function SingIn() {
             }}
           </Formik>
           <Link className="sign-in-form-link animate__animated animate__fadeInLeft" to="/sign-up">
-            Already have an account? Sign up
+            Don&#39;t have an account yet? Sign up
           </Link>
         </div>
       </Container>
