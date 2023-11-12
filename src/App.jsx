@@ -4,8 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 import { withErrorBoundary } from 'react-error-boundary';
 
 import { fetchAuthMe } from './redux/auth/thunks';
-import { Layout, NotFound, ProtectedRoute } from './components';
 import Home from './pages/home';
+import { Layout, NotFound, ProtectedRoute } from './components';
 
 const Basket = lazy(() => import(/* webpackChunkName: 'BasketPage' */'./pages/basket'));
 const SingUp = lazy(() => import(/* webpackChunkName: 'SingUpPage' */'./pages/sing-up'));

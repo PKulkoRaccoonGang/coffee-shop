@@ -1,30 +1,32 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import {
-  Alert, Button, ButtonGroup, Chip, IconButton, Snackbar, Container, Typography,
+  Alert, Button, ButtonGroup, Chip, Snackbar, Container, Typography,
 } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
 
-import { Head, NotFound } from '../../components';
 import { addToBasket } from '../../redux/basket/thunks';
-import axios from '../../axios';
+import { fetchProduct } from '../../redux/product/thunks';
+import { getProduct } from '../../redux/product/selectors';
+import { Head, NotFound } from '../../components';
 
 export default function Product() {
+  const { id } = useParams();
+  const { product } = useSelector(getProduct);
   const [open, setOpen] = useState(false);
   const [productData, setProductData] = useState({});
   const dispatch = useDispatch();
-  const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`/products/${id}`)
-      .then((res) => setProductData(res.data))
-      // eslint-disable-next-line no-console
-      .catch((err) => console.warn(err));
+    dispatch(fetchProduct(id));
   }, []);
 
-  const addProductToBasket = (data) => {
-    dispatch(addToBasket(data));
+  useEffect(() => {
+    setProductData(product.items);
+  }, [product.items]);
+
+  const addProductToBasket = (productDetails) => {
+    dispatch(addToBasket(productDetails));
     setOpen(true);
   };
 
@@ -39,22 +41,6 @@ export default function Product() {
   if (!Object.keys(productData).length) {
     return <NotFound message="An error occurred, such product does not exist" />;
   }
-
-  const action = (
-    <>
-      <Button color="secondary" size="small" onClick={handleClose}>
-        UNDO
-      </Button>
-      <IconButton
-        size="small"
-        aria-label="close"
-        color="inherit"
-        onClick={handleClose}
-      >
-        <CloseIcon fontSize="small" />
-      </IconButton>
-    </>
-  );
 
   return (
     <>
@@ -73,7 +59,7 @@ export default function Product() {
               </Typography>
               <div>
                 <Chip
-                  label={`${productData?.price}$`}
+                  label={`${productData.price}$`}
                   className="product-price animate__animated animate__fadeInUp"
                   variant="outlined"
                 />
@@ -99,7 +85,6 @@ export default function Product() {
           open={open}
           autoHideDuration={2000}
           onClose={handleClose}
-          action={action}
         >
           <Alert severity="success" variant="filled">
             Coffee successfully added to basket!

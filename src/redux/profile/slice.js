@@ -29,5 +29,4 @@ const profileSlice = createSlice({
   },
 });
 
-// eslint-disable-next-line import/prefer-default-export
 export const profileReducer = profileSlice.reducer;

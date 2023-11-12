@@ -29,5 +29,4 @@ const productsSlice = createSlice({
   },
 });
 
-// eslint-disable-next-line import/prefer-default-export
 export const productsReducer = productsSlice.reducer;

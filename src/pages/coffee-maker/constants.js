@@ -1,19 +1,19 @@
-import sugarImg from './images/sugar.png';
-import saltImg from './images/salt.png';
-import pepperImg from './images/pepper.png';
-import milkImg from './images/milk.png';
-import washingPowderImg from './images/washing-powder.png';
-import cinnamonImg from './images/cinnamon.png';
-import coffeeImg from './images/coffee.png';
+export const imagePaths = {
+  Sugar: require('./images/sugar.png'),
+  Salt: require('./images/salt.png'),
+  Pepper: require('./images/pepper.png'),
+  Milk: require('./images/milk.png'),
+  WashingPowder: require('./images/washing-powder.png'),
+  Cinnamon: require('./images/cinnamon.png'),
+  Coffee: require('./images/coffee.png'),
+};
 
 export const MAX_INGREDIENTS = 4;
 
-export const initialState = [
-  { id: 1, title: 'Sugar', src: sugarImg },
-  { id: 2, title: 'Salt', src: saltImg },
-  { id: 3, title: 'Pepper', src: pepperImg },
-  { id: 4, title: 'Milk', src: milkImg },
-  { id: 5, title: 'WashingPowder', src: washingPowderImg },
-  { id: 6, title: 'Cinnamon', src: cinnamonImg },
-  { id: 7, title: 'Coffee', src: coffeeImg },
-];
+export const initialState = Object.keys(imagePaths).map((key, id) => ({
+  id: id + 1,
+  title: key,
+  src: imagePaths[key],
+}));
+
+export const falseIngredients = ['Salt', 'Pepper', 'WashingPowder'];

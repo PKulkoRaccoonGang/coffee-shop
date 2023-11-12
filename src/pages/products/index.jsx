@@ -6,13 +6,15 @@ import {
 } from '@mui/material';
 import AbcOutlinedIcon from '@mui/icons-material/AbcOutlined';
 
-import { Head, NotFound, ProductCard } from '../../components';
 import { fetchProducts } from '../../redux/products/thunks';
+import { getProducts } from '../../redux/products/selectors';
+import { Head, NotFound, ProductCard } from '../../components';
+import { sortByAlphabet, sortByPrice } from './utils';
 
 export default function Products() {
   const [searchQuery, setSearchQuery] = useState('');
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.products);
+  const { products } = useSelector(getProducts);
   const [productsItems, setProductsItems] = useState([]);
   const [isSortingAlphabetical, setIsSortingAlphabetical] = useState(false);
   const [isSortingByPrice, setIsSortingByPrice] = useState(false);
@@ -37,29 +39,13 @@ export default function Products() {
 
   const filteredItems = productsItems
     .filter((item) => item.title.toLowerCase().includes(searchQuery.toLowerCase()))
-    .sort((a, b) => {
+    .sort((currentValue, nextValue) => {
       if (isSortingAlphabetical) {
-        const titleA = a.title.toLowerCase();
-        const titleB = b.title.toLowerCase();
-
-        if (titleA < titleB) {
-          return -1;
-        }
-        if (titleA > titleB) {
-          return 1;
-        }
+        return sortByAlphabet(currentValue, nextValue);
       }
 
       if (isSortingByPrice) {
-        const priceA = parseFloat(a.price);
-        const priceB = parseFloat(b.price);
-
-        if (priceA < priceB) {
-          return -1;
-        }
-        if (priceA > priceB) {
-          return 1;
-        }
+        return sortByPrice(currentValue, nextValue);
       }
 
       return 0;

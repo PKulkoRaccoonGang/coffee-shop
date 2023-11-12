@@ -8,13 +8,13 @@ import {
 } from '@mui/material';
 
 import sugarImg from '../images/sugar.png';
+import { falseIngredients } from '../constants';
 import ModalResultIngredient from './ModalResultIngredient';
 import ModalResultAlert from './ModalResultAlert';
 
 function ModalResult({
   isOpen, ingredients, setIngredients, data, setIngredientsBoard,
 }) {
-  const falseIngredients = ['Salt', 'Pepper', 'WashingPowder'];
   const containsFalseItem = ingredients.some((ingredient) => falseIngredients.includes(ingredient));
 
   return (
@@ -68,7 +68,7 @@ ModalResult.propTypes = {
   ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
   setIngredients: PropTypes.func.isRequired,
   setIngredientsBoard: PropTypes.func.isRequired,
-  data: PropTypes.any.isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default ModalResult;

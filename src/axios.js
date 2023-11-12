@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { storage } from './utils';
+
 /**
  * Creates an Axios instance for making HTTP requests with specified parameters.
  *
@@ -15,7 +17,7 @@ const instance = axios.create({
  * if there is a token, it is sent to the request for obtaining a user token.
  */
 instance.interceptors.request.use((config) => {
-  config.headers.Authorization = window.localStorage.getItem('token');
+  config.headers.Authorization = storage.get('token');
 
   return config;
 });
