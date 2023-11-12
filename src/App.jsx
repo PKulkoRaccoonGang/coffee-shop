@@ -1,6 +1,7 @@
 import { lazy, useEffect, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
+import { withErrorBoundary } from 'react-error-boundary';
 
 import { fetchAuthMe } from './redux/auth/thunks';
 import { Layout, NotFound, ProtectedRoute } from './components';
@@ -14,7 +15,7 @@ const Products = lazy(() => import(/* webpackChunkName: 'ProductsPage' */'./page
 const Product = lazy(() => import(/* webpackChunkName: 'ProductPage' */'./pages/product'));
 const Profile = lazy(() => import(/* webpackChunkName: 'ProfilePage' */'./pages/profile'));
 
-export default function App() {
+function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -55,3 +56,7 @@ export default function App() {
     </div>
   );
 }
+
+export default withErrorBoundary(App, {
+  FallbackComponent: <NotFound />,
+});
