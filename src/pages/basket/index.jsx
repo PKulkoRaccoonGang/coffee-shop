@@ -23,7 +23,7 @@ function Basket() {
     dispatch(sendOrder());
     // eslint-disable-next-line no-alert
     alert('Congratulations! The order has been successfully completed!');
-    navigate('/profile');
+    navigate('/products');
   };
 
   if (!basketProducts.length) {
