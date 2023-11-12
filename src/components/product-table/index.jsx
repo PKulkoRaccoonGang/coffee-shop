@@ -21,5 +21,5 @@ export default function ProductTable({ data }) {
 }
 
 ProductTable.propTypes = {
-  data: PropTypes.any.isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

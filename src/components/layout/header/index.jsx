@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { selectorIsAuth } from '../../../redux/auth/selectors';
 import { logout } from '../../../redux/auth/slice';
 import { fetchBasket } from '../../../redux/basket/thunks';
+import { storage } from '../../../utils';
 import Logo from '../../logo';
 
 function Header() {
@@ -21,6 +22,7 @@ function Header() {
 
   const onLogout = () => {
     dispatch(logout());
+    storage.remove('token');
   };
 
   return (

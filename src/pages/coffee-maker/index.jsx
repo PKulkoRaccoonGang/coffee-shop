@@ -37,14 +37,12 @@ function CoffeeMaker() {
 
   const handleOnDrop = (e) => {
     const ingredientName = e.dataTransfer.getData('ingredientName');
-
     setSelectedIngredients([...selectedIngredients, ingredientName]);
 
     setIngredients((prevBoard) => {
       const currentIndex = prevBoard.indexOf(currentIngredient);
       const updatedBoard = [...prevBoard];
       updatedBoard.splice(currentIndex, 1);
-
       return updatedBoard;
     });
   };
@@ -93,14 +91,14 @@ function CoffeeMaker() {
           />
         </Container>
         <Container maxWidth="xl">
-          {ingredients.map((item) => (
+          {ingredients.map((ingredient) => (
             <CoffeeIngredient
-              key={item.id}
-              title={item.title}
-              onDragStart={(e) => handleDragStart(e, item)}
-              onDrop={(e) => handleDrop(e, item)}
-              img={item.src}
-              className={dragging ? getStyles(item.id) : ''}
+              key={ingredient.id}
+              title={ingredient.title}
+              onDragStart={(e) => handleDragStart(e, ingredient)}
+              onDrop={(e) => handleDrop(e, ingredient)}
+              img={ingredient.src}
+              className={dragging ? getStyles(ingredient.id) : ''}
             />
           ))}
           <CoffeeMug

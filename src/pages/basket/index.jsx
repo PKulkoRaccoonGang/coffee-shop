@@ -1,22 +1,30 @@
-/* eslint-disable no-underscore-dangle */
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Container, Typography } from '@mui/material';
+import {
+  Button, Container, Typography,
+} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
-import { Head, ProductTable } from '../../components';
 import { fetchBasket, sendOrder } from '../../redux/basket/thunks';
 import { getBasketProducts } from '../../redux/basket/selectors';
+import { Head, ProductTable } from '../../components';
 import EmptyBasket from './EmptyBasket';
 
 function Basket() {
   const dispatch = useDispatch();
   const basketProducts = useSelector(getBasketProducts);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchBasket());
   }, []);
 
-  const handleSubmitOrder = () => dispatch(sendOrder());
+  const handleSubmitOrder = () => {
+    dispatch(sendOrder());
+    // eslint-disable-next-line no-alert
+    alert('Congratulations! The order has been successfully completed!');
+    navigate('/profile');
+  };
 
   if (!basketProducts.length) {
     return <EmptyBasket />;

@@ -1,20 +1,8 @@
-import { Facebook, Twitter, Telegram } from '@mui/icons-material';
 import { Container } from '@mui/material';
 
 import SocialNetwork from './social-network';
 import Logo from '../../logo';
-
-const socialNetworks = [
-  {
-    name: 'Telegram', href: 'https://desktop.telegram.org', icon: <Telegram />,
-  },
-  {
-    name: 'Twitter', href: 'https://twitter.com', icon: <Twitter />,
-  },
-  {
-    name: 'Facebook', href: 'https://www.facebook.com', icon: <Facebook />,
-  },
-];
+import { socialNetworks } from './constants';
 
 export default function Footer() {
   return (
@@ -28,7 +16,12 @@ export default function Footer() {
           {socialNetworks.map(({
             name, href, icon,
           }) => (
-            <SocialNetwork key={name} name={name} href={href} icon={icon} />
+            <SocialNetwork
+              key={name}
+              name={name}
+              href={href}
+              icon={icon}
+            />
           ))}
         </ul>
       </Container>

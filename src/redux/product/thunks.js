@@ -3,10 +3,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../../axios';
 
 /**
- * Fetches a list of products.
+ * Fetches product data.
  * @returns {Promise} The promise containing the fetched product data.
  */
-export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
-  const { data } = await axios.get('/products');
+export const fetchProduct = createAsyncThunk('product/fetchProduct', async (productId) => {
+  const { data } = await axios.get(`/products/${productId}`);
   return data;
 });

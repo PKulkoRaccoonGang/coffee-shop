@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Alert, Container, Typography } from '@mui/material';
 
-import { Head, OrderAccordion } from '../../components';
 import { getUserData } from '../../redux/auth/selectors';
 import { getOrders } from '../../redux/profile/selectors';
 import { fetchOrders } from '../../redux/profile/thunks';
+import { Head, OrderAccordion } from '../../components';
 import { convertDateFormat } from './utils';
 
 export default function Profile() {
@@ -53,14 +53,12 @@ export default function Profile() {
           >
             Purchase history
           </Typography>
-          {orders.length ? orders.map((order) => (
+          {orders.length ? orders.map(({ _id, date, products }) => (
             <OrderAccordion
-              /* eslint-disable-next-line no-underscore-dangle */
-              key={order._id}
-              date={convertDateFormat(order.date)}
-              /* eslint-disable-next-line no-underscore-dangle */
-              id={order._id}
-              products={order.products}
+              key={_id}
+              date={convertDateFormat(date)}
+              id={_id}
+              products={products}
             />
           )) : (
             <Alert className="animate__animated animate__fadeInLeft" severity="info">

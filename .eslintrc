@@ -18,6 +18,8 @@
     ],
     "rules": {
         "import/no-extraneous-dependencies": "off",
+        "no-underscore-dangle": 0,
+        "import/prefer-default-export": "off",
         "react/forbid-prop-types": "off",
         "react/react-in-jsx-scope": "off",
         "no-param-reassign": "off",

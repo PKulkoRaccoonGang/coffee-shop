@@ -6,24 +6,30 @@ import {
   Button, Container, FormControl, TextField, Typography,
 } from '@mui/material';
 
-import { AlertNotification, Head } from '../../components';
 import { fetchAuth } from '../../redux/auth/thunks';
 import { selectorIsAuth } from '../../redux/auth/selectors';
+import { AlertNotification, Head } from '../../components';
+import { storage, validateUserInputCredentials } from '../../utils';
+
+const initialValues = {
+  email: '',
+  password: '',
+};
 
 export default function SingIn() {
   const [authorizationError, setAuthorizationError] = useState(false);
   const isAuth = useSelector(selectorIsAuth);
   const dispatch = useDispatch();
 
-  const onSubmit = async (values) => {
-    const data = await dispatch(fetchAuth(values));
+  const onSubmit = async (userData) => {
+    const { payload } = await dispatch(fetchAuth(userData));
 
-    if (!data.payload) {
+    if (!payload) {
       return setAuthorizationError(true);
     }
 
-    if ('token' in data.payload) {
-      window.localStorage.setItem('token', data.payload.token);
+    if ('token' in payload) {
+      storage.set('token', payload.token);
     }
 
     return null;
@@ -47,21 +53,8 @@ export default function SingIn() {
             Sign in
           </Typography>
           <Formik
-            initialValues={{
-              email: '',
-              password: '',
-            }}
-            validate={(values) => {
-              const errors = {};
-              if (!values.email) {
-                errors.email = 'This field is required';
-              } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-                errors.email = 'Invalid email address';
-              } else if (!values.password) {
-                errors.password = 'This field is required';
-              }
-              return errors;
-            }}
+            initialValues={initialValues}
+            validate={(values) => validateUserInputCredentials(values)}
             onSubmit={(values, { setSubmitting }) => {
               onSubmit(values);
               setSubmitting(false);
@@ -69,40 +62,44 @@ export default function SingIn() {
           >
             {({
               values, errors, handleSubmit, handleChange,
-            }) => (
-              <form onSubmit={handleSubmit}>
-                <FormControl className="sign-in-form">
-                  <TextField
-                    className="sign-in-form-fiend animate__animated animate__fadeInRight"
-                    label="Email"
-                    type="email"
-                    name="email"
-                    error={Boolean(errors.email)}
-                    value={values.email}
-                    onChange={handleChange}
-                    helperText={errors.email}
-                  />
-                  <TextField
-                    className="sign-in-form-fiend animate__animated animate__fadeInLeft"
-                    label="Password"
-                    type="password"
-                    name="password"
-                    error={Boolean(errors.password)}
-                    variant="outlined"
-                    value={values.password}
-                    onChange={handleChange}
-                    helperText={errors.password}
-                  />
-                  <Button
-                    className="core-button animate__animated animate__fadeInRight"
-                    type="submit"
-                    disabled={Boolean(Object.keys(errors).length) || Boolean(!values.email)}
-                  >
-                    Submit
-                  </Button>
-                </FormControl>
-              </form>
-            )}
+            }) => {
+              const isDisabled = Boolean(Object.keys(errors).length) || Boolean(!values.email);
+
+              return (
+                <form onSubmit={handleSubmit}>
+                  <FormControl className="sign-in-form">
+                    <TextField
+                      className="sign-in-form-fiend animate__animated animate__fadeInRight"
+                      label="Email"
+                      type="email"
+                      name="email"
+                      error={Boolean(errors.email)}
+                      value={values.email}
+                      onChange={handleChange}
+                      helperText={errors.email}
+                    />
+                    <TextField
+                      className="sign-in-form-fiend animate__animated animate__fadeInLeft"
+                      label="Password"
+                      type="password"
+                      name="password"
+                      error={Boolean(errors.password)}
+                      variant="outlined"
+                      value={values.password}
+                      onChange={handleChange}
+                      helperText={errors.password}
+                    />
+                    <Button
+                      className="core-button animate__animated animate__fadeInRight"
+                      type="submit"
+                      disabled={isDisabled}
+                    >
+                      Submit
+                    </Button>
+                  </FormControl>
+                </form>
+              );
+            }}
           </Formik>
           <Link className="sign-in-form-link animate__animated animate__fadeInLeft" to="/sign-up">
             Already have an account? Sign up
