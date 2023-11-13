@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Alert } from '@mui/material';
 
-function ModalResultAlert({ variant, title }) {
+export default function ModalResultAlert({ variant, title }) {
   return (
     <Alert severity={variant}>
       {title}
@@ -13,5 +13,3 @@ ModalResultAlert.propTypes = {
   variant: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
-
-export default ModalResultAlert;

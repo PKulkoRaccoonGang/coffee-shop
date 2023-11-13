@@ -3,7 +3,7 @@ import {
   ListItem, ListItemButton, ListItemIcon, ListItemText,
 } from '@mui/material';
 
-function IngredientItem({ title, src }) {
+export default function IngredientItem({ title, src }) {
   return (
     <ListItem>
       <ListItemButton>
@@ -20,5 +20,3 @@ IngredientItem.propTypes = {
   title: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
 };
-
-export default IngredientItem;

@@ -10,7 +10,7 @@ import { getBasketProducts } from '../../redux/basket/selectors';
 import { Head, ProductTable } from '../../components';
 import EmptyBasket from './EmptyBasket';
 
-function Basket() {
+export default function Basket() {
   const dispatch = useDispatch();
   const basketProducts = useSelector(getBasketProducts);
   const navigate = useNavigate();
@@ -55,5 +55,3 @@ function Basket() {
     </>
   );
 }
-
-export default Basket;

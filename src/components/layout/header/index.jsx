@@ -12,7 +12,7 @@ import { fetchBasket } from '../../../redux/basket/thunks';
 import { storage } from '../../../utils';
 import Logo from '../../logo';
 
-function Header() {
+export default function Header() {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectorIsAuth);
 
@@ -75,4 +75,3 @@ function Header() {
     </AppBar>
   );
 }
-export default Header;

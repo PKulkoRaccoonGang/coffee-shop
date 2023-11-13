@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import IngredientItem from './IngredientItem';
 import { imagePaths } from '../constants';
 
-function ModalResultIngredient({ title }) {
+export default function ModalResultIngredient({ title }) {
   const imagePath = imagePaths[title];
 
   if (!imagePath) {
@@ -15,5 +15,3 @@ function ModalResultIngredient({ title }) {
 ModalResultIngredient.propTypes = {
   title: PropTypes.string.isRequired,
 };
-
-export default ModalResultIngredient;
