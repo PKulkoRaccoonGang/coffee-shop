@@ -7,7 +7,7 @@ import CoffeeIngredient from './ingredient';
 import CoffeeMug from './coffee-mug';
 import { initialState, MAX_INGREDIENTS } from './constants';
 
-function CoffeeMaker() {
+export default function CoffeeMaker() {
   const [dragging, setDragging] = useState(false);
   const [selectedIngredients, setSelectedIngredients] = useState([]);
   const [ingredients, setIngredients] = useState(initialState);
@@ -119,5 +119,3 @@ function CoffeeMaker() {
     </>
   );
 }
-
-export default CoffeeMaker;

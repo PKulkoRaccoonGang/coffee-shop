@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function CoffeeIngredient({
+export default function CoffeeIngredient({
   onDragStart, title, img, onDrop, className,
 }) {
   return (
@@ -22,5 +22,3 @@ CoffeeIngredient.propTypes = {
   className: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
 };
-
-export default CoffeeIngredient;

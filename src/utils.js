@@ -16,21 +16,22 @@
  */
 export const validateUserInputCredentials = (values, isRegistration = false) => {
   const errors = {};
+  const REQUIRED_MESSAGE = 'This field is required';
 
   if (!values.email) {
-    errors.email = 'This field is required';
+    errors.email = REQUIRED_MESSAGE;
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
     errors.email = 'Invalid email address';
   }
 
   if (!values.password) {
-    errors.password = 'This field is required';
+    errors.password = REQUIRED_MESSAGE;
   } else if (values.password.length < 5) {
     errors.password = 'Minimum password length 5 characters';
   }
 
   if (isRegistration && !values.fullName) {
-    errors.fullName = 'This field is required';
+    errors.fullName = REQUIRED_MESSAGE;
   }
 
   return errors;

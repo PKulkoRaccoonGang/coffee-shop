@@ -12,7 +12,7 @@ import { falseIngredients } from '../constants';
 import ModalResultIngredient from './ModalResultIngredient';
 import ModalResultAlert from './ModalResultAlert';
 
-function ModalResult({
+export default function ModalResult({
   isOpen, ingredients, setIngredients, data, setIngredientsBoard,
 }) {
   const containsFalseItem = ingredients.some((ingredient) => falseIngredients.includes(ingredient));
@@ -70,5 +70,3 @@ ModalResult.propTypes = {
   setIngredientsBoard: PropTypes.func.isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
-
-export default ModalResult;

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-function CoffeeMug({ onDrop, onDragOver, isOverMug }) {
+export default function CoffeeMug({ onDrop, onDragOver, isOverMug }) {
   return (
     <div
       onDrop={onDrop}
@@ -18,5 +18,3 @@ CoffeeMug.propTypes = {
   onDragOver: PropTypes.func.isRequired,
   isOverMug: PropTypes.bool.isRequired,
 };
-
-export default CoffeeMug;
